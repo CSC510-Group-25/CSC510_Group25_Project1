@@ -18,6 +18,11 @@ import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import './App.css';
+import InventoryPage from "../inventory/inventory-page";
+import MenuPage from "../menu/menu-page";
+import AnalyticsPage from "../analytics/analytics-page";
+import NotificationsPage from "../notifications/notifications-page";
+
 
 class App extends Component {
   constructor(props) {
@@ -79,6 +84,18 @@ class App extends Component {
             <Route exact path="/" component={Home}></Route>           
             <PrivateRoute path="/profile" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
               component={Profile}></PrivateRoute>
+            <PrivateRoute path="/notifications" authenticated={this.state.authenticated} currentUser={this.state.currentUser}>
+              <NotificationsPage />
+            </PrivateRoute>
+            <PrivateRoute path="/inventory">
+              <InventoryPage />
+            </PrivateRoute>
+            <PrivateRoute path="/menu">
+              <MenuPage />
+            </PrivateRoute>
+            <PrivateRoute path="/analytics">
+              <AnalyticsPage />
+            </PrivateRoute>
             <Route path="/login"
               render={(props) => <Login authenticated={this.state.authenticated} {...props} />}></Route>
             <Route path="/signup"
