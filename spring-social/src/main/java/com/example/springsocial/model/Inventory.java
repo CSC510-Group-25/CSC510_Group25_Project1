@@ -1,21 +1,30 @@
 package com.example.springsocial.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.Date;
+
 
 import javax.persistence.*;
 
+@Entity
+@Table(name = "inventory")
+
 public class Inventory {
+
     @Column(nullable = false)
     private String restaurantName;
+
 
     @Column(nullable = false)
     private String restaurantID;
 
+    @Id
     @Column(nullable = false)
     private String itemID;
     
     @Column(nullable = false)
     private String itemName;
+
 
     @Column(nullable = false)
     private String batchID;
@@ -52,7 +61,7 @@ public class Inventory {
         return itemID;
     }
 
-    public void setItemID(int itemID){
+    public void setItemID(String itemID){
         this.itemID = itemID;
     }
 
@@ -100,7 +109,7 @@ public class Inventory {
         return dateExpired;
     }
 
-    public Date setDateExpired(Date dateExpired){
+    public void setDateExpired(Date dateExpired){
         this.dateExpired = dateExpired;
     }
 }

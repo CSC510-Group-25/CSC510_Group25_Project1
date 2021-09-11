@@ -1,5 +1,6 @@
 package com.example.springsocial.payload;
 
+import java.util.Date;
 import javax.validation.constraints.NotBlank;
 
 //The payload contains the data that could be stored or modified
@@ -19,16 +20,15 @@ public class InventoryRequest {
     @NotBlank
     private String batchID;
 
-    @NotBlank
     private int batchQty;
 
-    @NotBlank
+
     private double costPerItem;
 
-    @NotBlank
+
     private Date dateBought;
 
-    @NotBlank
+
     private Date dateExpired;
 
     public String getRestaurantName(){
@@ -99,7 +99,7 @@ public class InventoryRequest {
         return dateExpired;
     }
 
-    public Date setDateExpired(Date dateExpired){
+    public void setDateExpired(Date dateExpired){
         this.dateExpired = dateExpired;
     }
 }
