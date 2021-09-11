@@ -1,3 +1,4 @@
+CREATE DATABASE inventory_tracker;
 USE inventory_tracker;
 
 CREATE TABLE `users3` (
