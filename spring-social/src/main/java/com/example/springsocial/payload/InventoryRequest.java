@@ -8,13 +8,16 @@ public class InventoryRequest {
     private String restaurantName;
 
     @NotBlank
-    private int itemID;
+    private String restaurantID;
+
+    @NotBlank
+    private String itemID;
 
     @NotBlank
     private String itemName;
 
     @NotBlank
-    private int batchID;
+    private String batchID;
 
     @NotBlank
     private int batchQty;
@@ -36,11 +39,19 @@ public class InventoryRequest {
         this.restaurantName = restaurantName;
     }
 
+    public String getRestaurantID(){
+        return restaurantID;
+    }
+
+    public void setRestaurantID(String restaurantID){
+        this.restaurantID = restaurantID;
+    }
+
     public String getItemID(){
         return itemID;
     }
 
-    public void setItemID(int itemID){
+    public void setItemID(String itemID){
         this.itemID = itemID;
     }
 
@@ -52,11 +63,11 @@ public class InventoryRequest {
         this.itemName = itemName;
     }
 
-    public int getBatchID(){
+    public String getBatchID(){
         return batchID;
     }
 
-    public void setBatchID(int batchID){
+    public void setBatchID(String batchID){
         this.batchID = batchID;
     }
 

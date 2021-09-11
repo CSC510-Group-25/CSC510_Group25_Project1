@@ -9,13 +9,16 @@ public class Inventory {
     private String restaurantName;
 
     @Column(nullable = false)
+    private String restaurantID;
+
+    @Column(nullable = false)
     private String itemID;
     
     @Column(nullable = false)
     private String itemName;
 
     @Column(nullable = false)
-    private int batchID;
+    private String batchID;
 
     @Column(nullable = false)
     private int batchQty;
@@ -37,6 +40,14 @@ public class Inventory {
         this.restaurantName = restaurantName;
     }
 
+    public String getRestaurantID(){
+        return restaurantID;
+    }
+
+    public void setRestaurantID(String restaurantID){
+        this.restaurantID = restaurantID;
+    }
+
     public String getItemID(){
         return itemID;
     }
@@ -53,11 +64,11 @@ public class Inventory {
         this.itemName = itemName;
     }
 
-    public int getBatchID(){
+    public String getBatchID(){
         return batchID;
     }
 
-    public void setBatchID(int batchID){
+    public void setBatchID(String batchID){
         this.batchID = batchID;
     }
 
