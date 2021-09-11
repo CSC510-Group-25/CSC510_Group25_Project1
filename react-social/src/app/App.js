@@ -84,17 +84,17 @@ class App extends Component {
             <Route exact path="/" component={Home}></Route>           
             <PrivateRoute path="/profile" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
               component={Profile}></PrivateRoute>
-            <PrivateRoute path="/notifications" authenticated={this.state.authenticated} currentUser={this.state.currentUser}>
-              <NotificationsPage />
+            <PrivateRoute path="/notifications" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
+              component={NotificationsPage}>
             </PrivateRoute>
-            <PrivateRoute path="/inventory">
-              <InventoryPage />
+            <PrivateRoute path="/inventory" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
+              component={InventoryPage}>
             </PrivateRoute>
-            <PrivateRoute path="/menu">
-              <MenuPage />
+            <PrivateRoute path="/menu" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
+              component={MenuPage}>
             </PrivateRoute>
-            <PrivateRoute path="/analytics">
-              <AnalyticsPage />
+            <PrivateRoute path="/analytics" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
+                component={AnalyticsPage}>
             </PrivateRoute>
             <Route path="/login"
               render={(props) => <Login authenticated={this.state.authenticated} {...props} />}></Route>
