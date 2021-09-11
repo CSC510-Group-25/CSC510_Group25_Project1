@@ -1,6 +1,7 @@
+CREATE DATABASE inventory_tracker;
 USE inventory_tracker;
 
-CREATE TABLE `users3` (
+CREATE TABLE `users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `email` varchar(45) NOT NULL,
   `restaurantName` varchar(45) NOT NULL DEFAULT 'CSC510',
