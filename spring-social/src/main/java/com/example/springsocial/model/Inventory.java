@@ -1,31 +1,32 @@
-package com.example.springsocial.payload;
+package com.example.springsocial.model;
 
-import javax.validation.constraints.NotBlank;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-//The payload contains the data that could be stored or modified
-public class InventoryRequest {
-    @NotBlank
+import javax.persistence.*;
+
+public class Inventory {
+    @Column(nullable = false)
     private String restaurantName;
 
-    @NotBlank
-    private int itemID;
-
-    @NotBlank
+    @Column(nullable = false)
+    private String itemID;
+    
+    @Column(nullable = false)
     private String itemName;
 
-    @NotBlank
+    @Column(nullable = false)
     private int batchID;
 
-    @NotBlank
+    @Column(nullable = false)
     private int batchQty;
 
-    @NotBlank
+    @Column(nullable = false)
     private double costPerItem;
 
-    @NotBlank
+    @Column(nullable = false)
     private Date dateBought;
 
-    @NotBlank
+    @Column(nullable = false)
     private Date dateExpired;
 
     public String getRestaurantName(){
