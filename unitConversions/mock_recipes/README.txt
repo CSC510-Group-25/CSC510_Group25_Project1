@@ -12,7 +12,7 @@ recipe_0002.txt
 
 Contents:
 mystery blob
-0001
+0002
 [cheese, 5534, 8, lbs]
 [rice, 7881, 2, cups dry]
 [ingr3, db_id, local_qty, local_unit]
