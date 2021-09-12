@@ -10,22 +10,19 @@
  *
  **/
 
-public class unit_conversion {
+public class UnitConverter {
 
     // NOTE: conversions ONLY occur if local_unit does not equal db_unit.
     // db_unit is extracted from the database.
 
     /*
     Note: lbs does not need specification for whether it's dry or liquid. For our purposes, it's always dry.
-
     Always dry: oz, g, lbs, kg
     Always liquid: fl.oz, mL, pint, quart, gal, liter
-
     Needs specification: tsp, tbsp, cup
      */
 
-
-
+    
     /**
      * Converts the given qty from local_unit to db_unit.
      *
@@ -57,6 +54,8 @@ public class unit_conversion {
         if(local_unit.equals(db_unit)){ return "equal units, no conversion needed"; }
 
 
+        // NOT YET IMPLEMENTED
+        //TODO: implement dry conversions
         //if (local_unit.contains("dry")){ return convertDry(qty,local_unit,db_unit); }
 
         if (local_unit.contains("liquid")){ return convertLiquid(qty,local_unit,db_unit); }
@@ -95,10 +94,36 @@ public class unit_conversion {
             return liters(qty,local_unit);
         }
 
-
         return "debug me";
-
     }
+
+
+    /**
+     * Converts the String result from a call to convertTo(double qty, String local_unit, String db_unit)
+     * to a Double. Returns null if the String returned from convertTo(...) does not represent a double.
+     *
+     * @param qty
+     * @param local_unit
+     * @param db_unit
+     * @return Double or null
+     */
+    public Double convertToDouble(double qty, String local_unit, String db_unit){
+
+        String convertMe = convertTo(qty,local_unit,db_unit);
+        Double val = null;
+
+        try{
+            val = Double.parseDouble(convertMe);
+
+        } catch (Exception NumberFormatException){
+
+            //System.out.println("debug UnitConverter convertToDouble");
+        }
+
+        return val;
+    }
+
+
 
 
     /**
@@ -120,6 +145,7 @@ public class unit_conversion {
         if(local_unit.equals("lbs")){ return "equal units, no conversion needed"; }
 
 
+        //TODO
         if (local_unit.contains("dry")){
 
             /* Display warnings for the following conversions due to cups, tsps, and tbsps
@@ -215,6 +241,7 @@ public class unit_conversion {
         if(local_unit.equals("kgs")){ return "equal units, no conversion needed"; }
 
 
+        //TODO
         if (local_unit.contains("dry")){
 
             /* Display warnings for the following conversions due to cups, tsps, and tbsps
@@ -286,6 +313,7 @@ public class unit_conversion {
 
         if(local_unit.equals("grams")){ return "equal units, no conversion needed"; }
 
+        //TODO
         if (local_unit.contains("dry")){
 
             /* Display warnings for the following conversions due to cups, tsps, and tbsps
@@ -369,6 +397,7 @@ public class unit_conversion {
 
         if(local_unit.equals("oz")){ return "equal units, no conversion needed"; }
 
+        //TODO
         if (local_unit.contains("dry")){
 
             /* Display warnings for the following conversions due to cups, tsps, and tbsps
@@ -569,7 +598,7 @@ public class unit_conversion {
             returnVal = Double.toString(val);
 
         }
-        
+
 
         else if (local_unit.equals("liters")){
             val = qty * 33.814;
@@ -609,7 +638,7 @@ public class unit_conversion {
             returnVal = Double.toString(val);
 
         }
-        
+
         return returnVal;
     }
 
@@ -670,7 +699,7 @@ public class unit_conversion {
             returnVal = Double.toString(val);
 
         }
-        
+
         return returnVal;
     }
 
@@ -747,7 +776,7 @@ public class unit_conversion {
         return returnMe;
 
     }
-    
+
 
 
     // removes the "liquid" specifier for now.
