@@ -1,5 +1,9 @@
 
-file name: recipeXXX.txt
+file name: recipe_[RECIPE_ID].txt
+Replace [RECIPE_ID] with the recipe's ID as recorded in the database.
+
+ex)
+recipe_0001.txt
 
 Contents of each file:
 
@@ -11,12 +15,14 @@ ex)
 
 mystery blob
 0001
-[cheese, 5534, 8, lb]
+[cheese, 5534, 8, lbs]
 [rice, 7881, 2, cups dry]
 [ingr3, db_id, local_qty, local_unit]
 ...
 [ingrN, db_id, local_qty, local_unit]
 
+
+One ingredient per line.
 
 Consider using json.
 
