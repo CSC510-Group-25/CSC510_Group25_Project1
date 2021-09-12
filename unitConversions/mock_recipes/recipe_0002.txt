@@ -1,5 +1,5 @@
 mystery blob
-0001
+0002
 [cheese, 5534, 8, lbs]
 [rice, 7881, 2, cups dry]
 [rice, 7881, 5, kgs]
