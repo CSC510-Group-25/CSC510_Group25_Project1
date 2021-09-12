@@ -1,18 +1,16 @@
 
 file name: recipe_[RECIPE_ID].txt
 Replace [RECIPE_ID] with the recipe's ID as recorded in the database.
-
-ex)
-recipe_0001.txt
-
 Contents of each file:
 
 recipe_name
 recipe_id
-[ingredients]
+[ingredient]
 
 ex)
+recipe_0002.txt
 
+Contents:
 mystery blob
 0001
 [cheese, 5534, 8, lbs]
@@ -21,9 +19,17 @@ mystery blob
 ...
 [ingrN, db_id, local_qty, local_unit]
 
-
 One ingredient per line.
 
 Consider using json.
 
 NOTE: these are for TESTING.
+
+-------------------
+
+recipe_0001.txt: test reading in strings and object construction.
+Expected result: TBD
+
+recipe_0002.txt: test duplicate ingredients with different local_qty and local_unit, e.g, volume and weight.
+Expected result: confirm with user which one is correct OR throw an error.
+
