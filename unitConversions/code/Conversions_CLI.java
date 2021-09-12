@@ -91,7 +91,7 @@ public class Conversions_CLI {
             }
         }
 
-        unit_conversion nuConversion = new unit_conversion();
+        UnitConverter nuConversion = new UnitConverter();
 
        /* String printMe = "converted " + Double.toString(qty) + " " + local_unit + " to: "
                 + nuConversion.convertTo(qty,local_unit,db_unit) + " " + db_unit;*/
