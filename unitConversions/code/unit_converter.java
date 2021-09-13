@@ -10,7 +10,7 @@
  *
  **/
 
-public class UnitConverter {
+public class unit_converter {
 
     // NOTE: conversions ONLY occur if local_unit does not equal db_unit.
     // db_unit is extracted from the database.
