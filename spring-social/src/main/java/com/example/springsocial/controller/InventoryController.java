@@ -37,7 +37,7 @@ public class InventoryController {
 
 
 //        return inventoryRepository.findAll(inventory);
-        return "{}";
+        return "{Add Successfully}";
 
     }
 }

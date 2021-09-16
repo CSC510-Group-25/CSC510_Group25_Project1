@@ -23,9 +23,9 @@ import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequ
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
-@EnableWebSecurity
+//@EnableWebSecurity
 @EnableGlobalMethodSecurity(
-        securedEnabled = true,
+        securedEnabled = false,
         jsr250Enabled = true,
         prePostEnabled = true
 )
@@ -107,7 +107,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.jpg",
                         "/**/*.html",
                         "/**/*.css",
-                        "/**/*.js")
+                        "/**/*.js",
+                        "/addInventory")
                         .permitAll()
                     .antMatchers("/auth/**", "/oauth2/**")
                         .permitAll()
