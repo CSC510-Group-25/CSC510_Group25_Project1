@@ -8,25 +8,24 @@ import java.util.Date;
 
 public class Order {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "restaurant_id")
     private String restaurantId;
 
-    @Column(nullable = false)
+    @Id
+    @Column(nullable = false,  name = "order_id")
     private String orderId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "dish_id")
     private String dishId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "dish_name")
     private String dishName;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "date")
     private Date date;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "order_qty")
     private int orderQuantity;
 
     public String getRestaurantId() {

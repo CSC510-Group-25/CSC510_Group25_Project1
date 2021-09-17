@@ -14,8 +14,8 @@ import javax.validation.Valid;
 @RequestMapping("/orders")
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
-    @PostMapping("/addOrder")
-
-    public ResponseEntity<?> addOrder(@Valid, @RequestBody OrderRequest orderRequest)
+//    @PostMapping("/addOrder")
+//
+//    public ResponseEntity<?> addOrder(@Valid, @RequestBody OrderRequest orderRequest)
 
 }
