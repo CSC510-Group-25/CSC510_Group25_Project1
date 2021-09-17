@@ -1,7 +1,7 @@
 import React from "react";
 import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import InventoryForm from "./inventory-form";
 
 const useStyles = makeStyles({
   root: {
@@ -27,7 +27,7 @@ export default function InventoryPage() {
 
   return <div>
     <Box className={classes.root}>
-      <Typography h2>Inventory</Typography>
+      <InventoryForm/>
     </Box>
   </div>
 }
