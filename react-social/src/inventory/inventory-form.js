@@ -12,7 +12,6 @@ import TextField from "@material-ui/core/TextField";
 import {API_BASE_URL} from "../constants";
 import Alert from "react-s-alert";
 import DateFnsUtils from '@date-io/date-fns';
-import {useState} from "react";
 
 class InventoryForm extends React.Component {
   constructor(props) {
@@ -85,7 +84,7 @@ class InventoryForm extends React.Component {
     return (
       <div>
         <Button variant="outlined" onClick={this.handleOpen}>
-          Add New Inventory
+          Add New Inventory Item
         </Button>
         <Dialog open={this.state.open} onClose={this.handleClose}
                 aria-labelledby="form-dialog-title">
