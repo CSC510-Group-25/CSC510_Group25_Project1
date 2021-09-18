@@ -13,7 +13,7 @@ public class Ingredient {
     JsonObject ingredientJson;
 
     // constructor for testing
-    public Ingredient(String ingredientName, String dbID, String local_unit, double local_qty, JsonObject ingredientJson) {
+    public Ingredient(String ingredientName, String dbID, double local_qty, String local_unit, JsonObject ingredientJson) {
         this.ingredientName = ingredientName;
         this.dbID = dbID;
         this.local_unit = local_unit;
@@ -46,7 +46,6 @@ public class Ingredient {
         this.dbID = (String) this.ingredientJson.get("ing_DBID");
         this.local_qty = (Double) this.ingredientJson.get("local_qty");
         this.local_unit = (String) this.ingredientJson.get("local_unit");
-
 
     }
 
@@ -83,21 +82,20 @@ public class Ingredient {
         */
     }
 
-
     //helper to trim strings and convert to array
     private String[] stringTrimmr(String ingstr){
         // [butter, 2001, 20, oz] --> butter, 2001, 20, oz
         String nuStr = ingstr.substring(1, ingstr.length() -1);
         String[] nuArr  = nuStr.split(",");
         // {butter, 2001, 20, oz}
-        for(int i =0; i < 3 ; i++){
+        for(int i =0; i <= 3 ; i++){
             nuArr[i]=nuArr[i].trim();
         }
         return nuArr;
     }
 
 
-    // if no json object exists
+    // construct json object
     public JsonObject ingredientAsJson(){
 
         JsonObject jIng = new JsonObject();
@@ -108,7 +106,27 @@ public class Ingredient {
         jIng.put("local_unit", this.local_unit);
 
         return jIng;
+    }
 
+
+    public String getIngredientName() {
+        return ingredientName;
+    }
+
+    public String getDbID() {
+        return dbID;
+    }
+
+    public double getLocal_qty() {
+        return local_qty;
+    }
+
+    public String getLocal_unit() {
+        return local_unit;
+    }
+
+    public JsonObject getIngredientJson() {
+        return ingredientJson;
     }
 
 
@@ -128,3 +146,4 @@ public class Ingredient {
                 '}'; */
     }
 }
+
