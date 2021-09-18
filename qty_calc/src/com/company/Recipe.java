@@ -5,10 +5,10 @@ import com.github.cliftonlabs.json_simple.JsonException;
 import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsoner;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.PrintWriter;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 //TODO:
@@ -21,23 +21,18 @@ public class Recipe {
 
     String recipeName;
     String recipeID;
-    String fileDirectory; // "recipe_folder/"
     String filePath; // "recipe_folder/" + "recipe_" + this.recipeID + ".txt";
 
     // "recipe_folder/" + "recipe_" + this.recipeID + ".json";
 
     JsonObject recipeJson;
-
     ArrayList<Ingredient> ingredientList;
 
-    JsonArray ingredientListJson;
-
-    public Recipe(String recipeName, String recipeID, String fileDirectory, String filePath,
+    public Recipe(String recipeName, String recipeID, String filePath,
                   ArrayList<Ingredient> ingredientList) {
 
         this.recipeName = recipeName;
         this.recipeID = recipeID;
-        this.fileDirectory = fileDirectory;
         this.filePath = filePath;
         this.ingredientList = ingredientList;
     }
@@ -51,44 +46,149 @@ public class Recipe {
         this.ingredientList = ingredientList;
     }
 
-
-    /*
-    Given a name and filepath, construct the recipe from the contents of the file.
-     */
-    public Recipe(String recipeName, String filePath) {
-        this.filePath = filePath;
-
-        // ConstructFromFile();
-
-    }
-
-
-    // "recipe_folder/" + "recipe_" + this.recipeID + ".txt";
-    public Recipe(String filePath) throws FileNotFoundException, JsonException {
+    // "recipe_folder/" + "recipe_" + this.recipeID + ".json";
+    public Recipe(String filePath) throws IOException, JsonException {
 
         this.filePath = filePath;
         this.ingredientList = new ArrayList<>();
 
         if(filePath.endsWith(".txt")) {
             ConstructFromFile();
+
         } else if(filePath.endsWith(".json")){
             ConstructFromJson(filePath);
+            // ConstructFromJson();
 
         } else {
-
             System.out.println("Unsupported file extension. Supported: .txt, .json");
         }
 
     }
 
 
-    //TODO:
+
+    //TODO: relocate to BuildFile.java
+    private void BuildJson(String filePath) throws IOException {
+
+        this.recipeJson = new JsonObject();
+
+        this.recipeJson.put("recipeName", this.recipeName);
+        this.recipeJson.put("recipeID", this.recipeID);
+
+        String dir = String.valueOf(Paths.get(this.filePath).toAbsolutePath().getParent());
+        String fn = "recipe_" + this.recipeID +".json";
+
+        String nuPath = dir + "/" + fn;
+
+        JsonArray ingjar = new JsonArray();
+
+        for (Ingredient ing : this.ingredientList){
+            JsonObject ingj = ing.ingredientAsJson();
+            ingjar.add(ingj);
+        }
+
+        this.recipeJson.put("ingredient_list",ingjar);
+
+        try (FileWriter fileWriter = new FileWriter(nuPath)) {
+            Jsoner.serialize(this.recipeJson, fileWriter);
+        }
+
+        //String jsn = this.recipeJson.toJson();
+        //jsn = Jsoner.prettyPrint(jsn);
+        //System.out.println(Jsoner.prettyPrint(jsn));
+
+
+    }
+
+
+
+    private void ConstructFromFile() throws IOException {
+        //throws FileNotFoundException {
+
+        // [name, id, ingr1, ingr2, ...]
+        // [0] = name
+        // [1] = id
+
+        String[] recipeArr = readFile();
+        ArrayList<String> names = new ArrayList<>();
+
+        if (recipeArr != null){
+
+            this.recipeName = recipeArr[0];
+            this.recipeID = recipeArr[1];
+
+            // add ingredients to the list
+            for (int i = 2; i<recipeArr.length; i++){
+
+                Ingredient nuIngr = new Ingredient(recipeArr[i]);
+
+                if (names.contains(nuIngr.ingredientName)){
+
+                    //TODO: implement something that prevents duplicates
+                    // maybe this should happen when a recipe is saved instead?
+
+                }
+                else { // if ingredient not in list
+                    this.ingredientList.add(nuIngr);
+                    names.add(nuIngr.ingredientName);
+                }
+            }
+
+
+            String dir = String.valueOf(Paths.get(this.filePath).toAbsolutePath().getParent());
+            String fn = "recipe_" + this.recipeID +".json";
+
+            String nuPath = dir + "/" + fn;
+
+            Path path = Paths.get(nuPath).toAbsolutePath();
+
+            // check if file exists. if not, build a json!
+            if(!Files.exists(path)) {
+                BuildJson(filePath);
+            }
+        }
+    }
+
+
+    /**
+     *
+     * @return String[] contents of a file
+     */
+    private String[] readFile() throws IOException {
+
+        List<String> recipe = new ArrayList<String>();
+        String[] recipeArr;
+
+        // TODO: ensure no ingredient repeats
+
+        Path path = Paths.get(this.filePath).toAbsolutePath();
+
+        Scanner sc = new Scanner(new File(String.valueOf(path)));
+
+        while (sc.hasNextLine()) {
+            recipe.add(sc.nextLine());
+        }
+        recipeArr = recipe.toArray(new String[0]);
+
+        sc.close();
+
+        //} catch (FileNotFoundException e) {
+
+        //  System.out.println("problem reading/locating file");
+        // e.printStackTrace();
+        // }
+
+        return recipeArr;
+    }
+
+
+    //TODO: WIP
     private void ConstructFromJson(String filePath) throws FileNotFoundException, JsonException {
 
+        Path path = Paths.get(filePath).toAbsolutePath();
 
-        FileReader fileReader = new FileReader((filePath));
+        FileReader fileReader = new FileReader(String.valueOf((path)));
 
-        //
         JsonObject recipe = (JsonObject) Jsoner.deserialize(fileReader);
 
         this.recipeJson = recipe;
@@ -99,42 +199,60 @@ public class Recipe {
 
         JsonArray things = (JsonArray) recipe.get("ingredient_list");
 
-        //Iterator itr = things.iterator();
+        ArrayList<String> names = new ArrayList<>();
 
-       // while(itr.hasNext()){ }
+        if (things != null) {
 
-        for (int i = 0 ; i < things.size(); i++) {
-            JsonObject thing = (JsonObject) things.get(i);
+            for (int i = 0; i < things.size(); i++) {
+                JsonObject thing = (JsonObject) things.get(i);
 
-            Ingredient nuIngr = new Ingredient(thing);
+                if (thing != null) {
+
+                    Ingredient nuIngr = new Ingredient(thing);
 
             /*String thing1 = (String) thing.get("ingredientName");
             String thing2 = (String) thing.get("ing_DBID");
             Double thing3 = (Double) thing.get("local_qty");
             String thing4 = (String) thing.get("local_unit");*/
 
-            System.out.println(nuIngr.toString());
+                    System.out.println(nuIngr.toString());
 
+                    if (names.contains(nuIngr.ingredientName)) {
+
+                        //TODO: implement something that prevents duplicates
+                        // maybe this should happen when a recipe is saved instead?
+
+                    } else { // if ingredient not in list
+                        this.ingredientList.add(nuIngr);
+                        names.add(nuIngr.ingredientName);
+
+                    }
+                } else{
+                    System.out.println("null json object");
+                }
+            }
+
+        } else{
+            System.out.println("null json array");
         }
-
-
-        //this.recipeJson.put("recipeID", this.recipeID);
-       // this.recipeJson.put("file_location", this.filePath);
-
 
     }
 
 
 
 
-    private void ConstructFromFile() {
+
+
+    private void ConstructFromFile(String filePath) throws IOException {
         //throws FileNotFoundException {
 
         // [name, id, ingr1, ingr2, ...]
         // [0] = name
         // [1] = id
 
-        String[] recipeArr = readFile();
+        String[] recipeArr = readFile(filePath);
+
+        ArrayList<String> names = new ArrayList<>();
 
         if (recipeArr != null){
 
@@ -142,70 +260,83 @@ public class Recipe {
             this.recipeID = recipeArr[1];
 
             // add ingredients to the list
-            for (int i = 1; i<recipeArr.length; i++){
+            for (int i = 2; i<recipeArr.length; i++){
 
                 Ingredient nuIngr = new Ingredient(recipeArr[i]);
-                this.ingredientList.add(nuIngr);
+
+                if (names.contains(nuIngr.ingredientName)){
+
+                    //TODO: implement something that prevents duplicates
+                    // maybe this should happen when a recipe is saved instead?
+
+                }
+                else { // if ingredient not in list
+                    this.ingredientList.add(nuIngr);
+                    names.add(nuIngr.ingredientName);
+                }
             }
         }
     }
 
 
-
-
-    //TODO:
-    private void asJ() throws FileNotFoundException {
-
-        //File nuDir = new File(System.getProperty(...))
-        //File nuFile = new File(nuDir.getAbsolutePath() + File.separator + "....");
-
-        this.recipeJson = new JsonObject();
-
-
-        this.recipeJson.put("recipeName", this.recipeName);
-        this.recipeJson.put("recipeID", this.recipeID);
-        this.recipeJson.put("file_location", this.filePath);
-
-
-        /*
-        PrintWriter pw = new PrintWriter(...);
-
-        pw.write(this.recipeJson.toJson());
-        pw.flush();
-        pw.close();
-        */
-
-    }
-
-
-
-    /**
-     *
-     * @return String[] contents of a file
-     */
-    private String[] readFile(){
+    private String[] readFile(String filePath) throws IOException {
 
         List<String> recipe = new ArrayList<String>();
-        String[] recipeArr = null;
+        String[] recipeArr;
 
+        // TODO: ensure no ingredient repeats
 
-        try {
-            Scanner sc = new Scanner(new File(this.filePath));
+        Path path = Paths.get(filePath).toAbsolutePath();
 
-            while (sc.hasNextLine()) {
-                recipe.add(sc.nextLine());
-            }
-            recipeArr = recipe.toArray(new String[0]);
+        Scanner sc = new Scanner(new File(String.valueOf(path)));
 
-            sc.close();
+        //Scanner sc = new Scanner(new File(this.filePath));
 
-        } catch (FileNotFoundException e) {
-
-            System.out.println("problem reading/locating file");
-            // e.printStackTrace();
+        while (sc.hasNextLine()) {
+            recipe.add(sc.nextLine());
         }
+        recipeArr = recipe.toArray(new String[0]);
+
+        sc.close();
+
+        //} catch (FileNotFoundException e) {
+
+        //  System.out.println("problem reading/locating file");
+        // e.printStackTrace();
+        // }
 
         return recipeArr;
     }
 
+
+    /*
+    Add a recipe to the database
+    May need to be moved elsewhere
+     */
+    public void saveNewRecipe(){
+
+    }
+
+
+
+
+
+
+
+    ////////////////////////////////////////////////////
+
+
+
+    public static void main(String[] args){
+
+
+        try {
+            Recipe r = new Recipe("recipe_folder/recipe_0001.txt");
+
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+    }
 }
