@@ -1,6 +1,9 @@
 import * as React from 'react';
 import Button from '@material-ui/core/Button';
-//import DatePickers from '@material-ui/pickers/DatePicker';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker
+} from '@material-ui/pickers';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from "@material-ui/core/DialogActions";
@@ -8,17 +11,21 @@ import DialogContent from "@material-ui/core/DialogContent";
 import TextField from "@material-ui/core/TextField";
 import {API_BASE_URL} from "../constants";
 import Alert from "react-s-alert";
+import DateFnsUtils from '@date-io/date-fns';
+import {useState} from "react";
 
 class InventoryForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { open: false, itemName: "", batchQty: 0, costPerItem: 0, dateBought: 0, dateExpired: 0 }
+    this.state = { open: false, itemName: "", batchQty: 0, costPerItem: 0, dateBought: new Date(), dateExpired: new Date() }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleBoughtDateChange = this.handleBoughtDateChange.bind(this);
+    this.handleExpDateChange = this.handleExpDateChange.bind(this);
   }
 
   handleClose() {
@@ -39,6 +46,12 @@ class InventoryForm extends React.Component {
     });
   };
 
+  handleBoughtDateChange(date) {
+    this.setState({dateBought : date});
+  }
+  handleExpDateChange(date) {
+    this.setState({dateExpired : date});
+  }
 
   handleSubmit(event) {
     event.preventDefault();
@@ -56,8 +69,8 @@ class InventoryForm extends React.Component {
         batchID : "b1",
         batchQty : this.state.batchQty,
         costPerItem : 200,
-        dateBought : 20210101,
-        dateExpired : 20220101
+        dateBought : this.state.dateBought,
+        dateExpired : this.state.dateExpired
       })
     })
       .then(response => {
@@ -95,6 +108,7 @@ class InventoryForm extends React.Component {
               onChange={this.handleChange}
               name="batchQty"
               label="Quantity"
+              type="number"
               fullWidth
             />
             <TextField
@@ -104,8 +118,28 @@ class InventoryForm extends React.Component {
               onChange={this.handleChange}
               name="costPerItem"
               label="Cost per Item"
+              type="number"
               fullWidth
             />
+            <br/>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <KeyboardDatePicker
+                label="Date Bought"
+                value={this.state.dateBought}
+                onChange={this.handleBoughtDateChange}
+                name={"dateBought"}
+              />
+            </MuiPickersUtilsProvider>
+            <br/>
+            <br/>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <KeyboardDatePicker
+                label="Date Item(s) will expire"
+                value={this.state.dateExpired}
+                onChange={this.handleExpDateChange}
+                name={"dateExpired"}
+              />
+            </MuiPickersUtilsProvider>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
