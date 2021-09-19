@@ -1,4 +1,4 @@
-package com.company;
+ppackage com.company;
 
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonException;
@@ -17,16 +17,17 @@ HAVE A SCRIPT OR SOMETHING THAT CREATES A FOLDER TO CONTAIN RECIPES.
 That, or include an empty directory upon installation.
  */
 
+//TODO: ALLOW MODIFICATION OF RECIPES
+
 public class Recipe {
 
-    String recipeName;
-    String recipeID;
-    String filePath; // "recipe_folder/" + "recipe_" + this.recipeID + ".txt";
-
+    private String recipeName;
+    private String recipeID;
+    private String filePath; // is this necessary?
+    // "recipe_folder/" + "recipe_" + this.recipeID + ".txt";
     // "recipe_folder/" + "recipe_" + this.recipeID + ".json";
-
-    JsonObject recipeJson;
-    ArrayList<Ingredient> ingredientList;
+    private JsonObject recipeJson;
+    private ArrayList<Ingredient> ingredientList;
 
     public Recipe(String recipeName, String recipeID, String filePath,
                   ArrayList<Ingredient> ingredientList) {
@@ -38,15 +39,17 @@ public class Recipe {
     }
 
 
-
     // FOR MANUAL TESTING.
     public Recipe(String recipeName, String recipeID, ArrayList<Ingredient> ingredientList) {
         this.recipeName = recipeName;
         this.recipeID = recipeID;
         this.ingredientList = ingredientList;
+        buildJsonObject();
     }
 
     // "recipe_folder/" + "recipe_" + this.recipeID + ".json";
+    //TODO: ENSURE THAT FILEPATH CONTAINS "recipe_folder" !!!
+    // This will be handled elsewhere
     public Recipe(String filePath) throws IOException, JsonException {
 
         this.filePath = filePath;
@@ -56,25 +59,41 @@ public class Recipe {
             ConstructFromFile();
 
         } else if(filePath.endsWith(".json")){
-            ConstructFromJson(filePath);
-            // ConstructFromJson();
+            ConstructFromJson();
 
         } else {
             System.out.println("Unsupported file extension. Supported: .txt, .json");
         }
-
     }
 
 
-
-    //TODO: relocate to BuildFile.java
-    private void BuildJson(String filePath) throws IOException {
+    private void buildJsonObject(){
 
         this.recipeJson = new JsonObject();
 
         this.recipeJson.put("recipeName", this.recipeName);
         this.recipeJson.put("recipeID", this.recipeID);
 
+        JsonArray ingjar = new JsonArray();
+
+        for (Ingredient ing : this.ingredientList){
+            JsonObject ingj = ing.ingredientAsJson();
+            ingjar.add(ingj);
+        }
+        this.recipeJson.put("ingredient_list",ingjar);
+    }
+
+
+    /*
+    //relocated to BuildFile.java, but left here just in case.
+    private void BuildJson() throws IOException {
+
+        this.recipeJson = new JsonObject();
+
+        this.recipeJson.put("recipeName", this.recipeName);
+        this.recipeJson.put("recipeID", this.recipeID);
+
+        // since this is called from ConStructFromFile(), filePath will always end with .txt
         String dir = String.valueOf(Paths.get(this.filePath).toAbsolutePath().getParent());
         String fn = "recipe_" + this.recipeID +".json";
 
@@ -89,21 +108,15 @@ public class Recipe {
 
         this.recipeJson.put("ingredient_list",ingjar);
 
+        // implicit call to close()
         try (FileWriter fileWriter = new FileWriter(nuPath)) {
             Jsoner.serialize(this.recipeJson, fileWriter);
         }
-
-        //String jsn = this.recipeJson.toJson();
-        //jsn = Jsoner.prettyPrint(jsn);
-        //System.out.println(Jsoner.prettyPrint(jsn));
-
-
-    }
+    } */
 
 
 
     private void ConstructFromFile() throws IOException {
-        //throws FileNotFoundException {
 
         // [name, id, ingr1, ingr2, ...]
         // [0] = name
@@ -123,10 +136,8 @@ public class Recipe {
                 Ingredient nuIngr = new Ingredient(recipeArr[i]);
 
                 if (names.contains(nuIngr.ingredientName)){
-
                     //TODO: implement something that prevents duplicates
                     // maybe this should happen when a recipe is saved instead?
-
                 }
                 else { // if ingredient not in list
                     this.ingredientList.add(nuIngr);
@@ -134,18 +145,30 @@ public class Recipe {
                 }
             }
 
+            buildJsonObject();
+        }
+    }
 
-            String dir = String.valueOf(Paths.get(this.filePath).toAbsolutePath().getParent());
-            String fn = "recipe_" + this.recipeID +".json";
+    
+    
+    // is there a use for this?
+    private boolean JsonExists(String filePath) {
 
-            String nuPath = dir + "/" + fn;
+        // if this is called, then filePath ends with .txt
 
-            Path path = Paths.get(nuPath).toAbsolutePath();
+        String dir = String.valueOf(Paths.get(this.filePath).toAbsolutePath().getParent());
+        String fn = "recipe_" + this.recipeID +".json";
 
-            // check if file exists. if not, build a json!
-            if(!Files.exists(path)) {
-                BuildJson(filePath);
-            }
+        String nuPath = dir + "/" + fn;
+
+        Path path = Paths.get(nuPath).toAbsolutePath();
+
+        // check if file exists. if not, build a json!
+        if(Files.exists(path) && !Files.isDirectory(path)) {
+            return true;
+        }
+        else{
+            return false;
         }
     }
 
@@ -172,20 +195,14 @@ public class Recipe {
 
         sc.close();
 
-        //} catch (FileNotFoundException e) {
-
-        //  System.out.println("problem reading/locating file");
-        // e.printStackTrace();
-        // }
-
         return recipeArr;
     }
 
 
     //TODO: WIP
-    private void ConstructFromJson(String filePath) throws FileNotFoundException, JsonException {
+    private void ConstructFromJson() throws FileNotFoundException, JsonException {
 
-        Path path = Paths.get(filePath).toAbsolutePath();
+        Path path = Paths.get(this.filePath).toAbsolutePath(); // TODO: bug risk?
 
         FileReader fileReader = new FileReader(String.valueOf((path)));
 
@@ -195,7 +212,6 @@ public class Recipe {
 
         this.recipeName = (String) recipe.get("recipeName");
         this.recipeID = (String) recipe.get("recipeID");
-
 
         JsonArray things = (JsonArray) recipe.get("ingredient_list");
 
@@ -209,13 +225,6 @@ public class Recipe {
                 if (thing != null) {
 
                     Ingredient nuIngr = new Ingredient(thing);
-
-            /*String thing1 = (String) thing.get("ingredientName");
-            String thing2 = (String) thing.get("ing_DBID");
-            Double thing3 = (Double) thing.get("local_qty");
-            String thing4 = (String) thing.get("local_unit");*/
-
-                    System.out.println(nuIngr.toString());
 
                     if (names.contains(nuIngr.ingredientName)) {
 
@@ -240,9 +249,7 @@ public class Recipe {
 
 
 
-
-
-
+    // TODO: ??? is there a use for this?
     private void ConstructFromFile(String filePath) throws IOException {
         //throws FileNotFoundException {
 
@@ -299,44 +306,53 @@ public class Recipe {
 
         sc.close();
 
-        //} catch (FileNotFoundException e) {
-
-        //  System.out.println("problem reading/locating file");
-        // e.printStackTrace();
-        // }
-
         return recipeArr;
     }
+
+
+
+    public String getRecipeName() { return recipeName; }
+    public String getRecipeID() { return recipeID; }
+    public String getFilePath() { return filePath; }
+    public JsonObject getRecipeJson() { return recipeJson; }
+    public ArrayList<Ingredient> getIngredientList() { return ingredientList; }
 
 
     /*
     Add a recipe to the database
     May need to be moved elsewhere
      */
-    public void saveNewRecipe(){
+    public void saveNewRecipe(){ }
 
+
+    @Override
+    public String toString() {
+
+        StringBuilder str = new StringBuilder();
+
+        String returnMe = this.recipeName + "\n" + this.recipeID;
+
+        str.append(returnMe);
+
+        for (Ingredient ingr : this.ingredientList){
+            String nuStr = "\n" + ingr.toString();
+            str.append(nuStr);
+        }
+
+        return str.toString();
     }
-
-
-
-
-
 
 
     ////////////////////////////////////////////////////
-
-
+    // FIDDLE WITH STUFF DOWN HERE //
 
     public static void main(String[] args){
 
-
-        try {
+       /* try {
             Recipe r = new Recipe("recipe_folder/recipe_0001.txt");
-
-
         } catch (Exception e) {
-
             e.printStackTrace();
-        }
+        }*/
     }
+    
 }
