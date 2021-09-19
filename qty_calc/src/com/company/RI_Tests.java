@@ -76,13 +76,15 @@ public class RI_Tests {
 
         ArrayList<String> thing2 = new ArrayList<>();
 
-        for(Ingredient ing : r.ingredientList){
+        ArrayList<Ingredient> rlist = r.getIngredientList();
+
+        for(Ingredient ing : rlist){
             String thing3 = ing.toString();
             thing2.add(thing3);
 
         }
 
-        assertEquals(thing2.size(), r.ingredientList.size());
+        assertEquals(thing2.size(), r.getIngredientList().size());
         // just for good measure
         assertEquals(thing1.size(), thing2.size());
 
