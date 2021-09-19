@@ -1,6 +1,5 @@
 package com.company;
 
-import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonObject;
 
 public class Ingredient {
@@ -13,7 +12,8 @@ public class Ingredient {
     JsonObject ingredientJson;
 
     // constructor for testing
-    public Ingredient(String ingredientName, String dbID, double local_qty, String local_unit, JsonObject ingredientJson) {
+    public Ingredient(String ingredientName, String dbID, double local_qty,
+                      String local_unit, JsonObject ingredientJson) {
         this.ingredientName = ingredientName;
         this.dbID = dbID;
         this.local_unit = local_unit;
@@ -21,44 +21,23 @@ public class Ingredient {
         this.ingredientJson = ingredientJson;
     }
 
-    //
+
     public Ingredient(String ingredientName, String dbID, double local_qty, String local_unit) {
         this.ingredientName = ingredientName;
         this.dbID = dbID;
         this.local_qty = local_qty;
         this.local_unit = local_unit;
-
-        /*
-        this.ingredientJson = new JsonObject();
-        this.ingredientJson.put("ingredientName", this.ingredientName);
-        this.ingredientJson.put("ing_DBID", this.dbID);
-        this.ingredientJson.put("local_qty", this.local_qty);
-        this.ingredientJson.put("local_unit", this.local_unit);
-        */
     }
-
 
     // construct from a json object
     public Ingredient(JsonObject ingredientJson) {
         this.ingredientJson = ingredientJson;
-
         this.ingredientName = (String) this.ingredientJson.get("ingredientName");
         this.dbID = (String) this.ingredientJson.get("ing_DBID");
-        this.local_qty = (Double) this.ingredientJson.get("local_qty");
+        this.local_qty = Double.parseDouble(this.ingredientJson.get("local_qty").toString());
         this.local_unit = (String) this.ingredientJson.get("local_unit");
 
     }
-
-
-    /*
-    private void jHelper(){
-
-        this.ingredientName = (String) this.ingredientJson.get("ingredientName");
-        this.dbID = (String) this.ingredientJson.get("ing_DBID");
-        this.local_qty = (Double) this.ingredientJson.get("local_qty");
-        this.local_unit = (String) this.ingredientJson.get("local_unit");
-
-    }*/
 
 
     // construct an ingredient from a string
@@ -71,15 +50,6 @@ public class Ingredient {
         this.dbID = nuArr[1];
         this.local_qty = Double.parseDouble(nuArr[2]);
         this.local_unit = nuArr[3];
-
-
-        /*
-        this.ingredientJson = new JsonObject();
-        this.ingredientJson.put("ingredientName", this.ingredientName);
-        this.ingredientJson.put("ing_DBID", this.dbID);
-        this.ingredientJson.put("local_qty", this.local_qty);
-        this.ingredientJson.put("local_unit", this.local_unit);
-        */
     }
 
     //helper to trim strings and convert to array
@@ -94,7 +64,6 @@ public class Ingredient {
         return nuArr;
     }
 
-
     // construct json object
     public JsonObject ingredientAsJson(){
 
@@ -108,27 +77,19 @@ public class Ingredient {
         return jIng;
     }
 
-
     public String getIngredientName() {
         return ingredientName;
     }
-
     public String getDbID() {
         return dbID;
     }
-
     public double getLocal_qty() {
         return local_qty;
     }
-
     public String getLocal_unit() {
         return local_unit;
     }
-
-    public JsonObject getIngredientJson() {
-        return ingredientJson;
-    }
-
+    public JsonObject getIngredientJson() { return ingredientJson; }
 
 
     @Override
@@ -136,14 +97,6 @@ public class Ingredient {
         String returnMe = "[" + ingredientName + ", " + dbID + ", " + local_qty + ", " + local_unit + "]";
 
         return returnMe;
-
-
-       /* return "Ingredient{" +
-                "ingredientName='" + ingredientName + '\'' +
-                ", dbID='" + dbID + '\'' +
-                ", local_unit='" + local_unit + '\'' +
-                ", local_qty=" + local_qty +
-                '}'; */
     }
 }
 
