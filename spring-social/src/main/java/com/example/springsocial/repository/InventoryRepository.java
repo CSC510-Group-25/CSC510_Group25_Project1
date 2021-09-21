@@ -5,12 +5,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface InventoryRepository extends JpaRepository<Inventory, String>{
 
-//    Optional<Inventory> findByRestaurant(String restaurantID);
+    List<Inventory> findAll();
 
-//    ResponseEntity<?> findAll(Inventory inventory);
-}
+}//    Optional<Inventory> findByRestaurant(String restaurantID);
+
