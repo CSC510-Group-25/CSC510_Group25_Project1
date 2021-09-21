@@ -106,7 +106,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.svg",
                         "/**/*.jpg",
                         "/**/*.html",
-                        "/**/*.css",git
+                        "/**/*.css",
                         "/**/*.js",
                         "/addInventory",
                         "/addOrder",
