@@ -35,4 +35,13 @@ CREATE TABLE `inventory` (
      PRIMARY KEY (`item_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+CREATE TABLE menu (
+     `restaurant_id` varchar(255) NOT NULL,
+     `dish_id` varchar(255) NOT NULL,
+     `dish_name` varchar(255) NOT NULL,
+     `dish_pointer` varchar(255) NOT NULL,
+     `cost_per_dish` double NOT NULL,
+     PRIMARY KEY (`dish_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
