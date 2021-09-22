@@ -1,6 +1,6 @@
 Add jars in libs folder to classpath if you're using an IDE!!
 
-
+Each .java file should have a main method if you want to manually test. Manual testing should be done through an IDE for sanity's sake.
 
 
 
