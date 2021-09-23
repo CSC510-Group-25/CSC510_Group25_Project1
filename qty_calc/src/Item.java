@@ -1,11 +1,7 @@
-package com.company;
-
-
 import com.github.cliftonlabs.json_simple.JsonObject;
 
 /*
 ITEM for DATABASE inventory
-
  */
 public class Item {
 
