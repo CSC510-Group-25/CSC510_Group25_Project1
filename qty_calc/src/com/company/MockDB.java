@@ -418,8 +418,23 @@ public class MockDB {
 
 
     public String getDBU(String key){
-        //TODO: NULL CHECK
+
+        if(this.db.get(key)==null){
+            return "";
+        }
         return this.db.get(key).getDbUnit();
+    }
+
+
+    public Item getItem(String key){
+        return this.db.get(key);
+    }
+
+
+    public boolean hasItem(String key){
+
+        return this.db.containsKey(key);
+
     }
 
 

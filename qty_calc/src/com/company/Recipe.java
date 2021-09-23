@@ -21,6 +21,7 @@ That, or include an empty directory upon installation.
 
 //TODO: ALLOW MODIFICATION OF RECIPES
 //TODO: BADLY NEEDS TO BE CLEANED UP.
+//TODO: ENSURE THAT EACH INGREDIENT IS UNIQUE.
 
 public class Recipe {
 
@@ -415,11 +416,8 @@ public class Recipe {
 
 
 
-
     //TODO
-    /**
-     *
-     */
+    // after adding/removing ingredients, use this and construct a new recipe json.
     public void updateRecipe(){ }
 
 

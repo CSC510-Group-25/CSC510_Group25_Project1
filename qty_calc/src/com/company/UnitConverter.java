@@ -39,6 +39,9 @@ public class UnitConverter {
 
 
 
+
+
+
     /**
      * Converts the given qty from local_unit to db_unit.
      *
@@ -66,8 +69,8 @@ public class UnitConverter {
         //if (qty < 0){ }: illegal qty
         //if qty = 0, null, empty: don't perform any conversions.
 
-        // no conversions needed
-        if(local_unit.equals(db_unit)){ return "equal units, no conversion needed"; }
+        // msg1: "equal units, no conversion needed";
+        if(local_unit.equals(db_unit)){ return "msg1"; }
 
 
         // NOT YET IMPLEMENTED
@@ -110,13 +113,16 @@ public class UnitConverter {
             return liters(qty,local_unit);
         }
 
-        return "cannot convert from: " + local_unit + " to: " + db_unit;
+         // msg2: "cannot convert from: " + local_unit + " to: " + db_unit;
+        return "msg2";
     }
 
 
     /**
      * Converts the String result from a call to convertTo(double qty, String local_unit, String db_unit)
      * to a Double. Returns null if the String returned from convertTo(...) does not represent a double.
+     *
+     * If local_unit equals db_unit, then the input qty is returned.
      *
      * @param qty
      * @param local_unit
@@ -125,8 +131,17 @@ public class UnitConverter {
      */
     public static Double convertToDouble(double qty, String local_unit, String db_unit){
 
+        if(local_unit.equals(db_unit)){
+            return qty;
+        }
+
         String convertMe = convertTo(qty,local_unit,db_unit);
         Double val = null;
+
+        // just in case
+        if(convertMe.equals("msg1")){
+            return qty;
+        }
 
         try{
             val = Double.parseDouble(convertMe);
@@ -151,24 +166,38 @@ public class UnitConverter {
      */
     public static String lbs(double qty, String local_unit){
 
-        double val;
-        String returnVal = "cannot convert from: " + local_unit + " to: lbs";
+        // msg1: "equal units, no conversion needed";
+        // msg2: "cannot convert from: " + local_unit + " to: " + db_unit;
+        // msg3: "NYI"
+        // msg4: "do you really need to weigh a liquid?"
+        // msg5: "illegal unit"
 
+        double val;
+        String returnVal = "msg2"; //"cannot convert from: " + local_unit + " to: lbs";
+
+        // msg4: "do you really need to weigh a liquid?"
         if (local_unit.contains("liquid")){
-            return "do you really need to weigh a liquid?";
+            return "msg4";
         }
 
-        if(local_unit.equals("lbs")){ return "equal units, no conversion needed"; }
+        // msg1: "equal units, no conversion needed";
+        // could just return qty instead...
+        if(local_unit.equals("lbs")){ return "msg1"; }
 
 
         //TODO
         if (local_unit.contains("dry")){
 
+            // msg3: "NYI"
+            return "msg3";
+
+
+
             /* Display warnings for the following conversions due to cups, tsps, and tbsps
             measuring volume and not weight.
             These are approximations based on granulated sugar.*/
 
-            if (local_unit.contains("cups")){
+           /* if (local_unit.contains("cups")){
                 // val = qty * 0.5;
                 //  returnVal = Double.toString(val);
                 return "NYI";
@@ -187,7 +216,7 @@ public class UnitConverter {
             }
             else {
                 return "illegal unit";
-            }
+            }*/
 
         }
 
@@ -246,24 +275,34 @@ public class UnitConverter {
      */
 
     public static String kgs(double qty, String local_unit){
+        // msg1: "equal units, no conversion needed";
+        // msg2: "cannot convert from: " + local_unit + " to: " + db_unit;
+        // msg3: "NYI"
+        // msg4: "do you really need to weigh a liquid?"
+        // msg5: "illegal unit"
 
         double val;
-        String returnVal = "cannot convert from: " + local_unit + " to: kgs";
+        String returnVal = "msg2"; //"cannot convert from: " + local_unit + " to: lbs";
 
+        // msg4: "do you really need to weigh a liquid?"
         if (local_unit.contains("liquid")){
-            return "do you really need to weigh a liquid?";
+            return "msg4";
         }
 
-        if(local_unit.equals("kgs")){ return "equal units, no conversion needed"; }
+        // msg1: "equal units, no conversion needed";
+        if(local_unit.equals("kgs")){ return "msg1"; }
 
 
         //TODO
         if (local_unit.contains("dry")){
 
+            // msg3: "NYI"
+            return "msg3";
             /* Display warnings for the following conversions due to cups, tsps, and tbsps
             measuring volume and not weight.
             These are approximations based on granulated sugar.*/
 
+            /*
             if (local_unit.contains("cups")){
 
                 //  returnVal = Double.toString(val);
@@ -284,6 +323,7 @@ public class UnitConverter {
             else {
                 return "illegal unit";
             }
+            */
 
         }
 
@@ -321,22 +361,35 @@ public class UnitConverter {
      */
     public static String grams(double qty, String local_unit){
 
-        double val;
-        String returnVal = "cannot convert from: " + local_unit + " to: grams";
+        // msg1: "equal units, no conversion needed";
+        // msg2: "cannot convert from: " + local_unit + " to: " + db_unit;
+        // msg3: "NYI"
+        // msg4: "do you really need to weigh a liquid?"
+        // msg5: "illegal unit"
 
+        double val;
+        String returnVal = "msg2"; //"cannot convert from: " + local_unit + " to: lbs";
+
+        // msg4: "do you really need to weigh a liquid?"
         if (local_unit.contains("liquid")){
-            return "do you really need to weigh a liquid?";
+            return "msg4";
         }
 
-        if(local_unit.equals("grams")){ return "equal units, no conversion needed"; }
+        // msg1: "equal units, no conversion needed";
+        if(local_unit.equals("grams")){ return "msg1"; }
+
 
         //TODO
         if (local_unit.contains("dry")){
+
+            // msg3: "NYI"
+            return "msg3";
 
             /* Display warnings for the following conversions due to cups, tsps, and tbsps
             measuring volume and not weight.
             These are approximations based on granulated sugar.*/
 
+            /*
             if (local_unit.contains("cups")){
                 // val = qty * 241.23;
                 // val = qty
@@ -360,6 +413,7 @@ public class UnitConverter {
             else {
                 return "illegal unit";
             }
+            */
 
         }
 
@@ -405,21 +459,35 @@ public class UnitConverter {
      */
     public static String oz(double qty, String local_unit){
 
-        double val;
-        String returnVal = "cannot convert from: " + local_unit + " to: oz";
+        // msg1: "equal units, no conversion needed";
+        // msg2: "cannot convert from: " + local_unit + " to: " + db_unit;
+        // msg3: "NYI"
+        // msg4: "do you really need to weigh a liquid?"
+        // msg5: "illegal unit"
 
+        double val;
+        String returnVal = "msg2"; //"cannot convert from: " + local_unit + " to: lbs";
+
+        // msg4: "do you really need to weigh a liquid?"
         if (local_unit.contains("liquid")){
-            return "do you really need to weigh a liquid? use fl. oz!";
+            return "msg4";
         }
 
-        if(local_unit.equals("oz")){ return "equal units, no conversion needed"; }
+        // msg1: "equal units, no conversion needed";
+        if(local_unit.equals("oz")){ return "msg1"; }
+
 
         //TODO
         if (local_unit.contains("dry")){
 
+            // msg3: "NYI"
+            return "msg3";
+
             /* Display warnings for the following conversions due to cups, tsps, and tbsps
             measuring volume and not weight.
             These are approximations based on granulated sugar.*/
+
+            /*
 
             if (local_unit.contains("cups")){
                 // val = qty
@@ -441,7 +509,9 @@ public class UnitConverter {
             else {
                 return "illegal unit";
             }
+            */
         }
+
 
         // gram to oz
         else if (local_unit.equals("grams")){
@@ -484,9 +554,15 @@ public class UnitConverter {
     public static String liters(double qty, String local_unit){
 
         double val;
-        String returnVal = "cannot convert from: " + local_unit + " to: liters";
+        String returnVal = "msg2";
 
-        if(local_unit.equals("liters")){ return "equal units, no conversion needed"; }
+        if(local_unit.equals("liters")){ return "msg1"; }
+
+        // msg1: "equal units, no conversion needed";
+        // msg2: "cannot convert from: " + local_unit + " to: " + db_unit;
+        // msg3: "NYI"
+        // msg4: "do you really need to weigh a liquid?"
+        // msg5: "illegal unit"
 
 
         if(local_unit.equals("mL")){
@@ -544,11 +620,16 @@ public class UnitConverter {
      */
 
     public static String gal(double qty, String local_unit){
+        // msg1: "equal units, no conversion needed";
+        // msg2: "cannot convert from: " + local_unit + " to: " + db_unit;
+        // msg3: "NYI"
+        // msg4: "do you really need to weigh a liquid?"
+        // msg5: "illegal unit"
 
         double val;
-        String returnVal = "cannot convert from: " + local_unit + " to: gals";
+        String returnVal = "msg2";
 
-        if(local_unit.equals("gallons")){ return "equal units, no conversion needed"; }
+        if(local_unit.equals("gallons")){ return "msg1"; }
 
         if(local_unit.equals("mL")){
             val = qty / 3785;
@@ -605,10 +686,16 @@ public class UnitConverter {
      */
     public static String floz(double qty, String local_unit){
 
-        double val;
-        String returnVal = "cannot convert from: " + local_unit + " to: fl.oz";
+        // msg1: "equal units, no conversion needed";
+        // msg2: "cannot convert from: " + local_unit + " to: " + db_unit;
+        // msg3: "NYI"
+        // msg4: "do you really need to weigh a liquid?"
+        // msg5: "illegal unit"
 
-        if(local_unit.equals("fl.oz")){ return "equal units, no conversion needed"; } //
+        double val;
+        String returnVal = "msg2";
+
+        if(local_unit.equals("fl.oz")){ return "msg1"; }
 
         if(local_unit.equals("mL")){
             val = qty / 29.574;
@@ -668,10 +755,16 @@ public class UnitConverter {
      */
     public static String mL(double qty, String local_unit){
 
-        double val;
-        String returnVal = "cannot convert from: " + local_unit + " to: mL";
+        // msg1: "equal units, no conversion needed";
+        // msg2: "cannot convert from: " + local_unit + " to: " + db_unit;
+        // msg3: "NYI"
+        // msg4: "do you really need to weigh a liquid?"
+        // msg5: "illegal unit"
 
-        if(local_unit.equals("mL")){ return "equal units, no conversion needed"; }
+        double val;
+        String returnVal = "msg2";
+
+        if(local_unit.equals("mL")){ return "msg1"; }
 
         if(local_unit.equals("fl.oz")){
             val = qty * 29.574;
@@ -787,7 +880,7 @@ public class UnitConverter {
 
         } else {
 
-            returnMe = "cannot convert from: " + local_unit + " to: " + db_unit;
+            //returnMe = "cannot convert from: " + local_unit + " to: " + db_unit;
         }
 
         return returnMe;
@@ -799,7 +892,13 @@ public class UnitConverter {
     // removes the "liquid" specifier for now.
     public static String convertLiquid(double qty, String local_unit, String db_unit){
 
-        String returnMe = "debug convertLiquid";
+        String returnMe = "msg2";
+
+        // msg1: "equal units, no conversion needed";
+        // msg2: "cannot convert from: " + local_unit + " to: " + db_unit;
+        // msg3: "NYI"
+        // msg4: "do you really need to weigh a liquid?"
+        // msg5: "illegal unit"
 
         if(local_unit.contains("cups")){
             if(db_unit.equals("fl.oz")){
@@ -856,7 +955,7 @@ public class UnitConverter {
 
         } else {
 
-            returnMe = "cannot convert from: " + local_unit + " to: " + db_unit;
+            //returnMe = "cannot convert from: " + local_unit + " to: " + db_unit;
         }
 
         return returnMe;
@@ -872,6 +971,7 @@ public class UnitConverter {
         System.out.print("Enter "+arg+": ");
         return(sc.nextLine());
     }
+
 
     // FOR MANUAL / TERMINAL TESTING
     public static void main(String[] args) {
@@ -897,6 +997,9 @@ public class UnitConverter {
                 {"lbs","kgs","grams","oz",
                         "fl.oz","liters","gallons","mL"};
 
+
+        // TODO: ensure this input check occurs when the user is adding items to the database
+        //  AND adding ingredients to recipes.
         while(!goodVal) {
 
             String thing = readInput(sc, "qty");
@@ -917,7 +1020,7 @@ public class UnitConverter {
 
         while(!goodLU) {
 
-            local_unit = readInput(sc, "local unit");
+            local_unit = readInput(sc, "local unit").toLowerCase();
 
             // to lowercase
 
@@ -944,7 +1047,7 @@ public class UnitConverter {
 
             boolean found = false;
 
-            db_unit = readInput(sc, "database unit");
+            db_unit = readInput(sc, "database unit").toLowerCase();
 
             // to lowercase
 
@@ -962,593 +1065,42 @@ public class UnitConverter {
         }
 
 
+
+        // msg1: "equal units, no conversion needed";
+        // msg2: "cannot convert from: " + local_unit + " to: " + db_unit;
+        // msg3: "NYI"
+        // msg4: "do you really need to weigh a liquid?"
+        // msg5: "illegal unit"
+
+        String converted = convertTo(qty,local_unit,db_unit);
+
+        switch (converted) {
+            case "msg1":
+                System.out.println("equal units, no conversion necessary");
+                break;
+            case "msg2":
+                System.out.println("cannot convert " + local_unit + " to " + db_unit);
+                break;
+            case "msg3":
+                System.out.println("Conversion not yet implemented");
+                break;
+            case "msg4":
+                System.out.println("Cannot convert liquid volume to weight");
+                break;
+            default:
+                String printMe = "converted " + qty + " " + local_unit + " to: "
+                        + Double.parseDouble(converted) + " " + db_unit;
+                System.out.println(printMe);
+                break;
+        }
+
+        /*
         String printMe = "converted " + Double.toString(qty) + " " + local_unit + " to: "
                 + convertTo(qty,local_unit,db_unit) + " " + db_unit;
 
-        System.out.println(printMe);
+        System.out.println(printMe);*/
 
-    }
+        sc.close();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //////////////////////////////////////////////
-    //TODO: TEST RETURNING DOUBLES
-
-
-
-    /**
-     * Converts qty from local_unit to lbs
-     *
-     * @param qty -- double the value being converted
-     * @param local_unit -- String the unit of the value and its type, e.g, "cups dry"
-     * @return
-     */
-    public static Double lbsD(double qty, String local_unit){
-
-        Double val = null;
-        String returnVal = "cannot convert from: " + local_unit + " to: lbs";
-
-        if (local_unit.contains("liquid")){
-            //return "do you really need to weigh a liquid?";
-        }
-
-        if(local_unit.equals("lbs")){
-           // return "equal units, no conversion needed";
-        }
-
-
-        //TODO
-        if (local_unit.contains("dry")){
-
-            /* Display warnings for the following conversions due to cups, tsps, and tbsps
-            measuring volume and not weight.
-            These are approximations based on granulated sugar.*/
-
-            if (local_unit.contains("cups")){
-                // val = qty * 0.5;
-                //  returnVal = Double.toString(val);
-               // return "NYI";
-            }
-
-            else if (local_unit.contains("tsps")){
-                //  val = qty * 0.011;
-                //  returnVal = Double.toString(val);
-              //  return "NYI";
-            }
-
-            else if(local_unit.contains("tbsps")){
-                //   val = qty / 32;
-                //   returnVal = Double.toString(val);
-               // return "NYI";
-            }
-            else {
-               // return "illegal unit";
-            }
-
-        }
-
-
-        // oz to lbs
-        if (local_unit.equals("oz")){
-
-            val = qty / 16;
-
-            // this will be used for testing.
-            //String thing = String.format("%.4f",val);
-
-            returnVal = Double.toString(val);
-        }
-
-        // gram to lbs
-        else if (local_unit.equals("grams")){
-
-            // recursion test
-            // convert gram to kgs
-            //String thing = kgs(qty,local_unit);
-            // extract double
-            //double nuQty = Double.parseDouble(thing);
-            // convert from kgs to lbs
-            //String nuThing = lbs(nuQty,"kgs");
-            //val = Double.parseDouble(nuThing);
-
-
-            val = qty * 0.0022;
-
-            //String thing = String.format("%.4f",val);
-
-            returnVal = Double.toString(val);
-        }
-
-        // kgs to lbs
-        else if (local_unit.equals("kgs")){
-            val = qty * 2.2;
-            returnVal = Double.toString(val);
-        }
-        else {
-
-        }
-
-
-        return val;
-
-    }
-
-    /**
-     * Converts qty from local_unit to kgs
-     *
-     * @param qty -- double the value being converted
-     * @param local_unit -- String the unit of the value and its type, e.g, "cups dry"
-     * @return
-     */
-
-    public static Double kgsD(double qty, String local_unit){
-
-        Double val = null;
-        String returnVal = "cannot convert from: " + local_unit + " to: kgs";
-
-        //if (local_unit.contains("liquid")){ return "do you really need to weigh a liquid?"; }
-
-
-        //TODO
-        if (local_unit.contains("dry")){
-
-            /* Display warnings for the following conversions due to cups, tsps, and tbsps
-            measuring volume and not weight.
-            These are approximations based on granulated sugar.*/
-
-            if (local_unit.contains("cups")){
-
-                //  returnVal = Double.toString(val);
-                //return "NYI";
-            }
-
-            else if (local_unit.contains("tsps")){
-                //  val = qty
-                //  returnVal = Double.toString(val);
-               // return "NYI";
-            }
-
-            else if(local_unit.contains("tbsps")){
-                //   val = qty
-                //   returnVal = Double.toString(val);
-               // return "NYI";
-            }
-            else {
-               // return "illegal unit";
-            }
-
-        }
-
-
-        if (local_unit.equals("grams")){
-            val = qty / 1000;
-            returnVal = Double.toString(val);
-        }
-
-        else if (local_unit.equals("oz")){
-
-            val = qty / 35.274;
-            returnVal = Double.toString(val);
-        }
-
-        else if (local_unit.equals("lbs")){
-            val = qty / 2.2;
-            returnVal = Double.toString(val);
-        }
-        else {
-            //TODO
-
-        }
-
-        return val;
-
-    }
-
-    /**
-     * Converts qty from local_unit to grams
-     *
-     * @param qty -- double the value being converted
-     * @param local_unit -- String the unit of the value and its type, e.g, "cups dry"
-     * @return
-     */
-    public static Double gramsD(double qty, String local_unit){
-
-        Double val = null;
-        String returnVal = "cannot convert from: " + local_unit + " to: grams";
-
-       // if (local_unit.contains("liquid")){ return "do you really need to weigh a liquid?"; }
-
-        //if(local_unit.equals("grams")){ return "equal units, no conversion needed"; }
-
-        //TODO
-        if (local_unit.contains("dry")){
-
-            /* Display warnings for the following conversions due to cups, tsps, and tbsps
-            measuring volume and not weight.
-            These are approximations based on granulated sugar.*/
-
-            if (local_unit.contains("cups")){
-                // val = qty * 241.23;
-                // val = qty
-                //  returnVal = Double.toString(val);
-               // return "NYI";
-            }
-
-            else if (local_unit.contains("tsps")){
-                // 1 tsp = 5 g
-                //  val = qty
-                //  returnVal = Double.toString(val);
-               // return "NYI";
-            }
-
-            else if(local_unit.contains("tbsps")){
-                // 1 tbsp = 15 g
-                //   val = qty
-                //   returnVal = Double.toString(val);
-               // return "NYI";
-            }
-            else {
-               // return "illegal unit";
-            }
-
-        }
-
-
-
-        // oz to gram
-        else if (local_unit.equals("oz")){
-            // may be necessary to truncate
-            //String thing = String.format("%.4f",val);
-            val = qty * 28.35;
-            returnVal = Double.toString(val);
-        }
-
-        // lbs to gram
-        else if (local_unit.equals("lbs")){
-
-            // may be necessary to truncate
-            //String thing = String.format("%.4f",val);
-            val = qty * 454;
-            returnVal = Double.toString(val);
-        }
-
-        // kgs to gram
-        else if (local_unit.equals("kgs")){
-            val = qty * 1000;
-            returnVal = Double.toString(val);
-        }
-        else {
-
-        }
-
-
-        return val;
-
-    }
-
-    /**
-     * Converts qty from local_unit to oz
-     *
-     * @param qty -- double the value being converted
-     * @param local_unit -- String the unit of the value and its type, e.g, "cups dry"
-     * @return
-     */
-    public static Double ozD(double qty, String local_unit){
-
-        Double val = null;
-        String returnVal = "cannot convert from: " + local_unit + " to: oz";
-
-       // if (local_unit.contains("liquid")){ return "do you really need to weigh a liquid? use fl. oz!"; }
-
-
-        //TODO
-        if (local_unit.contains("dry")){
-
-            /* Display warnings for the following conversions due to cups, tsps, and tbsps
-            measuring volume and not weight.
-            These are approximations based on granulated sugar.*/
-
-            if (local_unit.contains("cups")){
-                // val = qty
-                //  returnVal = Double.toString(val);
-               // return "NYI";
-            }
-
-            else if (local_unit.contains("tsps")){
-                //  val = qty
-                //  returnVal = Double.toString(val);
-              //  return "NYI";
-            }
-
-            else if(local_unit.contains("tbsps")){
-                //   val =
-                //   returnVal = Double.toString(val);
-             //   return "NYI";
-            }
-            else {
-               // return "illegal unit";
-            }
-        }
-
-        // gram to oz
-        else if (local_unit.equals("grams")){
-
-            val = qty / 28.35;
-            returnVal = Double.toString(val);
-        }
-
-        // lbs to oz
-        else if (local_unit.equals("lbs")){
-
-            val = qty * 16;
-            returnVal = Double.toString(val);
-        }
-
-        // kgs to oz
-        else if (local_unit.equals("kgs")){
-
-            val = qty * 35.274;
-            returnVal = Double.toString(val);
-        }
-        else{
-
-        }
-
-
-        return val;
-
-    }
-
-
-    /**
-     * Converts qty from local_unit to liters
-     *
-     * @param qty -- double the value being converted
-     * @param local_unit -- String the unit of the value and its type, e.g, "cups dry"
-     * @return
-     */
-
-    public static Double litersD(double qty, String local_unit){
-
-        Double val = null;
-        String returnVal = "cannot convert from: " + local_unit + " to: liters";
-
-
-
-        if(local_unit.equals("mL")){
-            val = qty / 1000;
-            returnVal = Double.toString(val);
-
-        }
-        else if (local_unit.equals("fl.oz")){
-            val = qty / 33.814;
-            returnVal = Double.toString(val);
-
-        }
-        else if (local_unit.equals("gallons")){
-            val = qty * 3.785;
-            returnVal = Double.toString(val);
-
-        }
-        else if (local_unit.equals("cups")){
-            val = qty / 4.227;
-            returnVal = Double.toString(val);
-
-        }
-
-        else if (local_unit.equals("pints")){
-            val = qty / 2.113;
-            returnVal = Double.toString(val);
-
-        }
-
-        else if (local_unit.equals("quarts")){
-            val = qty / 1.057;
-            returnVal = Double.toString(val);
-
-        }
-
-        else if (local_unit.equals("tsps")){
-            val = qty / 203;
-            returnVal = Double.toString(val);
-
-        }
-        else if (local_unit.equals("tbsps")){
-            val = qty / 67.628;
-            returnVal = Double.toString(val);
-
-        }
-        return val;
-    }
-
-    /**
-     * Converts qty from local_unit to gallons
-     *
-     * @param qty -- double the value being converted
-     * @param local_unit -- String the unit of the value and its type, e.g, "cups dry"
-     * @return
-     */
-
-    public static Double galD(double qty, String local_unit){
-
-        Double val = null;
-
-        String returnVal = "cannot convert from: " + local_unit + " to: gals";
-
-
-        if(local_unit.equals("mL")){
-            val = qty / 3785;
-            returnVal = Double.toString(val);
-        }
-
-        else if (local_unit.equals("fl.oz")){
-            val = qty / 128;
-            returnVal = Double.toString(val);
-
-        }
-        else if (local_unit.equals("liters")){
-            val = qty / 3.785;
-            returnVal = Double.toString(val);
-
-        }
-        else if (local_unit.equals("cups")){
-            val = qty / 16;
-            returnVal = Double.toString(val);
-
-        }
-
-        else if (local_unit.equals("pints")){
-            val = qty / 8;
-            returnVal = Double.toString(val);
-
-        }
-
-        else if (local_unit.equals("quarts")){
-            val = qty / 4;
-            returnVal = Double.toString(val);
-
-        }
-
-        else if (local_unit.equals("tsps")){
-            val = qty / 768;
-            returnVal = Double.toString(val);
-
-        }
-        else if (local_unit.equals("tbsps")){
-            val = qty / 256;
-            returnVal = Double.toString(val);
-
-        }
-        return val;
-    }
-
-    /**
-     * Converts qty from local_unit to fl. oz
-     *
-     * @param qty -- double the value being converted
-     * @param local_unit -- String the unit of the value and its type, e.g, "cups dry"
-     * @return
-     */
-    public static Double flozD(double qty, String local_unit){
-
-        Double val = null;
-
-
-        if(local_unit.equals("mL")){
-            val = qty / 29.574;
-        }
-
-        else if (local_unit.equals("liters")){
-            val = qty * 33.814;
-
-        }
-        else if (local_unit.equals("gallons")){
-            val = qty * 128;
-
-        }
-        else if (local_unit.equals("cups")){
-            val = qty * 8;
-        }
-
-        else if (local_unit.equals("pints")){
-            val = qty / 16;
-        }
-
-        else if (local_unit.equals("quarts")){
-            val = qty / 32;
-        }
-
-        else if (local_unit.equals("tsps")){
-            val = qty / 6;
-
-        }
-        else if (local_unit.equals("tbsps")){
-            val = qty / 2;
-        }
-
-        return val;
-    }
-
-    /**
-     * Converts qty from local_unit to mL
-     *
-     * @param qty -- double the value being converted
-     * @param local_unit -- String the unit of the value and its type, e.g, "cups dry"
-     * @return
-     */
-    public static Double mLD(double qty, String local_unit){
-
-        //double val;
-
-        Double val = null;
-
-        if(local_unit.equals("fl.oz")){
-            val = qty * 29.574;
-
-
-        }
-        else if (local_unit.equals("liters")){
-            val = qty * 1000;
-
-        }
-        else if (local_unit.equals("gallons")){
-            val = qty * 3785;
-
-        }
-        else if (local_unit.equals("cups")){
-            val = qty * 237;
-
-        }
-
-        else if (local_unit.equals("pints")){
-            val = qty * 568;
-
-        }
-
-        else if (local_unit.equals("quarts")){
-            val = qty * 946;
-
-        }
-
-        else if (local_unit.equals("tsps")){
-            val = qty * 4.929;
-
-        }
-        else if (local_unit.equals("tbsps")){
-            val = qty * 14.787;
-
-        }
-
-        return val;
     }
 }

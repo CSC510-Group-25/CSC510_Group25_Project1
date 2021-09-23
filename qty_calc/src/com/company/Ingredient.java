@@ -10,16 +10,15 @@ import com.github.cliftonlabs.json_simple.JsonObject;
 /*TODO:
         retrieve dbID from database, maybe handled elsewhere?
         CLEANUP
-
-
  */
 public class Ingredient {
 
     String ingredientName; // itemName
     String dbID;           // retrieved from DB if it's there. CONSIDER: possible bugs with batch numbers.
-    double local_qty;
-    String local_unit;
+    double local_qty;     //TODO: CANNOT BE NEGATIVE. Ensure input check occurs when the user is adding items
+                          // to the database AND when adding ingredients to recipes.
 
+    String local_unit;
     JsonObject ingredientJson;
 
     // constructor for testing

@@ -71,12 +71,17 @@ public class OrderTracker {
     public boolean createOrder(Recipe recipe, int success, int fails){
 
         if((success < 0) || (fails < 0)){
-            //System.out.println("cannot input negative values");
+            System.out.println("cannot input negative values");
+            return false;
+        }
+
+        if(success==0 && fails==0){
+            System.out.println("number of successful orders and number of failed orders cannot both be zero");
             return false;
         }
 
         if(recipe == null){
-            //System.out.println("null recipe in createOrder");
+            System.out.println("null recipe in createOrder");
             return false;
         }
 
@@ -260,13 +265,14 @@ public class OrderTracker {
 
                 System.out.println(readBack);
 
-                String yn = YesNo(sc, "\nIs this correct? y/n: ");
+                String yn = YesNo(sc, "Is this correct? y/n: ");
 
                 if (yn.equals("y")) {
                     boolean yay = createOrder(r, success, fails);
                     if(yay){
                         System.out.println("\nSuccessfully added order.");
                     }
+                    else{ }
 
                 } else if (yn.equals("n")) {
                     System.out.println("Order discarded.");
@@ -274,7 +280,7 @@ public class OrderTracker {
                     System.out.println("Oops, something went wrong with createOrders in (OrderTracker.java)!");
                 }
 
-                String ruDoneYet = YesNo(sc, "\nContinue? y/n: ");
+                String ruDoneYet = YesNo(sc, "Continue? y/n: ");
 
                 if (ruDoneYet.equals("y")) {
                     // continue
@@ -358,10 +364,11 @@ public class OrderTracker {
         OrderTracker ot = new OrderTracker();
 
         // UNCOMMENT IF YOU WANT TO RUN MANUAL TESTS.
-        // ot.createOrders();
+         ot.createOrders();
 
         //TO PRINT ORDERS:
-        // System.out.println(ot.toString());
+         System.out.println(ot.toString());
+
 
     }
 

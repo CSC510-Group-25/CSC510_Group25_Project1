@@ -9,17 +9,15 @@ ITEM for DATABASE inventory
  */
 public class Item {
 
-
-    // CONSIDER MOVING STUFF BELOW TO SUBCLASS
     String itemName;
-    String dbID;    // may not be necessary
+    String dbID;    // may not be necessary?
 
     /*
     String batchID; // to help with expiration dates. One dbID can be mapped to many batches.
     String expDate;
     */
 
-    Double qty;
+    Double qty;    // Quantity of item stored in database.
     String db_unit;
 
     public Item(){

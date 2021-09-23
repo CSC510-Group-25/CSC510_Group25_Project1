@@ -15,6 +15,8 @@ import java.util.HashMap;
 
 /**
  * Class to build json files from .txt files, and .txt files from .json files.
+ * Read/write menus
+ *
  */
 public class BuildFile {
 
@@ -388,7 +390,11 @@ public class BuildFile {
 
     //TODO: INCOMPLETE METHOD.
     /**
-     * Saves a JsonArray using a destination directory and desired filename
+     * Saves a JsonArray using a destination directory and desired filename.
+     *
+     * Intended to be used to save a menu, but there may be other uses for it.
+     *
+     * INCOMPLETE METHOD. DO NOT USE OUTSIDE OF TESTING.
      *
      * @param jar
      * @param directory
@@ -432,6 +438,8 @@ public class BuildFile {
 
 
     //TODO: FOR TESTING
+    // INCOMPLETE, maybe there's a use for it. So far, it's only been used in main.
+    // method to read a saved menu and return as a JsonArray
     public static JsonArray ReadJsonMenu(String filePath) throws FileNotFoundException, JsonException {
 
         Path path = Paths.get(filePath).toAbsolutePath(); // TODO: bug risk
@@ -448,7 +456,7 @@ public class BuildFile {
      * @param jo
      * @return
      */
-    public static Recipe recipeFromJsonOb(JsonObject jo) {
+    public static Recipe recipeFromJson(JsonObject jo) {
 
         if (jo == null){
             return null;
@@ -496,73 +504,26 @@ public class BuildFile {
     }
 
 
-    public static Recipe recipeFromJsonMenu(JsonObject jo, String rn) {
-
-        if (jo == null){
-            return null;
-        }
-
-        JsonObject contents = (JsonObject) jo.get(rn);
-
-        if (contents==null){
-            return null;
-        }
-
-
-        String recipeName = (String) contents.get("recipeName");
-        String recipeID = (String) contents.get("recipeID");
-        JsonArray ingjar = (JsonArray) contents.get("ingredient_list");
-
-        if(ingjar==null){
-            return null;
-        }
-
-        ArrayList<Ingredient> ings = new ArrayList<>();
-        ArrayList<String> names = new ArrayList<>();
-
-
-        for (int i = 0; i < ingjar.size(); i++) {
-            JsonObject thing = (JsonObject) ingjar.get(i);
-
-            if (thing != null) {
-
-                Ingredient nuIngr = new Ingredient(thing);
-
-                if (names.contains(nuIngr.ingredientName)) {
-
-                    //TODO: implement something that prevents duplicates
-                    // maybe this should happen when a recipe is saved instead?
-
-                } else { // if ingredient not in list
-                    ings.add(nuIngr);
-                    names.add(nuIngr.ingredientName);
-
-                }
-            } else {
-                System.out.println("null json object");
-                return null;
-            }
-        }
-
-        Recipe r = new Recipe(recipeName, recipeID, ings);
-
-        return r;
-    }
-
-
-
+    /**
+     * Method to extract all recipes from the json file at the given path.
+     *
+     * May or may not be useful.
+     *
+     * @param filePath
+     * @return
+     * @throws FileNotFoundException
+     * @throws JsonException
+     */
     public static ArrayList<Recipe> RecipesFromMenu(String filePath) throws FileNotFoundException, JsonException {
 
         JsonArray menu = ReadJsonMenu(filePath);
 
         ArrayList<Recipe> recipes = new ArrayList<>();
 
-        //ArrayList<JsonObject> jos = new ArrayList<>();
-
         for (int i =0; i < menu.size(); i++){
             JsonObject recipe = (JsonObject) menu.get(i);
 
-            Recipe r = recipeFromJsonOb(recipe);
+            Recipe r = recipeFromJson(recipe);
             recipes.add(r);
 
         }
@@ -579,8 +540,8 @@ May need to be moved elsewhere
 
 
 
-    /////////////////////////////////////
-    // TESTING HAPPENS DOWN HERE //
+    /////////////////////////////////////////////
+    // TESTING AND DEBUGGING HAPPENS DOWN HERE //
 
 
     public static void main(String[] args) throws Exception {
