@@ -38,6 +38,10 @@ public class InventoryController {
 
 //        return inventoryRepository.findAll(inventory);
         return "{Add Successfully}";
+    }
 
+    @GetMapping("/getAllOrders")
+    public List<Order> getAllOrders(){
+        return orderRepository.findAll();
     }
 }

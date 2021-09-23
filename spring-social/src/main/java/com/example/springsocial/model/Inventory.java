@@ -11,34 +11,34 @@ import javax.persistence.*;
 
 public class Inventory {
 
-//    @Column(nullable = false, name = "restaurantname")
+    @Column(nullable = false, name = "restaurantName")
     private String restaurantName;
 
 
-//    @Column(nullable = false, name = "restaurantid")
+    @Column(nullable = false, name = "restaurantID")
     private String restaurantID;
 
     @Id
-//    @Column(nullable = false, name = "itemid")
+    @Column(nullable = false, name = "itemID")
     private String itemID;
 
-//    @Column(nullable = false, name = "itemname")
+    @Column(nullable = false, name = "itemName")
     private String itemName;
 
 
-//    @Column(nullable = false, name = "batchid")
+    @Column(nullable = false, name = "batchID")
     private String batchID;
 
-//    @Column(nullable = false, name = "batchqty")
+    @Column(nullable = false, name = "batchQty")
     private int batchQty;
 
-//    @Column(nullable = false, name = "costperitem")
+    @Column(nullable = false, name = "costPerItem")
     private double costPerItem;
 
-//    @Column(name = "datebought")
+    @Column(name = "dateBought")
     private Date dateBought;
 
-//    @Column(name = "dateexpired")
+    @Column(name = "dateExpired")
     private Date dateExpired;
 
     public String getRestaurantName(){

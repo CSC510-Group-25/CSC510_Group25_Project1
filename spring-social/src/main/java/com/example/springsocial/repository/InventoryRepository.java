@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface InventoryRepository extends JpaRepository<Inventory, String>{
-    
+    List<Order> findAll();
 //    Optional<Inventory> findByRestaurant(String restaurantID);
 
 //    ResponseEntity<?> findAll(Inventory inventory);
