@@ -1,6 +1,7 @@
 package com.example.springsocial.controller;
 
 import com.example.springsocial.model.Inventory;
+import com.example.springsocial.model.Order;
 import com.example.springsocial.payload.InventoryRequest;
 import com.example.springsocial.repository.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 @RestController
 public class InventoryController {
@@ -39,5 +41,10 @@ public class InventoryController {
 //        return inventoryRepository.findAll(inventory);
         return "{Inventory Added Successfully}";
 
+    }
+
+    @GetMapping("/getAllInventory")
+    public List<Inventory> getAllOrders(){
+        return inventoryRepository.findAll();
     }
 }
