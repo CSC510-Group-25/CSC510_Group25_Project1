@@ -4,6 +4,8 @@ Each .java file should have a main method if you want to manually test.
 (Examples are included)
 Manual testing should be done through an IDE for sanity's sake and for easy debugging.
 
+Also, if you're using an IDE, you can easily follow the TODO trail in each class.
+
 
 ------
 
