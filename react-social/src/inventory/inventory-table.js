@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { lighten, makeStyles } from '@material-ui/core/styles';
@@ -20,16 +20,12 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
+import {API_BASE_URL} from "../constants";
+import Alert from "react-s-alert";
 
 function createData(itemName, batchQty, costPerItem, dateBought, dateExpired) {
   return { itemName, batchQty, costPerItem, dateBought, dateExpired };
 }
-
-const rows = [
-  createData('Cheese', 10, 10, "10/2", "10/10"),
-  createData('Milk', 20, 10, "10/2", "10/10"),
-  createData('Sugar', 30, 1, "10/2", "10/10"),
-];
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -205,6 +201,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function InventoryTable() {
   const classes = useStyles();
+  const [rows, setRows] = React.useState([]);
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
   const [selected, setSelected] = React.useState([]);
@@ -263,6 +260,22 @@ export default function InventoryTable() {
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+
+  useEffect(() => {
+    //get inventory from database
+    fetch(API_BASE_URL + '/getAllInventory', {
+      method: 'Get',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+      .then(res => res.json())
+      .then((data) => {
+        setRows(data);
+      }).catch(error => {
+      Alert.error((error && error.message) || 'Unable to load inventory');
+    });
+  });
 
   return (
     <div className={classes.root}>
@@ -342,3 +355,5 @@ export default function InventoryTable() {
     </div>
   );
 }
+
+React.memo(InventoryTable);

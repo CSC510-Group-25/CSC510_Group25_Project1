@@ -67,7 +67,7 @@ class InventoryForm extends React.Component {
         itemName : this.state.itemName,
         batchID : "b1",
         batchQty : this.state.batchQty,
-        costPerItem : 200,
+        costPerItem : this.state.costPerItem,
         dateBought : this.state.dateBought,
         dateExpired : this.state.dateExpired
       })
