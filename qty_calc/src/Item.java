@@ -1,12 +1,7 @@
-package com.company;
-
 
 import com.github.cliftonlabs.json_simple.JsonObject;
 
-/*
-ITEM for DATABASE inventory
-
- */
+//ITEM for database inventory, used in MockDB
 public class Item {
 
     String itemName;
