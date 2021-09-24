@@ -1,15 +1,8 @@
+package com.company;
 
 import com.github.cliftonlabs.json_simple.JsonObject;
 
-
-/**
- * INGREDIENT class for Recipes.
- */
-
-/*TODO:
-        retrieve dbID from database, maybe handled elsewhere?
-        CLEANUP
- */
+//INGREDIENT class for Recipes.
 public class Ingredient {
 
     String ingredientName; // itemName
@@ -20,7 +13,6 @@ public class Ingredient {
     String local_unit;
     JsonObject ingredientJson;
 
-    // constructor for testing
     public Ingredient(String ingredientName, String dbID, double local_qty,
                       String local_unit, JsonObject ingredientJson) {
         this.ingredientName = ingredientName;
@@ -29,7 +21,7 @@ public class Ingredient {
         this.local_qty = local_qty;
         this.ingredientJson = ingredientJson;
     }
-    // also for testing
+
     public Ingredient(String ingredientName, String dbID, double local_qty, String local_unit) {
         this.ingredientName = ingredientName;
         this.dbID = dbID;
@@ -53,9 +45,7 @@ public class Ingredient {
      * @param ingstr
      */
     public Ingredient(String ingstr){
-
         String[] nuArr = stringTrimmr(ingstr);
-
         this.ingredientName = nuArr[0];
         this.dbID = nuArr[1];
         this.local_qty = Double.parseDouble(nuArr[2]);
@@ -74,11 +64,12 @@ public class Ingredient {
         return nuArr;
     }
 
-    // construct json object
+    /**
+     * Constructs and returns a JsonObject
+     * @return
+     */
     public JsonObject ingredientAsJson(){
-
         JsonObject jIng = new JsonObject();
-
         jIng.put("ingredientName", this.ingredientName);
         jIng.put("ing_DBID", this.dbID);
         jIng.put("local_qty", this.local_qty);
@@ -87,25 +78,15 @@ public class Ingredient {
         return jIng;
     }
 
-    public String getIngredientName() {
-        return ingredientName;
-    }
-    public String getDbID() {
-        return dbID;
-    }
-    public double getLocal_qty() {
-        return local_qty;
-    }
-    public String getLocal_unit() {
-        return local_unit;
-    }
+    public String getIngredientName() { return ingredientName; }
+    public String getDbID() { return dbID; }
+    public double getLocal_qty() { return local_qty; }
+    public String getLocal_unit() { return local_unit; }
     public JsonObject getIngredientJson() { return ingredientJson; }
-
 
     @Override
     public String toString() {
         String returnMe = "[" + ingredientName + ", " + dbID + ", " + local_qty + ", " + local_unit + "]";
-
         return returnMe;
     }
 }

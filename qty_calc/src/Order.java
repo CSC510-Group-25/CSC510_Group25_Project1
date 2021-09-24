@@ -1,10 +1,9 @@
+package com.company;
 
 public class Order {
-
     Recipe recipe; // the recipe / ordered dish
     int num_orders; // number of successful orders
     int num_failures; // number of failed orders
-
 
     public Order(Recipe recipe, int num_orders, int num_failures) {
         this.recipe = recipe;
@@ -15,25 +14,19 @@ public class Order {
     public Recipe getRecipe() {
         return recipe;
     }
-
     public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
     }
-
     public int getNum_orders() {
         return num_orders;
     }
-
     public void setNum_orders(int num_orders) {
         this.num_orders = num_orders;
     }
-
     public int getNum_failures() {
         return num_failures;
     }
-
     public void setNum_failures(int num_failures) { this.num_failures = num_failures; }
-
 
     @Override
     public String toString(){
@@ -44,5 +37,4 @@ public class Order {
 
         return returnMe;
     }
-
 }

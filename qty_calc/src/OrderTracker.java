@@ -1,8 +1,10 @@
+package com.company;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+// To run this, call createOrders() on an OrderTracker object or just use the main method.
 public class OrderTracker {
 
     //     RecipeID, Order
@@ -15,15 +17,12 @@ public class OrderTracker {
         this.keys = new ArrayList<>(orders.keySet());
     }
 
-
     public OrderTracker() {
         this.orders = new HashMap<>();
         this.keys = new ArrayList<>();
-
     }
 
     public HashMap<String, Order> getOrders() { return orders; }
-
     public ArrayList<String> getKeys() { return keys; }
 
 
@@ -35,7 +34,6 @@ public class OrderTracker {
     public ArrayList<Order> getOrdersArray() {
 
         ArrayList<Order> oAL = new ArrayList<>();
-
         for (String key : this.keys){
             oAL.add(this.orders.get(key));
         }
@@ -43,15 +41,11 @@ public class OrderTracker {
     }
 
 
-    /*
+    //TODO: NYI
     public boolean removeOrderByID(String recipeID){
-
-        this.orders.remove(recipeID);
-
-
-
+        //this.orders.remove(recipeID);
+        return false;
     }
-    */
 
 
 
@@ -99,12 +93,12 @@ public class OrderTracker {
 
 
     /**
+     * UI for number of successful orders
      *
      * @param sc
      * @return
      */
-
-    public int getSuccess(Scanner sc){
+    private int getSuccess(Scanner sc){
 
         boolean goodInput = false;
         int input = -1;
@@ -130,12 +124,12 @@ public class OrderTracker {
 
 
     /**
+     * UI for number of failed orders
      *
      * @param sc
      * @return
      */
-
-    public int getFails(Scanner sc){
+    private int getFails(Scanner sc){
 
         boolean goodInput = false;
         int input = -1;
@@ -162,22 +156,22 @@ public class OrderTracker {
 
     //TODO: allow user to select which folder to search for recipes
     /**
+     * UI
+     * Helper for createOrders()
      *
      * @param sc
-     * @return
+     * @return recipe
      */
-    public Recipe getRecipe_Order(Scanner sc){
+    private Recipe getRecipe_Order(Scanner sc){
 
         boolean goodInput = false;
         Recipe r = null;
-
         String recipeFolder = "recipe_folder";
 
         while(!goodInput) {
 
             try {
                 System.out.print("Enter recipe ID: ");
-
                 String input = sc.nextLine();
                 r =  BuildFile.RecipeFromID(recipeFolder,input);
 
@@ -186,17 +180,14 @@ public class OrderTracker {
                 } else {
 
                     System.out.println("Could not locate the file associated with the recipe ID: "+input +". \n");
-
                     String tryAgain = YesNo(sc, "\nTry again? y/n: ");
 
                     System.out.println("");
-
                     if (tryAgain.equals("y")) {
                         //continue
 
                     } else if (tryAgain.equals("n")) {
                         break;
-
                     } else {
                         System.out.println("Oops, something went wrong with getRecipe_Order!");
                     }
@@ -217,6 +208,10 @@ public class OrderTracker {
     TODO:
     ADD AN OPTION THAT WILL ALLOW THE USER TO GET A RECIPE'S ID BY USING THE RECIPE'S NAME.
      */
+
+    /**
+     * This is the thing you call.
+     */
     public void createOrders(){
 
         boolean done = false;
@@ -236,12 +231,10 @@ public class OrderTracker {
             if(r==null){
 
                 System.out.println("Recipe not found.");
-
                 String ruDoneYet = YesNo(sc, "\nContinue? y/n: ");
 
                 if (ruDoneYet.equals("y")) {
                     // continue
-
                 } else if (ruDoneYet.equals("n")) {
                     done = true;
 
@@ -249,7 +242,6 @@ public class OrderTracker {
                     System.out.println("Oops, something went wrong with createOrders in (OrderTracker.java)!");
                 }
             }
-
 
             if(r!=null){
 
@@ -280,7 +272,6 @@ public class OrderTracker {
                 }
 
                 String ruDoneYet = YesNo(sc, "Continue? y/n: ");
-
                 if (ruDoneYet.equals("y")) {
                     // continue
                 } else if (ruDoneYet.equals("n")) {
@@ -298,14 +289,10 @@ public class OrderTracker {
     public String toString(){
 
         boolean first = true;
-
         if( this.orders != null && !this.orders.isEmpty()){
-
             StringBuilder str = new StringBuilder();
             for(String key : this.keys){
-
                 Order o = this.orders.get(key);
-
                 if(first){
                     str.append(o.toString());
                     first=false;
@@ -321,10 +308,9 @@ public class OrderTracker {
     }
 
 
-
-
-
     /**
+     *
+     * Waits for "y" or "n" input
      *
      * @param sc
      * @param arg

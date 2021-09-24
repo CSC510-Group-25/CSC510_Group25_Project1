@@ -1,3 +1,5 @@
+package com.company;
+
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonException;
 import com.github.cliftonlabs.json_simple.JsonObject;
@@ -8,14 +10,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 
-/**
- * Class to build json files from .txt files, and .txt files from .json files.
- * Read/write menus
- *
- */
+//Class to build .json files from .txt files, and .txt files from .json files
 public class BuildFile {
 
     //TODO: save recipes as .txt
@@ -30,9 +27,7 @@ public class BuildFile {
      * @return boolean
      */
     public static boolean directoryExists(String filePath){ //TODO: may be redundant
-
         Path path = Paths.get(filePath).toAbsolutePath();
-
         if(Files.exists(path) && Files.isDirectory(path)) {
             return true;
         }
@@ -63,17 +58,13 @@ public class BuildFile {
         String rID = recipeID.replaceAll("\\s+", "_").toLowerCase();
 
         String jsonFile = "recipe_" + rID + ".json";
-
-        //String jsonFile = "recipe_" + recipeID + ".json";
         Path path1 = Paths.get(filePath).toAbsolutePath();
 
         if (Files.exists(path1)) {
             if (Files.isDirectory(path1)) {
 
                 System.out.println("Searching directory...");
-
-                //String nuPath = String.valueOf(path1) + "/" + jsonFile;
-                String nuPath = String.valueOf(path1) + File.separator + jsonFile;
+                String nuPath = path1 + File.separator + jsonFile;
 
                 Path path = Paths.get(nuPath).toAbsolutePath();
 
@@ -89,7 +80,6 @@ public class BuildFile {
 
                 // get directory
                 String dir = String.valueOf(Paths.get(filePath).toAbsolutePath().getParent());
-                //String nuPath = dir + "/" + jsonFile;
                 String nuPath = dir + File.separator + jsonFile;
 
                 Path path = Paths.get(nuPath).toAbsolutePath();
@@ -149,12 +139,10 @@ public class BuildFile {
                     //System.out.println("A .json file exists for recipe ID: " +recipeID);
                     return true;
                 }
-
                 if(Files.exists(tpath) && !Files.isDirectory(tpath)){
                     //System.out.println("A .txt file exists for recipe ID: " +recipeID);
                     return true;
                 }
-
             } else if (!Files.isDirectory(path1)) {
 
                 //System.out.println("The path given is to a file and not a directory. Searching parent directory...");
@@ -200,6 +188,8 @@ public class BuildFile {
      * exists inside the "recipe_folder" directory.
      *
      * If filePath leads to a directory, then that directory will be checked.
+     *
+     * Used by OrderTracker
      *
      * @param filePath
      * @param recipeID
@@ -279,32 +269,27 @@ public class BuildFile {
                 // System.out.println(path1 + " does not exist.");
             }
         }
-
         return r;
-
     }
 
 
-    //TODO: should probably be merged with BuildJsonFile
+    //TODO: ALLOW OVERWRITES
     // recipeID can be a name or an ID.
     private static String getJsonPath(String filePath, String recipeID){
 
         String rID = recipeID.replaceAll("\\s+", "_").toLowerCase();
-
         String jsonFile = "recipe_" + rID + ".json";
-
         Path path1 = Paths.get(filePath).toAbsolutePath();
+
         if (Files.exists(path1)) {
-
             if (Files.isDirectory(path1)) {
-                //String nuPath = String.valueOf(path1) + "/" + jsonFile;
 
-                String nuPath = String.valueOf(path1) + File.separator + jsonFile;
-
+                String nuPath = path1 + File.separator + jsonFile;
                 Path path = Paths.get(nuPath).toAbsolutePath();
 
                 if (Files.exists(path)) {
                     System.out.println("A .json file already exists for recipe ID: " +recipeID);
+                    //TODO: Overwrite? y/n:
                     return "";
                 }
 
@@ -318,13 +303,15 @@ public class BuildFile {
 
                 // get directory
                 String dir = String.valueOf(Paths.get(filePath).toAbsolutePath().getParent());
-                //String nuPath = dir + "/" + jsonFile;
                 String nuPath = dir + File.separator + jsonFile;
 
                 Path path = Paths.get(nuPath).toAbsolutePath();
 
                 if (Files.exists(path) && !Files.isDirectory(path)) {
                     System.out.println("A .json file already exists for recipe ID: " +recipeID);
+
+                    //TODO: Overwrite? y/n:
+
                     return "";
                 }
                 else {
@@ -332,15 +319,9 @@ public class BuildFile {
                 }
             }
         }
-
         System.out.println(path1 + " does not exist.");
-
-        //System.out.println("Could not locate .json file for: " +recipeID+" with the given path: " + path1);
-
         return "";
     }
-
-
 
 
     //TODO: ENSURE THAT FILEPATH CONTAINS "recipe_folder" !!!
@@ -355,7 +336,7 @@ public class BuildFile {
 
         if(recipe==null){
             System.out.println("null recipe in BuildJsonFile");
-            //return;
+            return;
         }
 
         String folder = "recipe_folder";
@@ -366,8 +347,6 @@ public class BuildFile {
             // String msg = "Please store your recipes in a folder named \"recipe_folder\"...
             // throw new Exception(msg)
         }
-
-        // recipe must not be null
 
         JsonObject rj = recipe.getRecipeJson();
 
@@ -381,7 +360,6 @@ public class BuildFile {
             try (FileWriter fileWriter = new FileWriter(jpath)) {
                 Jsoner.serialize(rj, fileWriter);
             }
-
         }
     }
 
@@ -413,40 +391,21 @@ public class BuildFile {
                 // for now, just overwrite.
             }
 
-
         } else {
             System.out.println("No such directory found.");
-
             //TODO: OPTION TO CREATE DIRECTORY
         }
-
 
         if (!overwrite) {
             //return
         }
 
 
-
         try (FileWriter fileWriter = new FileWriter(String.valueOf(path))) {
             Jsoner.serialize(jar, fileWriter);
         }
-
     }
 
-
-
-    //TODO: FOR TESTING
-    // INCOMPLETE, maybe there's a use for it. So far, it's only been used in main.
-    // method to read a saved menu and return as a JsonArray
-    public static JsonArray ReadJsonMenu(String filePath) throws FileNotFoundException, JsonException {
-
-        Path path = Paths.get(filePath).toAbsolutePath(); // TODO: bug risk
-
-        FileReader fileReader = new FileReader(String.valueOf((path)));
-        JsonArray menu = (JsonArray) Jsoner.deserialize(fileReader);
-
-        return menu;
-    }
 
 
     /**
@@ -488,16 +447,13 @@ public class BuildFile {
                 } else { // if ingredient not in list
                     ings.add(nuIngr);
                     names.add(nuIngr.ingredientName);
-
                 }
             } else {
                 System.out.println("null json object");
                 return null;
             }
         }
-
         Recipe r = new Recipe(recipeName, recipeID, ings);
-
         return r;
     }
 
@@ -513,28 +469,56 @@ public class BuildFile {
      * @throws JsonException
      */
     public static ArrayList<Recipe> RecipesFromMenu(String filePath) throws FileNotFoundException, JsonException {
-
         JsonArray menu = ReadJsonMenu(filePath);
-
         ArrayList<Recipe> recipes = new ArrayList<>();
-
         for (int i =0; i < menu.size(); i++){
             JsonObject recipe = (JsonObject) menu.get(i);
-
             Recipe r = recipeFromJson(recipe);
             recipes.add(r);
-
         }
         return recipes;
     }
 
+    //TODO: FOR TESTING
+    // INCOMPLETE, maybe there's a use for it. So far, it's only been used in main.
+    // method to read a saved menu and return as a JsonArray
+    public static JsonArray ReadJsonMenu(String filePath) throws FileNotFoundException, JsonException {
+        Path path = Paths.get(filePath).toAbsolutePath(); // TODO: bug risk
+        FileReader fileReader = new FileReader(String.valueOf((path)));
+        JsonArray menu = (JsonArray) Jsoner.deserialize(fileReader);
+        return menu;
+    }
 
-    /*
-Add a recipe to the database
-May need to be moved elsewhere
-*/
-    // TODO
-    public void saveNewRecipe(){ }
+
+    // TODO INCOMPLETE BUT FUNCTIONAL
+    /**
+     * Saves a recipe to a directory
+     * @param recipe
+     * @param directory
+     */
+    public static void SaveRecipeJson(JsonObject recipe, String directory){
+
+        String rID = (String) recipe.get("recipeID");
+        rID = rID.replaceAll("\\s+", "_").toLowerCase();
+        String jsonFile = getJsonPath(directory,rID);
+
+        if(jsonFile.isEmpty()){
+            System.out.println("Could not save recipe.");
+            return;
+        }
+
+        boolean overwrite = true;
+
+        if (!overwrite) {
+            //return
+        }
+
+        try (FileWriter fileWriter = new FileWriter(String.valueOf(jsonFile))) {
+            Jsoner.serialize(recipe, fileWriter);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 
@@ -549,59 +533,35 @@ May need to be moved elsewhere
         //Recipe r2 = new Recipe("recipe_folder/recipe_0002.txt");
 
 
-        Recipe r1 = new Recipe("recipe_folder/recipe_0001.txt");
-        Recipe r9000 = new Recipe("recipe_folder/recipe_9000.txt");
-        Recipe r8000 = new Recipe("recipe_folder/recipe_8000.txt");
+        //Recipe r1 = new Recipe("recipe_folder/recipe_0001.txt");
+        //Recipe r9000 = new Recipe("recipe_folder/recipe_9000.txt");
+        //Recipe r8000 = new Recipe("recipe_folder/recipe_8000.txt");
 
-        BuildJsonFile(r1, "recipe_folder");
+        //r1.saveRecipeAsJson("recipe_folder");
+
+        //BuildJsonFile(r1, "recipe_folder");
         //BuildJsonFile(r2, "recipe_folder");
-        BuildJsonFile(r9000, "recipe_folder");
-        BuildJsonFile(r8000, "recipe_folder");
-
-        //BuildJsonFile(r1, "filetests");
-        //BuildJsonFile(r2, "filetests");
-        //BuildJsonFile(r9000, "filetests");
-        //BuildJsonFile(r8000, "filetests");
-
-        JsonObject j1 = r1.packForMenu();
-        JsonObject j9 = r9000.packForMenu();
-        JsonObject j8 = r8000.packForMenu();
-
-        JsonArray jar = new JsonArray();
-
-        jar.add(j1);
-        jar.add(j9);
-        jar.add(j8);
-
-        //SaveJsonArray(jar, "filetests","mock_menu.json");
+        //BuildJsonFile(r9000, "recipe_folder");
+        //BuildJsonFile(r8000, "recipe_folder");
 
 
-        SaveJsonArray(jar, "mock_menus","FILE_NAME.json");
+        //JsonObject j1 = r1.packForMenu();
+       // JsonObject j9 = r9000.packForMenu();
+       // JsonObject j8 = r8000.packForMenu();
 
+       // JsonArray jar = new JsonArray();
 
-        MockDB mdb = new MockDB("mock_dbs/db1.txt");
-        mdb.saveAsJson("mock_dbs","db1.json");
+       // jar.add(j1);
+       // jar.add(j9);
+       // jar.add(j8);
 
+       // SaveJsonArray(jar, "mock_menus","FILE_NAME.json");
 
+       // MockDB mdb = new MockDB("mock_dbs/db1.txt");
+       // mdb.saveAsJson("mock_dbs","db1.json");
 
-        // MockDB mdb = new MockDB("mock_inventory_database/db1.txt");
-
-        //mdb.saveAsJson("filetests","db1.json");
-
-        //MockDB mdb = new MockDB("filetests/db1.json");
-
-        /*HashMap<String,Item> map = mdb.getDb();
-        mdb = null;
-        MockDB nuDB = new MockDB(map);
-        System.out.println(nuDB.getKeys().toString());
-        */
-
-        //System.out.print(mdb.toString());
-
-        //SaveJsonArray(jar, "nufolder","lol.json");
 
        /*
-
         JsonArray jar = new JsonArray();
         ArrayList<Ingredient> ilist = new ArrayList<>();
 
@@ -629,9 +589,7 @@ May need to be moved elsewhere
         SaveJsonAr(jar, "filetests/mock_menu.json");
 
         ArrayList<Recipe> rfm = RecipesFromMenu("filetests/mock_menu.json");
-
-
-*/
+        */
 
         /*
         ArrayList<Ingredient> ilist = new ArrayList<>();

@@ -1,9 +1,9 @@
+package com.company;
 
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonException;
 import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsoner;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -26,11 +26,6 @@ import java.util.Scanner;
  *      remove items from the database
  */
 
-/* TODO:
-
-
- */
-
 //TODO:
 /*    add multiple (method)
       read from json
@@ -38,8 +33,6 @@ import java.util.Scanner;
 
       Generate unique dbIDs for every object
       MAKE COMPATIBLE WITH ITEM BATCHES (Maybe? This is JUST for the quantity calculator?)
-
-
  */
 
 public class MockDB {
@@ -59,9 +52,30 @@ public class MockDB {
         this.keys = new ArrayList<>();
     }
 
+    /**
+     * Construct DB from a .json or .txt
+     *
+     * @param filePath
+     * @throws IOException
+     * @throws JsonException
+     */
+    public MockDB(String filePath) throws IOException, JsonException {
+
+        this.db = new HashMap<>();
+        this.keys = new ArrayList<>();
+
+        if(filePath.endsWith(".txt")) {
+            dbFromFile(filePath);
+
+        } else if(filePath.endsWith(".json")){
+            dbFromJsonFile(filePath);
+
+        } else {
+            System.out.println("Unsupported file type. Supported: .txt, .json");
+        }
+    }
 
     ///////////////////////////////////////////////////////////
-
 
 
     private static String readInput(Scanner sc, String arg) {
@@ -70,6 +84,7 @@ public class MockDB {
     }
 
     /**
+     * Remove item from database
      *
      * @param item
      * @return
@@ -116,6 +131,7 @@ public class MockDB {
 
 
     /**
+     * Add item to database
      *
      * @param item
      * @return
@@ -159,9 +175,7 @@ public class MockDB {
                     System.out.println("Please enter 'y' or 'n'.");
                 }
             }
-
             sc.close();
-
 
         } else {
             // add if not in db
@@ -196,9 +210,7 @@ public class MockDB {
         String key = item.getDbID();
         db.remove(key);
         keys.remove(key);
-
     }
-
 
     // I don't care, I just want to do things.
     public void addr(Item item){
@@ -208,7 +220,6 @@ public class MockDB {
             this.keys.add(key);
         }
     }
-
     public void removr(Item item){
         String key = item.getDbID();
         db.remove(key);
@@ -226,30 +237,6 @@ public class MockDB {
     //public void readJson() {}
 
 
-
-    // construct DB from a .json or .txt
-
-    /**
-     *
-     * @param filePath
-     * @throws IOException
-     * @throws JsonException
-     */
-    public MockDB(String filePath) throws IOException, JsonException {
-
-        this.db = new HashMap<>();
-        this.keys = new ArrayList<>();
-
-        if(filePath.endsWith(".txt")) {
-            dbFromFile(filePath);
-
-        } else if(filePath.endsWith(".json")){
-            dbFromJsonFile(filePath);
-
-        } else {
-            System.out.println("Unsupported file type. Supported: .txt, .json");
-        }
-    }
 
 
     /**
@@ -276,8 +263,9 @@ public class MockDB {
 
 
     /**
+     * Constructs a JsonArray for the database.
      *
-     * @return
+     * @return JsonArray
      */
     public JsonArray dbAsJson(){
 
@@ -286,18 +274,16 @@ public class MockDB {
         JsonArray jar = new JsonArray();
 
         for(String key : this.keys){
-
             Item item = this.db.get(key);
             JsonObject jo = item.itemAsJson();
             jar.add(jo);
         }
-
         return jar;
     }
 
 
     /**
-     * Include destination folder AND the desired filename.
+     * Saves the database to the destination folder using the given filename.
      *
      * @param destinationFolder
      * @param fileName
@@ -310,10 +296,8 @@ public class MockDB {
             System.out.println("file name must end with .json");
             return;
         }
-
-        JsonArray jar = (JsonArray) dbAsJson();
+        JsonArray jar = dbAsJson();
         BuildFile.SaveJsonArray(jar,destinationFolder,fileName);
-
     }
 
 
@@ -336,7 +320,6 @@ public class MockDB {
                 JsonObject thing = (JsonObject) dbj.get(i);
 
                 if (thing != null) {
-
                     Item item = new Item(thing);
                     String key = item.getItemName();
                     if(!keys.contains(key)) {
@@ -348,24 +331,15 @@ public class MockDB {
                     System.out.println("null json object");
                 }
             }
-
         } else{
             System.out.println("null json array");
         }
-
     }
-
-
-
-
-
 
 
 
     /**
      * Reads contents of a .txt file to construct a database.
-     *
-     *
      * @return String[] contents of a file
      */
     private String[] readFile(String filePath) throws IOException {
@@ -376,16 +350,12 @@ public class MockDB {
         // TODO: ensure no ingredient repeats
 
         Path path = Paths.get(filePath).toAbsolutePath();
-
         Scanner sc = new Scanner(new File(String.valueOf(path)));
-
         while (sc.hasNextLine()) {
             db.add(sc.nextLine());
         }
         dbArr = db.toArray(new String[0]);
-
         sc.close();
-
         return dbArr;
     }
 
@@ -394,7 +364,6 @@ public class MockDB {
     public String toString(){
 
         StringBuilder str = new StringBuilder();
-
         boolean first = true;
         for(int i=0; i<this.keys.size(); i++){
             String key = this.keys.get(i);
@@ -411,13 +380,16 @@ public class MockDB {
         return str.toString();
     }
 
-    public HashMap<String, Item> getDb() { return db; }
 
+    public HashMap<String, Item> getDb() { return db; }
     public ArrayList<String> getKeys() { return keys; }
 
-
+    /**
+     * If the DB contains the key, returns the database unit
+     * @param key
+     * @return
+     */
     public String getDBU(String key){
-
         if(this.db.get(key)==null){
             return "";
         }
@@ -425,17 +397,8 @@ public class MockDB {
     }
 
 
-    public Item getItem(String key){
-        return this.db.get(key);
-    }
-
-
-    public boolean hasItem(String key){
-
-        return this.db.containsKey(key);
-
-    }
-
+    public Item getItem(String key){ return this.db.get(key); }
+    public boolean hasItem(String key){ return this.db.containsKey(key); }
 
 
 
