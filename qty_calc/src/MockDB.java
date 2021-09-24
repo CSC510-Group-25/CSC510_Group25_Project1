@@ -1,4 +1,3 @@
-package com.company;
 
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonException;
@@ -401,7 +400,6 @@ public class MockDB {
     public boolean hasItem(String key){ return this.db.containsKey(key); }
 
 
-
     /////////////////////////////////////////
     // MANUAL TESTING DOWN HERE //
 
@@ -413,9 +411,5 @@ public class MockDB {
 
 
     }
-
-
-
-
 
 }
