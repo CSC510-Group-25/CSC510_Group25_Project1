@@ -1,33 +1,25 @@
 import React from "react";
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import makeStyles from "@material-ui/core/styles/makeStyles";
-
-const useStyles = makeStyles({
-  root: {
-    minWidth: 500,
-    maxWidth: 1000,
-    marginTop: 90,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-});
+import InventoryForm from "./inventory-form";
+import InventoryTable from "./inventory-table";
+import Grid from "@material-ui/core/Grid";
 
 export default function InventoryPage() {
-  const classes = useStyles();
 
   return <div>
-    <Box className={classes.root}>
-      <Typography h2>Inventory</Typography>
-    </Box>
+    <Grid
+      container
+      spacing={3}
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      style={{ minHeight: '100vh' }}
+    >
+      <Grid item xs={3}>
+        <InventoryForm/>
+      </Grid>
+      <Grid item md={12}>
+        <InventoryTable/>
+      </Grid>
+    </Grid>
   </div>
 }

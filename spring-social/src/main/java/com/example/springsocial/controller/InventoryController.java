@@ -37,7 +37,6 @@ public class InventoryController {
         Inventory inventory = new Inventory();
         inventory.setRestaurantName(InventoryRequest.getRestaurantName());
         inventory.setRestaurantID(InventoryRequest.getRestaurantID());
-        inventory.setItemID(InventoryRequest.getItemID());
         inventory.setItemName(InventoryRequest.getItemName());
         inventory.setBatchID(InventoryRequest.getBatchID());
         inventory.setBatchQty(InventoryRequest.getBatchQty());
@@ -54,10 +53,11 @@ public class InventoryController {
     }
 
     @GetMapping("/getAllInventory")
+
     /**
     * This method is used to call all the items in the inventory.
     */
-    public List<Inventory> getAllOrders(){
+    public List<Inventory> getAllInventory(){
         return inventoryRepository.findAll();
     }
 }

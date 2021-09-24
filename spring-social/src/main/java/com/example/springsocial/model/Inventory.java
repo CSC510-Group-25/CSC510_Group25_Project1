@@ -2,6 +2,7 @@ package com.example.springsocial.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
+import org.hibernate.annotations.GenericGenerator;
 
 
 import javax.persistence.*;
@@ -18,7 +19,8 @@ public class Inventory {
     @Column(nullable = false, name = "restaurant_id")
     private String restaurantID;
 
-    @Id
+    @Id @GeneratedValue(generator="system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
     @Column(nullable = false, name = "item_id")
     private String itemID;
 
