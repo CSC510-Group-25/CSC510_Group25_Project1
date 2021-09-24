@@ -1,4 +1,3 @@
-package com.company;
 
 public class Order {
     Recipe recipe; // the recipe / ordered dish
