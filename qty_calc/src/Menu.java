@@ -1,4 +1,3 @@
-package com.company;
 
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonException;
@@ -41,8 +40,7 @@ public class Menu {
         return null;
     }
 
-
-
+    
     //TODO
     // given a recipe ID or name, fetch the recipe from the given file.
     public static Recipe RecipeFetcher(String recipeName, String filePath) throws FileNotFoundException, JsonException {
