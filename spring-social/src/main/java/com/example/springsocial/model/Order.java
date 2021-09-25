@@ -8,7 +8,6 @@ import java.util.Date;
 
 public class Order {
 
-
     @Column(nullable = false, name = "restaurant_id")
     private String restaurantId;
 

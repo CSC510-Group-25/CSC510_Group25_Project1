@@ -3,6 +3,7 @@ package com.example.springsocial.controller;
 import com.example.springsocial.model.Order;
 import com.example.springsocial.payload.OrderRequest;
 import com.example.springsocial.repository.OrderRepository;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,7 +35,11 @@ public class OrderController {
 
     @GetMapping("/getAllOrders")
     public List<Order> getAllOrders(){
-        return orderRepository.findAll();
+
+        List<Order> order =  orderRepository.findAll();
+//        String orderJson = new Gson().toJson(order);
+        return order;
+
     }
 
 
