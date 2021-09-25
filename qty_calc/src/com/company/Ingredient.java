@@ -2,13 +2,23 @@ package com.company;
 
 import com.github.cliftonlabs.json_simple.JsonObject;
 
+
+/**
+ * INGREDIENT class for Recipes.
+ */
+
+/*TODO:
+        retrieve dbID from database, maybe handled elsewhere?
+        CLEANUP
+ */
 public class Ingredient {
 
     String ingredientName; // itemName
-    String dbID;           // retrieved from DB if it's there
-    double local_qty;
-    String local_unit;
+    String dbID;           // retrieved from DB if it's there. CONSIDER: possible bugs with batch numbers.
+    double local_qty;     //TODO: CANNOT BE NEGATIVE. Ensure input check occurs when the user is adding items
+                          // to the database AND when adding ingredients to recipes.
 
+    String local_unit;
     JsonObject ingredientJson;
 
     // constructor for testing
@@ -20,13 +30,13 @@ public class Ingredient {
         this.local_qty = local_qty;
         this.ingredientJson = ingredientJson;
     }
-
-
+    // also for testing
     public Ingredient(String ingredientName, String dbID, double local_qty, String local_unit) {
         this.ingredientName = ingredientName;
         this.dbID = dbID;
         this.local_qty = local_qty;
         this.local_unit = local_unit;
+        this.ingredientJson = ingredientAsJson();
     }
 
     // construct from a json object
@@ -36,12 +46,13 @@ public class Ingredient {
         this.dbID = (String) this.ingredientJson.get("ing_DBID");
         this.local_qty = Double.parseDouble(this.ingredientJson.get("local_qty").toString());
         this.local_unit = (String) this.ingredientJson.get("local_unit");
-
     }
 
-
-    // construct an ingredient from a string
-    // input example: [butter, 2001, 20, oz]
+    /**
+     * construct an ingredient from a string
+     * input example: [butter, 2001, 20, oz]
+     * @param ingstr
+     */
     public Ingredient(String ingstr){
 
         String[] nuArr = stringTrimmr(ingstr);
@@ -99,4 +110,3 @@ public class Ingredient {
         return returnMe;
     }
 }
-
