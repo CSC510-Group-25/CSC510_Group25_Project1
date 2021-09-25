@@ -6,6 +6,8 @@ Manual testing should be done through an IDE for sanity's sake and for easy debu
 
 Also, if you're using an IDE, you can easily follow the TODO trail in each class.
 
+json-simple docs: https://cliftonlabs.github.io/json-simple/target/apidocs/index.html
+
 
 ------
 
