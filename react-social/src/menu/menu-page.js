@@ -17,7 +17,7 @@ export default function MenuPage() {
 
   return <div>
     <Box className={classes.root}>
-      <Typography h2>Menu</Typography>
+      <Typography>Menu</Typography>
     </Box>
   </div>
 }
