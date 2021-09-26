@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fd71e76-0b6a-435e-bd1f-4c8a16416536" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/spring-social/create_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/spring-social/create_table.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-social/src/main/java/com/example/springsocial/model/UserTemp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
