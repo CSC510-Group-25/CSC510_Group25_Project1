@@ -1,4 +1,4 @@
-package com.qtycalc;
+//package com.qtycalc;
 
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonException;
