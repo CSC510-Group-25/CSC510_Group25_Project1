@@ -24,6 +24,10 @@
              </plugins>
              
     </build>
+        
+         <sourceDirectory>${basedir}/qty_calc/src/main/resources</sourceDirectory>
+         <testSourceDirectory>${basedir}/qty_calc/src/test/resources</testSourceDirectory>
+         
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -36,12 +40,6 @@
             <groupId>com.github.cliftonlabs</groupId>
             <artifactId>json-simple</artifactId>
             <version>4.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>RELEASE</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
