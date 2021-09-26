@@ -1,4 +1,4 @@
-package com.qty_calc;
+//package com.qty_calc;
 
 public class Order {
     Recipe recipe; // the recipe / ordered dish
