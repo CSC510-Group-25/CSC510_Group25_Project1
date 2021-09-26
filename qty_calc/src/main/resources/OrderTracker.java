@@ -1,4 +1,4 @@
-package com.qtycalc;
+//package com.qtycalc;
 
 import java.util.ArrayList;
 import java.util.HashMap;
