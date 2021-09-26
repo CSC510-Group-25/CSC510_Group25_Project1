@@ -34,11 +34,11 @@ public class OrderController {
     }
 
     @GetMapping("/getAllOrders")
-    public List<Order> getAllOrders(){
+    public String getAllOrders(){
 
         List<Order> order =  orderRepository.findAll();
-//        String orderJson = new Gson().toJson(order);
-        return order;
+        String orderJson = new Gson().toJson(order);
+        return orderJson;
 
     }
 

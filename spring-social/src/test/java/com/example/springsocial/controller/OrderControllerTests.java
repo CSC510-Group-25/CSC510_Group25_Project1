@@ -73,12 +73,11 @@ public class OrderControllerTests {
 
     @BeforeEach
     public void setUp() {
-
+        mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
     }
 
     @Test
     void whenValidInput_thenReturns200() throws Exception {
-        mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
         String uri = "/getAllOrders";
         Order demo_order = new Order();
         demo_order.setOrderId("o10");
@@ -94,10 +93,29 @@ public class OrderControllerTests {
 
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
-        String content = mvcResult.getResponse().getContentAsString();
+//        String content = mvcResult.getResponse().getContentAsString();
+//
+//        Order[] orderList = mapFromJson(content, Order[].class);
+//        assertTrue(orderList.length > 0);
+    }
 
-        Order[] orderList = mapFromJson(content, Order[].class);
-        assertTrue(orderList.length > 0);
+    @Test
+    void Validate_addOrders() throws Exception {
+        String uri = "/addOrder";
+
+        Order demo_order = new Order();
+        demo_order.setOrderId("o10");
+        demo_order.setRestaurantId("r10");
+        demo_order.setOrderQuantity(20);
+        demo_order.setDishName("Dish10");
+        List<Order> demo_list = new ArrayList<Order>(Arrays.asList(demo_order));
+        String demoOrderJson = new Gson().toJson(demo_list);
+
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(demoOrderJson)).andReturn();
+
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
     }
 
 }
