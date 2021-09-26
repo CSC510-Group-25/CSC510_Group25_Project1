@@ -1,3 +1,4 @@
+package com.qtycalc;
 
 public class Order {
     Recipe recipe; // the recipe / ordered dish
@@ -29,11 +30,9 @@ public class Order {
 
     @Override
     public String toString(){
-
         String returnMe = this.recipe.getRecipeName() + ": ID " + this.recipe.getRecipeID() + "\n"
                 + "Number of successful orders: " +this.num_orders +"\n"
                 + "Number of failed orders: " + this.num_failures;
-
         return returnMe;
     }
 }

@@ -1,6 +1,6 @@
+package com.qtycalc;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class QuantityCalculator {
@@ -580,7 +580,7 @@ public class QuantityCalculator {
         private Double agg; //aggregate
 
 
-        public Aggregator(String name, String db_unit,Double agg) {
+        public Aggregator(String name, String db_unit, Double agg) {
             this.name = name;
             this.db_unit = db_unit;
             this.agg = agg;
@@ -628,7 +628,7 @@ public class QuantityCalculator {
     //// MANUALLY TEST AND DEBUG THINGS DOWN HERE ////
 
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
         OrderTracker ot = new OrderTracker();
         //ot.createOrders();
@@ -643,11 +643,8 @@ public class QuantityCalculator {
         //System.out.println(ot.toString());
 
         MockDB mdb = new MockDB("mock_dbs/db1.txt");
-
         QuantityCalculator qc = new QuantityCalculator(mdb);
-
         qc.Calculator(ot);
-
         System.out.println(qc.getReportString());
 
     }

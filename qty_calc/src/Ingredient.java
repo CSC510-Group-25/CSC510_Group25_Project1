@@ -1,7 +1,9 @@
+package com.qtycalc;
 
 import com.github.cliftonlabs.json_simple.JsonObject;
 
 //INGREDIENT class for Recipes.
+//TODO: NULL CHECKS.
 public class Ingredient {
 
     String ingredientName; // itemName
@@ -82,6 +84,27 @@ public class Ingredient {
     public double getLocal_qty() { return local_qty; }
     public String getLocal_unit() { return local_unit; }
     public JsonObject getIngredientJson() { return ingredientJson; }
+
+    public boolean isEqual(Object o){
+
+        if(o==null){ return false; }
+
+        if (!(o instanceof Ingredient)) { return false; }
+
+        Ingredient ing = (Ingredient) o;
+
+        /*
+        if(ing.ingredientName.equals(this.ingredientName) && ing.dbID.equals(this.dbID)
+            && ing.local_qty==this.local_qty && ing.local_unit.equals(this.local_unit)){
+            return true;
+        }
+        else{
+            return false;
+        }*/
+
+        // the lazy way
+        return (this.toString().equals(ing.toString()));
+    }
 
     @Override
     public String toString() {

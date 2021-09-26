@@ -1,3 +1,4 @@
+package com.qtycalc;
 
 import java.util.Scanner;
 
@@ -77,7 +78,6 @@ public class UnitConverter {
         //if (local_unit.contains("dry")){ return convertDry(qty,local_unit,db_unit); }
 
         if (local_unit.contains("liquid")){ return convertLiquid(qty,local_unit,db_unit); }
-
 
         if(db_unit.equals("oz")){
             return oz(qty, local_unit);
@@ -244,7 +244,7 @@ public class UnitConverter {
             //val = Double.parseDouble(nuThing);
 
 
-            val = qty * 0.0022;
+            val = qty / 454;
 
             //String thing = String.format("%.4f",val);
 
@@ -253,7 +253,7 @@ public class UnitConverter {
 
         // kgs to lbs
         else if (local_unit.equals("kgs")){
-            val = qty * 2.2;
+            val = qty * 2.205;
             returnVal = Double.toString(val);
         }
         else {
@@ -338,8 +338,9 @@ public class UnitConverter {
             returnVal = Double.toString(val);
         }
 
+        //TODO: possibly incorrect
         else if (local_unit.equals("lbs")){
-            val = qty / 2.2;
+            val = qty / 2.205;
             returnVal = Double.toString(val);
         }
         else {
@@ -415,7 +416,6 @@ public class UnitConverter {
             */
 
         }
-
 
 
         // oz to gram
@@ -720,13 +720,13 @@ public class UnitConverter {
         }
 
         else if (local_unit.equals("pints")){
-            val = qty / 16;
+            val = qty * 16;
             returnVal = Double.toString(val);
 
         }
 
         else if (local_unit.equals("quarts")){
-            val = qty / 32;
+            val = qty * 32;
             returnVal = Double.toString(val);
 
         }
@@ -975,6 +975,8 @@ public class UnitConverter {
     // FOR MANUAL / TERMINAL TESTING
     public static void main(String[] args) {
 
+
+
         Scanner sc = new Scanner(System.in);
 
         double qty = 0.0;
@@ -985,6 +987,8 @@ public class UnitConverter {
         boolean goodVal = false;
         boolean goodLU = false;
         boolean goodDU = false;
+
+        // pints, quarts
 
         String[] goodLUs =
                 {"lbs","kgs","grams","oz",
@@ -1100,6 +1104,8 @@ public class UnitConverter {
         System.out.println(printMe);*/
 
         sc.close();
+
+
 
     }
 }

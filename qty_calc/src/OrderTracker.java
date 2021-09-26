@@ -1,9 +1,11 @@
+package com.qtycalc;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
 // To run this, call createOrders() on an OrderTracker object or just use the main method.
+//TODO: incomplete class
 public class OrderTracker {
 
     //     RecipeID, Order
@@ -199,10 +201,6 @@ public class OrderTracker {
     }
 
 
-
-
-
-
     /*
     TODO:
     ADD AN OPTION THAT WILL ALLOW THE USER TO GET A RECIPE'S ID BY USING THE RECIPE'S NAME.
@@ -216,13 +214,11 @@ public class OrderTracker {
         boolean done = false;
 
         System.out.println("Please follow the instructions as they appear to create an order.");
-
         Scanner sc = new Scanner(System.in);
 
         while(!done){
 
             System.out.println("Create an order");
-
             Recipe r = getRecipe_Order(sc);
             int success = -1;
             int fails = -1;
@@ -346,14 +342,10 @@ public class OrderTracker {
     public static void main(String[] args){
 
         OrderTracker ot = new OrderTracker();
-
         // UNCOMMENT IF YOU WANT TO RUN MANUAL TESTS.
          ot.createOrders();
 
         //TO PRINT ORDERS:
-         System.out.println(ot.toString());
-
-
+        // System.out.println(ot.toString());
     }
-
 }

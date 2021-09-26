@@ -1,3 +1,4 @@
+package com.qtycalc;
 
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonException;
@@ -9,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 //Class to build .json files from .txt files, and .txt files from .json files
@@ -272,13 +274,21 @@ public class BuildFile {
     }
 
 
-    //TODO: ALLOW OVERWRITES
     // recipeID can be a name or an ID.
+
+    /**
+     *
+     * @param filePath -- directory
+     * @param recipeID
+     * @return
+     */
     private static String getJsonPath(String filePath, String recipeID){
 
         String rID = recipeID.replaceAll("\\s+", "_").toLowerCase();
         String jsonFile = "recipe_" + rID + ".json";
         Path path1 = Paths.get(filePath).toAbsolutePath();
+
+        Scanner sc = new Scanner(System.in);
 
         if (Files.exists(path1)) {
             if (Files.isDirectory(path1)) {
@@ -288,10 +298,14 @@ public class BuildFile {
 
                 if (Files.exists(path)) {
                     System.out.println("A .json file already exists for recipe ID: " +recipeID);
-                    //TODO: Overwrite? y/n:
+                    String overwrite = YesNo(sc, "\nOverwrite? y/n: ");
+
+                    if (overwrite.equals("y")) {
+                        sc.close();
+                        return path.toString();
+                    }
                     return "";
                 }
-
                 else {
                     return path.toString();
                 }
@@ -309,7 +323,12 @@ public class BuildFile {
                 if (Files.exists(path) && !Files.isDirectory(path)) {
                     System.out.println("A .json file already exists for recipe ID: " +recipeID);
 
-                    //TODO: Overwrite? y/n:
+                    String overwrite = YesNo(sc, "\nOverwrite? y/n: ");
+
+                    if (overwrite.equals("y")) {
+                        sc.close();
+                        return path.toString();
+                    }
 
                     return "";
                 }
@@ -319,6 +338,28 @@ public class BuildFile {
             }
         }
         System.out.println(path1 + " does not exist.");
+        return "";
+    }
+
+
+    // bypass IO and just... replace files.
+    private static String getJsonPathBypass(String filePath, String recipeID){
+        String rID = recipeID.replaceAll("\\s+", "_").toLowerCase();
+        String jsonFile = "recipe_" + rID + ".json";
+        Path path1 = Paths.get(filePath).toAbsolutePath();
+        if (Files.exists(path1)) {
+            if (Files.isDirectory(path1)) {
+                String nuPath = path1 + File.separator + jsonFile;
+                Path path = Paths.get(nuPath).toAbsolutePath();
+                return path.toString();
+            } else if (!Files.isDirectory(path1)) {
+                //System.out.println("The path given is to a file and not a directory. Searching parent directory...");
+                String dir = String.valueOf(Paths.get(filePath).toAbsolutePath().getParent());
+                String nuPath = dir + File.separator + jsonFile;
+                Path path = Paths.get(nuPath).toAbsolutePath();
+                return path.toString();
+                }
+            }
         return "";
     }
 
@@ -369,7 +410,9 @@ public class BuildFile {
      *
      * Intended to be used to save a menu, but there may be other uses for it.
      *
-     * INCOMPLETE METHOD. DO NOT USE OUTSIDE OF TESTING.
+     * Is also used to save a MockDB object.
+     *
+     * INCOMPLETE METHOD.
      *
      * @param jar
      * @param directory
@@ -503,7 +546,7 @@ public class BuildFile {
 
         if(jsonFile.isEmpty()){
             System.out.println("Could not save recipe.");
-            return;
+            return;// false;
         }
 
         boolean overwrite = true;
@@ -515,10 +558,115 @@ public class BuildFile {
         try (FileWriter fileWriter = new FileWriter(String.valueOf(jsonFile))) {
             Jsoner.serialize(recipe, fileWriter);
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            //return false;
         }
+
+        //return true;
     }
 
+
+
+
+
+    /**
+     * Saves a recipe to a directory
+     * This version allows bypassing IO for ease of use
+     *
+     * @param recipe
+     * @param directory
+     */
+    public static boolean SaveRecipeJsonForTesting(JsonObject recipe, String directory){
+
+        String rID = (String) recipe.get("recipeID");
+        rID = rID.replaceAll("\\s+", "_").toLowerCase();
+        String jsonFile = getJsonPathBypass(directory,rID);
+
+        if(jsonFile.isEmpty()){
+            //System.out.println("Could not save recipe.");
+            return false;
+        }
+
+        try (FileWriter fileWriter = new FileWriter(String.valueOf(jsonFile))) {
+            Jsoner.serialize(recipe, fileWriter);
+        } catch (IOException e) {
+            return false;
+            //e.printStackTrace();
+        }
+        return true;
+    }
+
+
+
+    /**
+     *
+     * Waits for "y" or "n" input
+     *
+     * @param sc
+     * @param arg
+     * @return
+     */
+    private static String YesNo(Scanner sc, String arg) {
+        // System.out.print(arg);
+
+        boolean goodInput = false;
+        String yn = "";
+
+        System.out.print(arg);
+
+        while (!goodInput) {
+
+            yn = sc.nextLine();
+
+            if (yn.equals("y")) {
+                goodInput = true;
+            } else if (yn.equals("n")) {
+                goodInput = true;
+
+            } else {
+                System.out.println("Please enter 'y' or 'n'.");
+            }
+        }
+        return yn;
+    }
+
+
+    /**
+     * Checks if a .json or .txt file exists for the given recipe ID.
+     *
+     * Checks recipe_folder.
+     *
+     * @param recipeID
+     * @return boolean -- true if the file exists, false if not
+     */
+    public static boolean RecipeExists(String recipeID) {
+
+        Path path1 = Paths.get("recipe_folder").toAbsolutePath();
+
+        if (Files.exists(path1) && Files.isDirectory(path1)) {
+            // replace spaces with underscores.
+            String rID = recipeID.replaceAll("\\s+", "_").toLowerCase();
+
+            String jsonFile = "recipe_" + rID + ".json";
+            String txtFile = "recipe_" + rID + ".txt";
+
+            String jpathstr = path1 + File.separator + jsonFile;
+            String txtpathstr = path1 + File.separator + txtFile;
+
+            Path jpath = Paths.get(jpathstr).toAbsolutePath();
+            Path tpath = Paths.get(txtpathstr).toAbsolutePath();
+
+            if (Files.exists(jpath) && !Files.isDirectory(jpath)) {
+                //System.out.println("A .json file exists for recipe ID: " +recipeID);
+                return true;
+            }
+            if (Files.exists(tpath) && !Files.isDirectory(tpath)) {
+                //System.out.println("A .txt file exists for recipe ID: " +recipeID);
+                return true;
+            }
+        }
+        return false;
+    }
 
 
     /////////////////////////////////////////////

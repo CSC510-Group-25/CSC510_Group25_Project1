@@ -1,8 +1,10 @@
+package com.qtycalc;
 
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonException;
 import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsoner;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -27,9 +29,8 @@ import java.util.Scanner;
 
 //TODO:
 /*    add multiple (method)
-      read from json
-      write json
-
+      ENABLE ITEM CONSTRUCTION VIA I/O
+      REFACTOR !!! OPTIMIZE !!! CLEAN UP !!!
       Generate unique dbIDs for every object
       MAKE COMPATIBLE WITH ITEM BATCHES (Maybe? This is JUST for the quantity calculator?)
  */
@@ -400,6 +401,15 @@ public class MockDB {
     public boolean hasItem(String key){ return this.db.containsKey(key); }
 
 
+    public boolean isEqual(Object o){
+        if(o==null){ return false; }
+        if (!(o instanceof MockDB)) { return false; }
+        MockDB nu = (MockDB) o;
+        // the lazy way
+        return (this.toString().equals(nu.toString()));
+    }
+
+
     /////////////////////////////////////////
     // MANUAL TESTING DOWN HERE //
 
@@ -407,9 +417,6 @@ public class MockDB {
     public static void main(String[] args) throws Exception {
 
         MockDB mdb = new MockDB("mock_dbs/db1.txt");
-        mdb.saveAsJson("mock_dbs","db1.json");
-
-
+        //mdb.saveAsJson("mock_dbs","db1.json");
     }
-
 }

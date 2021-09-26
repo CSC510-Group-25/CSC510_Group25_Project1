@@ -1,7 +1,12 @@
+package com.qtycalc;
+
 
 import com.github.cliftonlabs.json_simple.JsonObject;
 
-//ITEM for database inventory, used in MockDB
+/*
+ITEM for DATABASE inventory
+
+ */
 public class Item {
 
     String itemName;

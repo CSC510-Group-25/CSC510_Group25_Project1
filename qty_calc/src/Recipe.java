@@ -1,16 +1,25 @@
+package com.qtycalc;
 
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonException;
 import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsoner;
-import java.io.*;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 //TODO: ALLOW MODIFICATION OF RECIPES
 //TODO: BADLY NEEDS TO BE CLEANED UP.
 //TODO: ENSURE THAT EACH INGREDIENT IS UNIQUE.
+// May benefit from a hashmap.
+// ALLOW CREATION OF RECIPES THROUGH I/O
 
 public class Recipe {
 
@@ -135,11 +144,9 @@ public class Recipe {
      * Creates a JsonObject
      */
     private void buildJsonRecipe(){
-
         //TODO: ADD NULL CHECK
 
         this.recipeJson = new JsonObject();
-
         this.recipeJson.put("recipeName", this.recipeName);
         this.recipeJson.put("recipeID", this.recipeID);
 
@@ -354,21 +361,52 @@ public class Recipe {
         this.recipeJson = recipeJson;
     }
 
-    //TODO: ENSURE EVERYTHING IS UPDATED, including .json, .txt, etc
-    // ENSURE NO DUPLICATES ?
-    public void addIngredient(Ingredient ing){
+
+    /**
+     * Adds an ingredient to the recipe.
+     * @param ing
+     * @return
+     */
+    public boolean addIngredient(Ingredient ing){
+        for(Ingredient i : this.ingredientList){
+            if (i.isEqual(ing)){ // identical in every way
+                return false;
+            }
+            if (i.dbID.equals(ing.dbID)){ // just in case there's an error with names...
+                return false;
+            }
+        }
         this.ingredientList.add(ing);
+        return true;
+    }
+
+    /**
+     * Removes an ingredient from the recipe.
+     * @param ing
+     * @return
+     */
+    public boolean removeIngredient(Ingredient ing){
+        for(int i=0; i<this.ingredientList.size(); i++){
+            if (this.ingredientList.get(i).isEqual(ing)) {
+                this.ingredientList.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isEqual(Object o){
+        if(o==null){ return false; }
+        if (!(o instanceof Recipe)) { return false; }
+        Recipe r = (Recipe) o;
+        // the lazy way
+        return (this.toString().equals(r.toString()));
     }
 
 
-    //TODO
-    // after adding/removing ingredients, use this and construct a new recipe json.
-    public void updateRecipe(){ }
-
-
-
     /**
-     * Creates and returns a json object representation of the recipe
+     * Creates and returns a json object representation of the recipe.
+     *
      * @return JsonObject
      */
     private JsonObject buildJson(){
@@ -387,7 +425,6 @@ public class Recipe {
             ingjar.add(ingj);
         }
         jo.put("ingredient_list",ingjar);
-
         return jo;
     }
 
@@ -403,13 +440,24 @@ public class Recipe {
     }
 
 
+    /**
+     * Include destination folder
+     *
+     * This is to bypass IO for test cases.
+     *
+     * @param destinationFolder
+     */
+    public void saveRecipeAsJsonTest(String destinationFolder) throws IOException {
+        JsonObject jo = buildJson();
+        BuildFile.SaveRecipeJsonForTesting(jo,destinationFolder);
+    }
+
+
     @Override
     public String toString() {
 
         StringBuilder str = new StringBuilder();
-
         String returnMe = this.recipeName + "\n" + this.recipeID;
-
         str.append(returnMe);
 
         for (Ingredient ingr : this.ingredientList){
@@ -419,14 +467,12 @@ public class Recipe {
         return str.toString();
     }
 
-
     ////////////////////////////////////////////////////
 
     public static void main(String[] args){
 
         try {
             Recipe r = new Recipe("recipe_folder/recipe_0001.txt");
-
 
         } catch (Exception e) {
             e.printStackTrace();
