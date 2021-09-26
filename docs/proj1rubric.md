@@ -1,27 +1,27 @@
 | Notes|self-assesment|evidence|
 |-----|-----|---------|
 |workload is spread over the whole team (one team member is often Xtimes more productive than the others... 
-but nevertheless, here is a track record that everyone is contributing a lot)||evidence  in GH|
-| Number of commits||in GH|
-| Number of commits: by different people||in GH|
-| Issues reports: there are **many**|
-|  issues are being  closed||evidence in GH|
-| DOI badge: exists ||in GH|
+but nevertheless, here is a track record that everyone is contributing a lot)|3|evidence  in GH|
+| Number of commits|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1|
+| Number of commits: by different people|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1/pulse|
+| Issues reports: there are **many**|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1/projects/1|
+|  issues are being  closed|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1/projects/1|
+| DOI badge: exists |3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1|
 |Docs: doco generated , format not ugly ||in GH|
 |Docs: what: point descriptions of each class/function (in isolation) ||
-|Docs: how: for common use cases X,Y,Z mini-tutorials showing worked examples on how to do X,Y,Z||doc page entries|
-|Docs: why: docs tell a story, motivate the whole thing, deliver a punchline that makes you want to rush out and use the thing|
-|Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code.|
+|Docs: how: for common use cases X,Y,Z mini-tutorials showing worked examples on how to do X,Y,Z|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1/blob/main/docs/DemoScript.docx|
+|Docs: why: docs tell a story, motivate the whole thing, deliver a punchline that makes you want to rush out and use the thing|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1|
+|Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code.|||
 | Use of version control tools|
 |Use of  style checkers ||config files in GH showing your config|
 | Use of code  formatters. ||config files in GH showing your this formatter's  config|
 | Use of syntax checkers. ||config files iin  GH showing this checker's config  |
 | Use of code coverage ||config files in GH|
 | other automated analysis tools||config files in GH|
-| test cases exist||dozens of tests and those test cases are more than 30% of the  code base|
+| test cases exist|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1/tree/main/spring-social/src/test/java/com/example/springsocial|
 | test cases are routinely executed||e.g. travis-com.com or github actions or something|
- | the files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up||
-| issues are discussed before they are closed||even if you discuss in slack, need a sumamry statement here|
+ | the files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1/blob/main/CONTRIBUTING.md|
+| issues are discussed before they are closed|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1/issues/55|
 | Chat channel: exists||
 | test cases:.a large proportion of the issues related to handling failing cases.||if a test case fails, open an issue and fix it|
 | evidence that the whole team is using the same tools: everyone can get to all tools and files||
