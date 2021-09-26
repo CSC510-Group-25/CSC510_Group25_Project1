@@ -23,10 +23,12 @@
             </plugin>
              </plugins>
              
+                      <sourceDirectory>${basedir}/qty_calc/src/main/resources</sourceDirectory>
+         <testSourceDirectory>${basedir}/qty_calc/src/test/resources</testSourceDirectory>
+             
     </build>
         
-         <sourceDirectory>${basedir}/qty_calc/src/main/resources</sourceDirectory>
-         <testSourceDirectory>${basedir}/qty_calc/src/test/resources</testSourceDirectory>
+
          
     <dependencies>
         <dependency>
