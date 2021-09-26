@@ -55,8 +55,8 @@
 
 
     <build>
-        <sourceDirectory>qty_calc/src/main/java</sourceDirectory>
-        <testSourceDirectory>qty_calc/src/test/java</testSourceDirectory>
+        <sourceDirectory>src</sourceDirectory>
+        <testSourceDirectory>test</testSourceDirectory>
              
         <plugins>
             <plugin>
