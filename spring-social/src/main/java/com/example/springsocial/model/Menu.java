@@ -5,7 +5,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "menu")
-
 public class Menu{
 
     @Column(nullable = false, name = "restaurant_id")

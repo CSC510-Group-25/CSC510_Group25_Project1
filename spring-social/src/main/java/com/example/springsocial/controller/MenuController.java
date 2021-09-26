@@ -19,11 +19,11 @@ public class MenuController{
     private MenuRepository menuRepository;
 
     @PostMapping("/addMenu")
-    public String addMenu(@Valid @RequestBody MenuRepository MenuRepository){
+    public String addMenu(@Valid @RequestBody MenuRequest MenuRequest){
 
         Menu menu = new Menu();
-        menu.setRestaurantID(MenuRequest.getRestaurantID());
-        menu.setDishID(MenuRequest.getDishID());
+        menu.setRestaurantId(MenuRequest.getRestaurantID());
+        menu.setDishId(MenuRequest.getDishID());
         menu.setDishName(MenuRequest.getDishName());
         menu.setDishPointer(MenuRequest.getDishPointer());
         menu.setCostPerDish(MenuRequest.getCostPerDish());
