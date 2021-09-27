@@ -3,6 +3,7 @@ package com.example.springsocial.controller;
 import com.example.springsocial.model.Menu;
 import com.example.springsocial.payload.MenuRequest;
 import com.example.springsocial.repository.MenuRepository;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -31,5 +32,12 @@ public class MenuController{
         Menu result = menuRepository.save(menu);
         return "{Menu Added Successfully}";
     }
+
+    @GetMapping("/getAllMenus")
+    public String getAllMenus(){
+
+        List<Menu> menu =  menuRepository.findAll();
+        String menuJson = new Gson().toJson(menu);
+        return menuJson;
 
 }
