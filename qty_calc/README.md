@@ -1,6 +1,6 @@
 # Quantity Calculator #
 
-[![unit_tests](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/actions/workflows/build.yml/badge.svg)](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/actions/workflows/build.yml)
+[![unit_tests](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/actions/workflows/QtyCalcTests.yml/badge.svg)](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/actions/workflows/QtyCalcTests.yml)
 
 This directory contains the code and test cases for a major component of this project, the Quantity Calculator.  
 
