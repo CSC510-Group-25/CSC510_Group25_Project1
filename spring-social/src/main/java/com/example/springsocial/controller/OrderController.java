@@ -30,7 +30,9 @@ public class OrderController {
         order.setDate(orderRequest.getDate());
 
         Order result = orderRepository.save(order);
-        return "{Order Added Successfully}";
+        String outputString = "{Order Added Successfully}";
+        outputString =  new Gson().toJson(outputString);
+        return outputString;
     }
 
     @GetMapping("/getAllOrders")

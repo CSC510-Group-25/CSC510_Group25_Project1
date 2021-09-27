@@ -33,6 +33,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,6 +48,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = OrderController.class)
 @WebAppConfiguration
+@EnableWebMvc
 public class OrderControllerTests {
 
     @Autowired
@@ -85,8 +87,8 @@ public class OrderControllerTests {
         demo_order.setOrderQuantity(20);
         demo_order.setDishName("Dish10");
 
-        List<Order> demo_list = new ArrayList<Order>(Arrays.asList(demo_order));
-        String demoOrderJson = new Gson().toJson(demo_list);
+//        List<Order> demo_list = new ArrayList<Order>(Arrays.asList(demo_order));
+        String demoOrderJson = new Gson().toJson(demo_order);
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(uri)
                 .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
@@ -96,6 +98,7 @@ public class OrderControllerTests {
 //        String content = mvcResult.getResponse().getContentAsString();
 //
 //        Order[] orderList = mapFromJson(content, Order[].class);
+//        System.out.println(orderList.length);
 //        assertTrue(orderList.length > 0);
     }
 
@@ -108,9 +111,10 @@ public class OrderControllerTests {
         demo_order.setRestaurantId("r10");
         demo_order.setOrderQuantity(20);
         demo_order.setDishName("Dish10");
-        List<Order> demo_list = new ArrayList<Order>(Arrays.asList(demo_order));
-        String demoOrderJson = new Gson().toJson(demo_list);
-
+        demo_order.setDishId("d10");
+//        List<Order> demo_list = new ArrayList<Order>(Arrays.asList(demo_order));
+        String demoOrderJson = new Gson().toJson(demo_order);
+        System.out.println(demoOrderJson);
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(uri)
                 .contentType(MediaType.APPLICATION_JSON_VALUE).content(demoOrderJson)).andReturn();
 
