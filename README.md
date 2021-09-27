@@ -11,6 +11,7 @@ You also need to setup mysql. Make sure that mysql is installed in your local ma
 ```bash
 mysql -u root -p < create_table.sql
 ```
+This command will create the database inventory_tracker and inside the database, users table will be formed. 
 
 For plotting the line graphs use below versions:
 ```bash
@@ -19,5 +20,4 @@ npm i chart.js@2.9.4
 
 ```
 
-This command will create the database inventory_tracker and inside the database, users table will be formed. 
 
