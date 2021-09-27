@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fd71e76-0b6a-435e-bd1f-4c8a16416536" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/CSC510_Group25_Project1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CSC510_Group25_Project1.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/react-social/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/react-social/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-social/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/react-social/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/react-social/src/analytics/analytics-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-social/src/analytics/analytics-page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-social/src/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-social/src/app/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/react-social/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/react-social/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-social/create_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/spring-social/create_table.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-social/src/main/java/com/example/springsocial/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-social/src/main/java/com/example/springsocial/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-social/src/main/java/com/example/springsocial/model/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-social/src/main/java/com/example/springsocial/model/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-social/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-social/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +38,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
   </component>
   <component name="RunManager">
     <configuration name="SpringSocialApplication" type="Application" factoryName="Application" temporary="true">
@@ -79,7 +77,10 @@
       <workItem from="1632599389622" duration="198000" />
       <workItem from="1632599940037" duration="1377000" />
       <workItem from="1632601574620" duration="5119000" />
-      <workItem from="1632614369954" duration="566000" />
+      <workItem from="1632614369954" duration="8273000" />
+      <workItem from="1632673145834" duration="2991000" />
+      <workItem from="1632699798551" duration="7356000" />
+      <workItem from="1632721968681" duration="1024000" />
     </task>
     <servers />
   </component>
@@ -108,5 +109,9 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
