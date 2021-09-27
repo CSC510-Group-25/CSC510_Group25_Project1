@@ -17,7 +17,7 @@ export default function AnalyticsPage() {
   const classes = useStyles();
   return <div>
     <Box className={classes.root}>
-      <Typography h2>Analytics</Typography>
+      <Typography>Analytics</Typography>
     </Box>
     <LineChart />
   </div>
