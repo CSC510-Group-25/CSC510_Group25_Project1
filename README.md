@@ -1,6 +1,6 @@
 # 86 No More, A Kitchen Intelligence Solution
 
-![Build Status](https://github.com/snapcat/CSC510_HW2b_Group25/workflows/build/badge.svg)
+![Build Status](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/workflows/build/badge.svg)
 [![DOI](https://zenodo.org/badge/402155508.svg)](https://zenodo.org/badge/latestdoi/402155508)
 
 ## About:
