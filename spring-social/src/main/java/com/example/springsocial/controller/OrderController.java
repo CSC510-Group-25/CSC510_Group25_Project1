@@ -1,16 +1,16 @@
 package com.example.springsocial.controller;
 
-import com.example.springsocial.model.Inventory;
 import com.example.springsocial.model.Order;
-import com.example.springsocial.payload.InventoryRequest;
 import com.example.springsocial.payload.OrderRequest;
 import com.example.springsocial.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 public class OrderController {
@@ -30,6 +30,11 @@ public class OrderController {
 
         Order result = orderRepository.save(order);
         return "{Order Added Successfully}";
+    }
+
+    @GetMapping("/getAllOrders")
+    public List<Order> getAllOrders(){
+        return orderRepository.findAll();
     }
 
 

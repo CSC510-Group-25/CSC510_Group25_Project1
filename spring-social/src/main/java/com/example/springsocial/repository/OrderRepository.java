@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Repository
 @RequestMapping("/orders")
@@ -17,5 +18,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 //    @PostMapping("/addOrder")
 //
 //    public ResponseEntity<?> addOrder(@Valid, @RequestBody OrderRequest orderRequest)
+    List<Order> findAll();
+
 
 }
