@@ -9,6 +9,7 @@
     "@material-ui/lab": "^4.0.0-alpha.60",
     "@material-ui/pickers": "^3.3.10",
     "date-fns": "^2.24.0",
+    "material-ui-icons": "^1.0.0-beta.36",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-draggable": "^4.4.4",

@@ -22,6 +22,7 @@ class Home extends Component {
                             <div className="graf-circle"></div>
                         </div>
                     </div>
+                    <br/>
                     <b className="home-subtitle">America loses up to 218 BILLION
                         dollars from wasted food</b>
                     <br/>
