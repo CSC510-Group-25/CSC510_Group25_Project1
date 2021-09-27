@@ -1,4 +1,3 @@
-package com.company;
 
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonException;
@@ -9,26 +8,14 @@ import java.io.FileNotFoundException;
 
 public class Menu {
 
-
-
-
-    /*
-    HANDLES ORDERS?
-     */
-
+    /////// INCOMPLETE CLASS ///////
 
     /*
     Methods:
-
     TODO: set up recipe folder
     add new dish/recipe
     remove dish/recipe
-
-    track orders
-
-
     retrieve recipe
-
      */
 
     /**TODO
@@ -40,9 +27,6 @@ public class Menu {
      * @return
      */
     public static Recipe FindRecipeByName(String recipeName){
-
-
-
         return null;
     }
 
@@ -53,58 +37,15 @@ public class Menu {
      * @return
      */
     public static Recipe FindRecipeByID(String recipeID){
-
         return null;
     }
 
-
-
-
+    
     //TODO
     // given a recipe ID or name, fetch the recipe from the given file.
     public static Recipe RecipeFetcher(String recipeName, String filePath) throws FileNotFoundException, JsonException {
-
-        if(!filePath.endsWith(".json")){
-
-            //TODO:
-            // PROBLEMS.
-
-        }
-
-        Recipe r = null;
-
-        JsonArray jar =  BuildFile.ReadJsonMenu(filePath);
-
-        for (int i =0; i < jar.size(); i++){
-            JsonObject jo = (JsonObject) jar.get(i);
-
-            if(jo != null){
-
-                jo.get(recipeName);
-
-                //if
-
-
-            }
-
-
-
-
-
-        }
-
-
-       // Recipe r = BuildFile.recipeFromJsonMenu(jar, recipeIDName);
-
-
         return null;
-
     }
-
-
-
-
-
 
 
 

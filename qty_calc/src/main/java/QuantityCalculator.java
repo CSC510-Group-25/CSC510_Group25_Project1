@@ -1,9 +1,7 @@
-package com.company;
+//package com.qty_calc;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
 public class QuantityCalculator {
 
@@ -69,8 +67,7 @@ public class QuantityCalculator {
         this.reportFailed = new ArrayList<>();
     }
 
-    /*
-     * Given <recipe, num_orders, num_failed>:
+    /* Given <recipe, num_orders, num_failed>:
      *
      * Maintain a list of all UNIQUE ingredients in all given recipes.
      * HashMap<...><...> <ingr, aggregate, db_unit>
@@ -117,12 +114,9 @@ public class QuantityCalculator {
 
 
     // CHECK IF dbList is null!
-
-
     public boolean checkMissingIngredients(Recipe recipe) {
 
         boolean missing = false;
-
         ArrayList<Ingredient> ings = recipe.getIngredientList();
         for (Ingredient i : ings) {
             String key = i.getIngredientName();
@@ -153,20 +147,15 @@ public class QuantityCalculator {
     }
 
 
-
     //TODO: Integrate with aggregate handling
     // include failed orders
     public String generateOrderReport(Order o){
         StringBuilder str = new StringBuilder();
-
         Recipe recipe = o.getRecipe();
-
         String title = "Conversion report for " + recipe.getRecipeName() + "\n";
         str.append(title);
-
         str.append(o.toString());
         str.append("\n");
-
         ArrayList<Ingredient> ings = recipe.getIngredientList();
         for (Ingredient i : ings) {
             String key = i.getIngredientName();
@@ -176,11 +165,9 @@ public class QuantityCalculator {
                 str.append(msg);
                 break;
             }
-
             String dbu = this.db.getDBU(key);
             str.append(conversionMsgHandler(i,dbu));
         }
-
         return str.toString();
     }
 
@@ -200,9 +187,7 @@ public class QuantityCalculator {
         // msg5: "illegal unit"
 
         String convert = UnitConverter.convertTo(qty, localU, dbU);
-
         StringBuilder str = new StringBuilder();
-
         String returnMsg = "Converting " + qty + " " +localU + " to " +dbU +"\nResult: ";
         str.append(returnMsg);
 
@@ -226,7 +211,6 @@ public class QuantityCalculator {
                 str.append(printMe);
                 break;
         }
-
         str.append("\n");
         return str.toString();
     }
@@ -297,10 +281,6 @@ public class QuantityCalculator {
         ArrayList<String> allkeys = new ArrayList<>();
         ArrayList<Ingredient> ings = r.getIngredientList();
 
-        //ArrayList<String> oaLog = new ArrayList<>();
-
-        //StringBuilder str = new StringBuilder();
-
         String title = "Order Report for:\n";
         str.append(title);
         str.append(o.toString());
@@ -315,13 +295,11 @@ public class QuantityCalculator {
             if(!allkeys.contains(key)){
                 allkeys.add(key);
             }
-
             String dbu = this.db.getDBU(key);
 
             // if(dbu.isEmpty()){ fails =true; } should not happen at all
 
             Double nuQty = qty * numS;  //
-
             Double convert = UnitConverter.convertToDouble(nuQty, localU, dbu);
 
             // cheese: converting 8 lbs to kgs
@@ -359,19 +337,16 @@ public class QuantityCalculator {
             }
 
             str.append("\n");
-
             // reason will be noted in log.
             if(convert==null) {
                 fails = true;
                 //failed.add(key);
             }
-
             else {
                 Aggregator nuag = new Aggregator(key, dbu, convert);
                 nuAggs.add(nuag);
             }
         }
-
         String nuLog = str.toString();
         OrderAssist oa = new OrderAssist(fails,nuAggs,nuLog);
         return oa;
@@ -416,13 +391,10 @@ public class QuantityCalculator {
             if (!missing) {
 
                 OrderAssist oa = OrderConverter(o);
-
                 boolean failedConversion = oa.isFails();
-
                 report.add(oa.getLog());
 
                 if (failedConversion) {
-
                     for (Aggregator agg : oa.getAglist()) {
 
                         String key = agg.getName();
@@ -430,7 +402,6 @@ public class QuantityCalculator {
                         if (!ingredientKeys.contains(key)) {
                             ingredientKeys.add(key);
                         }
-
                         // if there already exists an aggregate for the key...
                         if (this.excluded.get(key) != null) {
                             Double old = this.excluded.get(key).getAgg();
@@ -457,7 +428,6 @@ public class QuantityCalculator {
                             Double nuVal = old + agg.getAgg();
                             this.aggregates.get(key).setAgg(nuVal);
                         }
-
                         // if not, add it to the aggregates.
                         this.aggregates.putIfAbsent(key, agg);
                     }
@@ -466,20 +436,15 @@ public class QuantityCalculator {
             } if(missing){
                 // skip order
                 // ... but add a list of missing ingredients to the report.
-
                 StringBuilder str = new StringBuilder();
-
                 String title = "Order Report\n";
                 str.append(title);
-
                 str.append(o.toString());
                 str.append("\n");
-
                 StringBuilder missingIngs = new StringBuilder();
                 ArrayList<Ingredient> ings = r.getIngredientList();
 
                 for(Ingredient i : ings){
-
                     String key = i.getIngredientName();
                     boolean check = checkIngredient(key);
 
@@ -488,12 +453,9 @@ public class QuantityCalculator {
                         missingIngs.append(msg);
                     }
                 }
-
                 str.append(missingIngs.toString());
-
                 String nustr = "This order of " + r.getRecipeName() + " will be discarded.";
                 str.append(nustr);
-
                 report.add(str.toString());
             }
         }
@@ -543,12 +505,8 @@ public class QuantityCalculator {
             System.out.println("Empty database, cannot perform any calculations.");
             return;
         }
-
         AggregateHandler(ot);
     }
-
-
-
 
 
 
@@ -594,17 +552,14 @@ public class QuantityCalculator {
      * @return a string
      */
     public String getReportString(){
-
         if((this.report!=null) && (!this.report.isEmpty())){
             StringBuilder nu = new StringBuilder();
             for(String str : this.report){
                 String nuStr = str + "\n";
-
                 nu.append(nuStr);
             }
             return nu.toString();
         }
-
         return "";
     }
 
@@ -625,17 +580,14 @@ public class QuantityCalculator {
         private Double agg; //aggregate
 
 
-        public Aggregator(String name, String db_unit,Double agg) {
+        public Aggregator(String name, String db_unit, Double agg) {
             this.name = name;
             this.db_unit = db_unit;
             this.agg = agg;
         }
 
-
         public Double getAgg() { return agg; }
-
         public void setAgg(Double agg) { this.agg = agg; }
-
         public String getdb_unit() { return db_unit; }
         public String getName() { return name; }
 
@@ -656,9 +608,9 @@ public class QuantityCalculator {
      */
     public class OrderAssist{
 
-        boolean fails;
-        ArrayList<Aggregator> aglist;
-        String log;
+        private boolean fails;
+        private ArrayList<Aggregator> aglist;
+        private String log;
 
         public OrderAssist(boolean fails, ArrayList<Aggregator> aglist, String log) {
             this.fails = fails;
@@ -667,9 +619,7 @@ public class QuantityCalculator {
         }
 
         public boolean isFails() { return fails; }
-
         public ArrayList<Aggregator> getAglist() { return aglist; }
-
         public String getLog() { return log; }
     }
 
@@ -678,7 +628,7 @@ public class QuantityCalculator {
     //// MANUALLY TEST AND DEBUG THINGS DOWN HERE ////
 
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
         OrderTracker ot = new OrderTracker();
         //ot.createOrders();
@@ -693,18 +643,9 @@ public class QuantityCalculator {
         //System.out.println(ot.toString());
 
         MockDB mdb = new MockDB("mock_dbs/db1.txt");
-
         QuantityCalculator qc = new QuantityCalculator(mdb);
-
         qc.Calculator(ot);
-
         System.out.println(qc.getReportString());
 
-
-
-
     }
-
-
-
 }
