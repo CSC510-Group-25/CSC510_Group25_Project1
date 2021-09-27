@@ -13,6 +13,18 @@
     margin-top: 50px; 
 }
 
+.home-subtitle {
+    font-size: 25px;
+    font-weight: 300;
+    color: rgba(0,0,0,0.70);
+}
+
+.home-ref {
+    font-size: 10px;
+    font-weight: 200;
+    color: rgba(0,0,0,0.70);
+}
+
 .graf-bg-container {
     width: 100%;
     height: 310px;
