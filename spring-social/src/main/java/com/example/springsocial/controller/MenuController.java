@@ -33,11 +33,12 @@ public class MenuController{
         return "{Menu Added Successfully}";
     }
 
-    @GetMapping("/getAllMenus")
-    public String getAllMenus(){
-
-        List<Menu> menu =  menuRepository.findAll();
-        String menuJson = new Gson().toJson(menu);
-        return menuJson;
+//    @GetMapping("/getAllMenus")
+//    public String getAllMenus() {
+//
+//        List<Menu> menu = menuRepository.findAll();
+//        String menuJson = new Gson().toJson(menu);
+//        return menuJson;
+//    }
 
 }
