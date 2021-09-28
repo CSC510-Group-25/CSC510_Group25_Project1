@@ -15,7 +15,7 @@ Quantity Calculator:
 As customers decide on what to order at a restaurant, there is no worse feeling than hearing your 
 waiter tell them that their item of choice is no longer available. To prevent this issue,
 we have created an inventory tracker that will be able to track all the quantities of ingredients but 
-also have features that are beneficial to a restaurant. Our software will have is 
+also have features that are beneficial to your restaurant. Our software will have
 the ability to send notifications to the manager when quantities for certain items are running low.
 In addition, our product will have an analytics page that will be able to display total sales, orders,
 and amount of waste per month. This product will allow restaurants to become more profitable while also
@@ -54,6 +54,16 @@ CSS\
 MySQL
 
 ## Demo:
+Every Restaurant will create and account with our application through the sign-up page\
+https://user-images.githubusercontent.com/42051115/135179244-895f7cb1-5c5d-458d-93b3-b2c521edfd4d.png
+
+After signing up, the user can check the inventory that they currently have left\
+https://user-images.githubusercontent.com/42051115/135180678-ae5158c6-124e-4d2e-9db8-c0e39c6c1449.png
+
+When certain ingredients are running low or about to expire, they will be notified\
+https://user-images.githubusercontent.com/42051115/135180676-4941f523-553d-4586-be5b-a2a2b3992a5f.png
+
+The user may go to the analytics page to see analysis of how their restaurant is doing monthly
 
 
 ## Steps for Running Backend:
