@@ -1,7 +1,11 @@
 # 86 No More, A Kitchen Intelligence Solution
 
-![Build Status](https://github.com/snapcat/CSC510_HW2b_Group25/workflows/build/badge.svg)
+![Build Status](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/workflows/maven_build/badge.svg)
 [![DOI](https://zenodo.org/badge/402155508.svg)](https://zenodo.org/badge/latestdoi/402155508)
+[![Made with](https://img.shields.io/badge/Made%20with-Java-blue)](https://www.java.com/en/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://github.com/elric97/CalBot/blob/master/LICENSE)
+[![GitHub issues open](https://img.shields.io/github/issues/elric97/CalBot)](https://github.com/elric97/CalBot/issues)
+
 
 ## About:
 As customers decide on what to order at a restaurant, there is no worse feeling than hearing your 
@@ -29,6 +33,8 @@ You also need to setup mysql. Make sure that mysql is installed in your local ma
 mysql -u root -p < create_table.sql
 ```
 
+This command will create the database inventory_tracker and inside the database, users table will be formed. 
+
 For plotting the line graphs use below versions:
 ```bash
 npm i react-chartjs-2@2.11.1
@@ -36,5 +42,4 @@ npm i chart.js@2.9.4
 
 ```
 
-This command will create the database inventory_tracker and inside the database, users table will be formed. 
 

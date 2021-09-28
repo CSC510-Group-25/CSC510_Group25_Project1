@@ -13,7 +13,12 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
-
+/**
+ * What: The Inventory Controller is responsible for processing incoming REST API's requests.
+ *
+ * How: The common use cases of this class is to allow the user to add/edit/remove inventory from the database by
+ * processing the user request from the frontend.
+ */
 @RestController
 public class InventoryController {
 
@@ -21,13 +26,17 @@ public class InventoryController {
     private InventoryRepository inventoryRepository;
 
     @PostMapping("/addInventory")
+    /**
+    * This method is called when the user requests to add a new item into the inventory database.
+    * It does this by taking the request and then setting the parameters given into their respective variables of the
+    * database and then saving all the information into the database.
+    */
     public String addInventory(@Valid @RequestBody InventoryRequest InventoryRequest) {
 
         //Adding new item to inventory
         Inventory inventory = new Inventory();
         inventory.setRestaurantName(InventoryRequest.getRestaurantName());
         inventory.setRestaurantID(InventoryRequest.getRestaurantID());
-        inventory.setItemID(InventoryRequest.getItemID());
         inventory.setItemName(InventoryRequest.getItemName());
         inventory.setBatchID(InventoryRequest.getBatchID());
         inventory.setBatchQty(InventoryRequest.getBatchQty());
@@ -44,7 +53,11 @@ public class InventoryController {
     }
 
     @GetMapping("/getAllInventory")
-    public List<Inventory> getAllOrders(){
+
+    /**
+    * This method is used to call all the items in the inventory.
+    */
+    public List<Inventory> getAllInventory(){
         return inventoryRepository.findAll();
     }
 }

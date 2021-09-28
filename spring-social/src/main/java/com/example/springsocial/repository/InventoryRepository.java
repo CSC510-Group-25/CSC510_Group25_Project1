@@ -9,6 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
+/**
+* The inventory repository is a mechanism for encapsulating storage, retrieval, and search behavior which emulates
+* a collection of objects.
+*/
 public interface InventoryRepository extends JpaRepository<Inventory, String>{
 
     List<Inventory> findAll();

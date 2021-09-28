@@ -24,3 +24,6 @@ hs_err_pid*
 
 # intellij idea files #
 .idea/
+
+package-lock.json
+yarn.lock
