@@ -13,6 +13,9 @@ In addition, our product will have an analytics page that will be able to displa
 and amount of waste per month. This product will allow restaurants to become more profitable while also
 being beneficial to the planet as there will be less waste generated in the restaurant industry.
 
+### Watch this video to know more about our product:
+https://user-images.githubusercontent.com/42051115/135004434-50d95b77-87a3-4c18-8d35-b680c63239b0.mp4
+
 ## Steps for Running Backend
 You can directly use Eclipse or Intellj to open up the project and run SpringSocialApplication.java file. You can also the start code from terminal. You need to update sql username and password in resources/application.yml file.
 
