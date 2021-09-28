@@ -82,15 +82,15 @@ public class OrderControllerTests {
     @Test
     void whenValidInput_thenReturns200() throws Exception {
         String uri = "/getAllOrders";
-        Order demo_order = new Order();
-        demo_order.setOrderId("o10");
-        demo_order.setRestaurantId("r10");
-        demo_order.setOrderQuantity(20);
-        demo_order.setDishName("Dish10");
+        order = new Order();
+        order.setOrderId("o10");
+        order.setRestaurantId("r10");
+        order.setOrderQuantity(20);
+        order.setDishName("Dish10");
 
 
-        List<Order> demo_list = new ArrayList<Order>(Arrays.asList(demo_order));
-        String demoOrderJson = new Gson().toJson(demo_order);
+        List<Order> demo_list = new ArrayList<Order>(Arrays.asList(order));
+        String demoOrderJson = new Gson().toJson(order);
 
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(uri)

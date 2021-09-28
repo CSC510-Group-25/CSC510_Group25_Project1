@@ -1,23 +1,26 @@
 package com.example.springsocial.controller;
 
 
-import com.example.springsocial.model.Inventory;
-import com.example.springsocial.repository.InventoryRepository;
-import com.example.springsocial.security.TokenProvider;
+import com.example.springsocial.model.User;
+import com.example.springsocial.repository.UserRepository;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+
 import org.springframework.http.MediaType;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -31,14 +34,13 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.io.IOException;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = InventoryController.class)
+@SpringBootTest(classes = UserController.class)
 @WebAppConfiguration
 @EnableWebMvc
-public class InventoryControllerTests {
+public class UserControllerTests {
 
     @Autowired
     private WebApplicationContext context;
@@ -57,10 +59,10 @@ public class InventoryControllerTests {
     }
 
     @MockBean
-    private Inventory inventory;
+    private User user;
 
     @MockBean
-    private InventoryRepository inventoryRepository;
+    private UserRepository userRepository;
 
     @BeforeEach
     public void setUp() {
@@ -68,36 +70,22 @@ public class InventoryControllerTests {
     }
 
     @Test
-    void whenValidInput_thenReturns200() throws Exception {
-        String uri = "/getAllInventory";
+    @WithMockUser("demo_user")
+    void whenInvalidUser_thenReturns404() throws Exception {
 
+        String uri = "/user/me";
+
+        user = new User();
+        user.setName("test_user");
+        user.setPassword("test");
+        user.setId(1001L);
+        String userDemo = new Gson().toJson(user);
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(uri)
-                .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+                .contentType(MediaType.APPLICATION_JSON_VALUE).content(userDemo)).andReturn();
 
         int status = mvcResult.getResponse().getStatus();
-        assertEquals(200, status);
-    }
+        assertEquals(404, status);
 
-    @Test
-    void Validate_addOrders() throws Exception {
-        String uri = "/addInventory";
-
-        Inventory demo_inventory = new Inventory();
-        demo_inventory.setBatchID("b12");
-        demo_inventory.setBatchQty(10);
-        demo_inventory.setCostPerItem(100);
-        demo_inventory.setItemName("Coke");
-        demo_inventory.setRestaurantID("r10");
-        demo_inventory.setRestaurantName("demo_res");
-        demo_inventory.setItemID("i10");
-
-
-        String demoInventoryDemo = new Gson().toJson(demo_inventory);
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(uri)
-                .contentType(MediaType.APPLICATION_JSON_VALUE).content(demoInventoryDemo)).andReturn();
-
-        int status = mvcResult.getResponse().getStatus();
-        assertEquals(200, status);
     }
 
 }
