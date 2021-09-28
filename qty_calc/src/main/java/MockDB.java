@@ -1,4 +1,5 @@
-//package com.qty_calc;
+//package com.qtycalc;
+
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonException;
 import com.github.cliftonlabs.json_simple.JsonObject;
@@ -17,7 +18,7 @@ import java.util.Scanner;
 
 
 /**
- * THIS IS A MOCK DB.
+ * THIS IS A MOCK DB. Simulates a very rudimentary database
  *
  * It allows the user to:
  *
@@ -39,13 +40,20 @@ public class MockDB {
     HashMap<String, Item> db;// = new HashMap<>();
     ArrayList<String> keys;
 
+    /**
+     * Constructor
+     * @param db HashMap<String, Item>
+     */
     public MockDB(HashMap<String, Item> db) {
         this.db = db;
         //GET KEYS
         this.keys = new ArrayList<>(db.keySet());
     }
 
-    //new map
+    /**
+     * Constructor
+     *
+     */
     public MockDB(){
         this.db = new HashMap<>();
         this.keys = new ArrayList<>();
@@ -54,7 +62,7 @@ public class MockDB {
     /**
      * Construct DB from a .json or .txt
      *
-     * @param filePath
+     * @param filePath -- String, must end with .txt or .json
      * @throws IOException
      * @throws JsonException
      */
@@ -85,8 +93,8 @@ public class MockDB {
     /**
      * Remove item from database
      *
-     * @param item
-     * @return
+     * @param item -- Item
+     * @return boolean
      */
     public boolean removeItem(Item item) {
 
@@ -132,8 +140,8 @@ public class MockDB {
     /**
      * Add item to database
      *
-     * @param item
-     * @return
+     * @param item Item
+     * @return boolean
      */
     public boolean addItem(Item item){
 
@@ -187,7 +195,11 @@ public class MockDB {
         return added;
     }
 
-    // to bypass CLI
+
+    /**
+     * to bypass CLI
+     * @param item
+     */
     public void quickAdd(Item item){
         if(item==null){
             System.out.println("quickAdd null");
@@ -200,7 +212,10 @@ public class MockDB {
         }
     }
 
-    // to bypass CLI
+    /**
+     * to bypass CLI
+     * @param item
+     */
     public void quickRemove(Item item){
         if(item==null){
             System.out.println("quickRemove null");
@@ -212,7 +227,7 @@ public class MockDB {
     }
 
     // I don't care, I just want to do things.
-    public void addr(Item item){
+/*    public void addr(Item item){
         String key = item.getDbID();
         db.put(key,item);
         if(!keys.contains(key)) {
@@ -223,7 +238,7 @@ public class MockDB {
         String key = item.getDbID();
         db.remove(key);
         keys.remove(key);
-    }
+    }*/
 
 
     //TODO: are you sure? y/n CLI
@@ -234,9 +249,6 @@ public class MockDB {
     public void addMany(){ }
 
     //public void readJson() {}
-
-
-
 
     /**
      *
@@ -302,7 +314,7 @@ public class MockDB {
 
     /**
      *
-     * @param filePath
+     * @param filePath String
      * @throws FileNotFoundException
      * @throws JsonException
      */
@@ -384,9 +396,10 @@ public class MockDB {
     public ArrayList<String> getKeys() { return keys; }
 
     /**
-     * If the DB contains the key, returns the database unit
+     * If the DB contains the key, returns the database unit.
+     * If it doesn't have the key, returns empty string.
      * @param key
-     * @return
+     * @return String
      */
     public String getDBU(String key){
         if(this.db.get(key)==null){
@@ -400,6 +413,11 @@ public class MockDB {
     public boolean hasItem(String key){ return this.db.containsKey(key); }
 
 
+    /**
+     * Lazy 'override' of .equals()
+     * @param o Object
+     * @return boolean
+     */
     public boolean isEqual(Object o){
         if(o==null){ return false; }
         if (!(o instanceof MockDB)) { return false; }

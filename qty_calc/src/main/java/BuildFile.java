@@ -1,4 +1,4 @@
-//package com.qty_calc;
+//package com.qtycalc;
 
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonException;
@@ -12,15 +12,13 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
-//Class to build .json files from .txt files, and .txt files from .json files
+/**Class to build .json files from .txt files, and .txt files from .json files
+ */
 public class BuildFile {
 
     //TODO: save recipes as .txt
     //TODO: CLEAN UP, REFACTOR, OPTIMIZE
     //TODO: MAKE DIRECTORIES somewhere, I guess?
-
-
     /**
      * Checks if a given directory exists.
      *
@@ -37,7 +35,6 @@ public class BuildFile {
         }
     }
 
-
     /**
      * Checks if a json file exists for the given recipe ID.
      * If the filepath given leads to a text file, the method checks the directory of
@@ -49,8 +46,8 @@ public class BuildFile {
      *
      *     If filePath leads to a directory, then that directory will be checked.
      *
-     * @param filePath
-     * @param recipeID
+     * @param filePath String
+     * @param recipeID String
      * @return boolean -- true if the file exists, false if not
      */
     public static boolean JsonExists(String filePath, String recipeID) { // TODO: BUG RISK, AM I REDUNDANT?
@@ -111,8 +108,8 @@ public class BuildFile {
      *
      *     If filePath leads to a directory, then that directory will be checked.
      *
-     * @param filePath
-     * @param recipeID
+     * @param filePath String
+     * @param recipeID String
      * @return boolean -- true if the file exists, false if not
      */
     public static boolean RecipeExists(String filePath, String recipeID) {
@@ -192,8 +189,8 @@ public class BuildFile {
      *
      * Used by OrderTracker
      *
-     * @param filePath
-     * @param recipeID
+     * @param filePath String
+     * @param recipeID String
      * @return null or a recipe, if it exists
      */
     public static Recipe RecipeFromID(String filePath, String recipeID) {
@@ -274,12 +271,12 @@ public class BuildFile {
     }
 
 
-    // recipeID can be a name or an ID.
-
     /**
+     *recipeID can be a name or an ID.
+     * Internal helper.
      *
      * @param filePath -- directory
-     * @param recipeID
+     * @param recipeID String
      * @return
      */
     private static String getJsonPath(String filePath, String recipeID){
@@ -342,7 +339,12 @@ public class BuildFile {
     }
 
 
-    // bypass IO and just... replace files.
+    /**
+     * bypass IO and just... replace files.
+     * @param filePath
+     * @param recipeID
+     * @return
+     */
     private static String getJsonPathBypass(String filePath, String recipeID){
         String rID = recipeID.replaceAll("\\s+", "_").toLowerCase();
         String jsonFile = "recipe_" + rID + ".json";
@@ -366,7 +368,7 @@ public class BuildFile {
 
     //TODO: ENSURE THAT FILEPATH CONTAINS "recipe_folder" !!!
     /**
-     * Saves a recipe as a .json file.
+     * Saves a recipe as a .json file. Incomplete, unused.
      *
      * @param recipe -- recipe to be saved
      * @param filePath -- destination folder
@@ -414,9 +416,9 @@ public class BuildFile {
      *
      * INCOMPLETE METHOD.
      *
-     * @param jar
-     * @param directory
-     * @param fileName
+     * @param jar JsonArray
+     * @param directory String
+     * @param fileName String
      * @throws IOException
      */
     public static void SaveJsonArray(JsonArray jar, String directory, String fileName) throws IOException {
@@ -452,8 +454,8 @@ public class BuildFile {
 
     /**
      * Extracts and returns a recipe from a JsonObject.
-     * @param jo
-     * @return
+     * @param jo JsonObject
+     * @return Recipe
      */
     public static Recipe recipeFromJson(JsonObject jo) {
 
@@ -565,10 +567,6 @@ public class BuildFile {
         //return true;
     }
 
-
-
-
-
     /**
      * Saves a recipe to a directory
      * This version allows bypassing IO for ease of use
@@ -602,7 +600,7 @@ public class BuildFile {
      *
      * Waits for "y" or "n" input
      *
-     * @param sc
+     * @param sc scanner
      * @param arg
      * @return
      */
