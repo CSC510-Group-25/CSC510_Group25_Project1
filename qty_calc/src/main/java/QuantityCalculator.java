@@ -1,8 +1,20 @@
-//package com.qty_calc;
+//package com.qtycalc;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+//TODO: if there aren't any failed orders or conversions,
+// allow user to subtract all aggregates from database.
+
+//TODO: handle failed orders
+// for each failed order, calculate how much of something is needed to prevent an ingredient shortage.
+// maybe have separate class for failed orders? May be necessary for the user to specify which ingredients
+// they were short on
+
+/** Quantity Calculator
+ *
+ */
 public class QuantityCalculator {
 
     MockDB db;
@@ -23,6 +35,8 @@ public class QuantityCalculator {
     See the report for more info.
     Display report? y/n: ...
     */
+    //TODO: generate report with above format
+
     //TODO: FAILED ORDERS DOES NOT REFER TO FAILED CONVERSIONS!!!
     //Each order has a number of successful orders and a number of failed orders.
     // Either, but not both, can be zero.
@@ -42,6 +56,10 @@ public class QuantityCalculator {
     ArrayList<String> reportFailed; //
 
 
+    /**
+     *
+     * @param db
+     */
     public QuantityCalculator(MockDB db) {
         this.db = db;
         this.dbList = db.getKeys();
@@ -113,7 +131,13 @@ public class QuantityCalculator {
      */
 
 
-    // CHECK IF dbList is null!
+    //TODO: CHECK IF dbList is null!
+
+    /**Checks if any ingredients in the recipe are missing from the database.
+     *
+     * @param recipe Recipe
+     * @return boolean
+     */
     public boolean checkMissingIngredients(Recipe recipe) {
 
         boolean missing = false;
@@ -149,6 +173,12 @@ public class QuantityCalculator {
 
     //TODO: Integrate with aggregate handling
     // include failed orders
+    /**
+     * Generates a conversion report for an order.
+     *
+     * @param o Order
+     * @return String
+     */
     public String generateOrderReport(Order o){
         StringBuilder str = new StringBuilder();
         Recipe recipe = o.getRecipe();
@@ -174,6 +204,13 @@ public class QuantityCalculator {
 
     //TODO: print to a file for logging.
     //TODO: Integrate with aggregate handling
+    /**
+     * Helper for generateOrderReport.
+     *
+     * @param ingredient
+     * @param dbU
+     * @return
+     */
     public String conversionMsgHandler(Ingredient ingredient, String dbU) {
 
         double qty = ingredient.getLocal_qty();
@@ -263,11 +300,11 @@ public class QuantityCalculator {
 
 
     /**
-     * All the work is done here.
+     * Helper method for AggregateHandler
      * TODO: IMPLEMENT FAILED ORDERS
      *
-     * @param o
-     * @return
+     * @param o Order
+     * @return OrderAssist
      */
     public OrderAssist OrderConverter(Order o){
 
@@ -372,13 +409,14 @@ public class QuantityCalculator {
     See the report for more info.
     Display report? y/n: ...
     */
-
     /**
      * A whole lot happens here. Call this on an OrderTracker.
      *
-     * TODO: actually make a good doc
+     * This method handles aggregations of orders.
      *
-     * @param ot
+     * TODO: IMPLEMENT FAILED ORDERS
+     *
+     * @param ot OrderTracker
      */
     public void AggregateHandler(OrderTracker ot) {
 
@@ -464,6 +502,30 @@ public class QuantityCalculator {
 
     /**
      * No return for now.
+     *
+     * Sample call:
+     *
+     *         OrderTracker ot = new OrderTracker();
+     *
+     *         String f1 = "recipe_folder" + File.separator + "recipe_8000.json";
+     *         String f2 = "recipe_folder" + File.separator + "recipe_9000.json";
+     *
+     *         Recipe r8 = new Recipe(f1);
+     *         Recipe r9 = new Recipe(f2);
+     *
+     *         ot.createOrder(r8, 2,0);
+     *         ot.createOrder(r9,2,0);
+     *
+     *         String f3 = "mock_dbs" + File.separator + "db1.txt";
+     *         MockDB mdb = new MockDB(f3);
+     *
+     *         QuantityCalculator qc = new QuantityCalculator(mdb);
+     *
+     *         qc.Calculator(ot);
+     *
+     *         System.out.println(qc.getReportString());
+     *
+     *
      * TODO: handle failed orders
      * For each order, allow user to update database (IFF there are no failed conversions or missing ingredients)
      *
@@ -600,7 +662,7 @@ public class QuantityCalculator {
     }
 
 
-    /* Helper class for orders.
+    /** Helper class for orders.
 
     If an ingredient has a failed conversion, fails = true
     aglist is a list of successfully generated Aggregators
@@ -631,20 +693,29 @@ public class QuantityCalculator {
     public static void main(String[] args) throws Exception {
 
         OrderTracker ot = new OrderTracker();
+
+        //uncomment below to manually create orders
         //ot.createOrders();
 
-        Recipe r8 = new Recipe("recipe_folder/recipe_8000.json");
-        Recipe r9 = new Recipe("recipe_folder/recipe_9000.json");
-       // Recipe r1 = new Recipe()
+        // comment out below as needed
+        String f1 = "recipe_folder" + File.separator + "recipe_8000.json";
+        String f2 = "recipe_folder" + File.separator + "recipe_9000.json";
+
+        Recipe r8 = new Recipe(f1);
+        Recipe r9 = new Recipe(f2);
 
         ot.createOrder(r8, 2,0);
         ot.createOrder(r9,2,0);
 
         //System.out.println(ot.toString());
 
-        MockDB mdb = new MockDB("mock_dbs/db1.txt");
+        String f3 = "mock_dbs" + File.separator + "db1.txt";
+        MockDB mdb = new MockDB(f3);
+
         QuantityCalculator qc = new QuantityCalculator(mdb);
+
         qc.Calculator(ot);
+
         System.out.println(qc.getReportString());
 
     }

@@ -1,4 +1,4 @@
-//package com.qty_calc;
+//package com.qtycalc;
 
 public class Order {
     Recipe recipe; // the recipe / ordered dish
@@ -10,7 +10,6 @@ public class Order {
         this.num_orders = num_orders;
         this.num_failures = num_failures;
     }
-
     public Recipe getRecipe() {
         return recipe;
     }
@@ -27,6 +26,30 @@ public class Order {
         return num_failures;
     }
     public void setNum_failures(int num_failures) { this.num_failures = num_failures; }
+
+    /**
+     * A lazy 'override' of .equals()
+     *
+     * @param o Object
+     * @return boolean
+     */
+    public boolean isEqual(Object o){
+        if(o==null){ return false; }
+        if (!(o instanceof Order)) { return false; }
+        Order nu = (Order) o;
+        // the lazy way
+
+        if(this.recipe.getRecipeName().equals(nu.getRecipe().getRecipeName())
+                && this.num_orders==nu.getNum_orders()
+                && this.num_failures==nu.getNum_failures()){
+            return true;
+        }
+        else {
+            return false;
+        }
+
+       // return (this.toString().equals(nu.toString()));
+    }
 
     @Override
     public String toString(){

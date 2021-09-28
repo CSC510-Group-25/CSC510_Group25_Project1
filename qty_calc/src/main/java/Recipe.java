@@ -1,4 +1,4 @@
-//package com.qty_calc;
+//package com.qtycalc;
 
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonException;
@@ -33,6 +33,13 @@ public class Recipe {
     private JsonObject recipeJson;
     private ArrayList<Ingredient> ingredientList;
 
+    /**
+     *
+     * @param recipeName String
+     * @param recipeID String
+     * @param filePath String
+     * @param ingredientList ArrayList<Ingredient>
+     */
     public Recipe(String recipeName, String recipeID, String filePath,
                   ArrayList<Ingredient> ingredientList) {
 
@@ -43,6 +50,12 @@ public class Recipe {
     }
 
 
+    /**
+     *
+     * @param recipeName String
+     * @param recipeID String
+     * @param ingredientList ArrayList<Ingredient>
+     */
     public Recipe(String recipeName, String recipeID, ArrayList<Ingredient> ingredientList) {
         this.recipeName = recipeName;
         this.recipeID = recipeID;
@@ -50,6 +63,9 @@ public class Recipe {
         buildJsonRecipe();
     }
 
+    /**
+     *
+     */
     public Recipe(){
         this.recipeName = "";
         this.recipeID = "";
@@ -58,6 +74,13 @@ public class Recipe {
         this.recipeJson = new JsonObject();
     }
 
+    /**
+     *
+     * @param recipeName String
+     * @param recipeID String
+     * @param recipeJson JsonObject
+     * @param ingredientList ArrayList<Ingredient>
+     */
     public Recipe(String recipeName, String recipeID, JsonObject recipeJson, ArrayList<Ingredient> ingredientList) {
         this.recipeName = recipeName;
         this.recipeID = recipeID;
@@ -75,7 +98,7 @@ public class Recipe {
      *
      * File must end with .txt or .json.
      *
-     * @param filePath
+     * @param filePath String
      * @throws IOException
      * @throws JsonException
      */
@@ -99,7 +122,7 @@ public class Recipe {
 
     /**
      * Constructs a recipe from a json object.
-     * @param jo
+     * @param jo JsonObject
      */
     public Recipe(JsonObject jo) {
 
@@ -364,8 +387,8 @@ public class Recipe {
 
     /**
      * Adds an ingredient to the recipe.
-     * @param ing
-     * @return
+     * @param ing Ingredient
+     * @return boolean
      */
     public boolean addIngredient(Ingredient ing){
         for(Ingredient i : this.ingredientList){
@@ -382,8 +405,8 @@ public class Recipe {
 
     /**
      * Removes an ingredient from the recipe.
-     * @param ing
-     * @return
+     * @param ing Ingredient
+     * @return boolean
      */
     public boolean removeIngredient(Ingredient ing){
         for(int i=0; i<this.ingredientList.size(); i++){
@@ -395,6 +418,12 @@ public class Recipe {
         return false;
     }
 
+    /**
+     * A lazy 'override' of .equals()
+     *
+     * @param o Object
+     * @return boolean
+     */
     public boolean isEqual(Object o){
         if(o==null){ return false; }
         if (!(o instanceof Recipe)) { return false; }
@@ -430,9 +459,9 @@ public class Recipe {
 
 
     /**
-     * Include destination folder
+     * Saves this recipe to the given destination folder.
      *
-     * @param destinationFolder
+     * @param destinationFolder String
      */
     public void saveRecipeAsJson(String destinationFolder) throws IOException {
         JsonObject jo = buildJson();
@@ -445,13 +474,12 @@ public class Recipe {
      *
      * This is to bypass IO for test cases.
      *
-     * @param destinationFolder
+     * @param destinationFolder String
      */
     public void saveRecipeAsJsonTest(String destinationFolder) throws IOException {
         JsonObject jo = buildJson();
         BuildFile.SaveRecipeJsonForTesting(jo,destinationFolder);
     }
-
 
     @Override
     public String toString() {

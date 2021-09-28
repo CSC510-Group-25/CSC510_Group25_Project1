@@ -18,7 +18,7 @@ but nevertheless, here is a track record that everyone is contributing a lot)|3|
 | Use of syntax checkers. ||config files iin  GH showing this checker's config  |
 | Use of code coverage ||config files in GH|
 | other automated analysis tools||config files in GH|
-| test cases exist|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1/tree/main/spring-social/src/test/java/com/example/springsocial <br/> all *test.js files in https://github.com/CSC510-Group-25/CSC510_Group25_Project1/tree/main/react-social/src|
+| test cases exist|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1/tree/main/spring-social/src/test/java/com/example/springsocial <br/> all *test.js files in https://github.com/CSC510-Group-25/CSC510_Group25_Project1/tree/main/react-social/src <br/>qty_calc unit tests https://github.com/CSC510-Group-25/CSC510_Group25_Project1/tree/main/qty_calc/src/test/java|
 | test cases are routinely executed|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1/actions|
  | the files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1/blob/main/CONTRIBUTING.md|
 | issues are discussed before they are closed|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1/issues/55|

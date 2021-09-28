@@ -1,5 +1,9 @@
-//package com.qty_calc;
+//package com.qtycalc;
 
+import com.github.cliftonlabs.json_simple.JsonException;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -12,6 +16,10 @@ public class OrderTracker {
     HashMap<String, Order> orders;// = new HashMap<>();
     ArrayList<String> keys;  // list of recipe IDs
 
+    /**
+     *
+     * @param orders HashMap<String,Order>
+     */
     public OrderTracker(HashMap<String,Order> orders) {
         this.orders = orders;
         //GET KEYS
@@ -49,15 +57,15 @@ public class OrderTracker {
     }
 
 
-
     /**
      * Method to create an add an order to a list of orders.
      *
      * To return true: recipe is not null, success and fails not less than 0
      *
-     * Can be used to bypass the createOrders() method, which takes command line input.
+     * Can be used to bypass the createOrders() method, which takes command line input. Also does not rely on
+     * the existence of a recipe_folder directory.
      *
-     * @param recipe -- recipe
+     * @param recipe -- Recipe
      * @param success -- int, number of successful orders
      * @param fails -- int, number of failed orders
      * @return boolean -- true if the order is added, false if not
@@ -96,8 +104,8 @@ public class OrderTracker {
     /**
      * UI for number of successful orders
      *
-     * @param sc
-     * @return
+     * @param sc Scanner
+     * @return int
      */
     private int getSuccess(Scanner sc){
 
@@ -127,8 +135,8 @@ public class OrderTracker {
     /**
      * UI for number of failed orders
      *
-     * @param sc
-     * @return
+     * @param sc Scanner
+     * @return int
      */
     private int getFails(Scanner sc){
 
@@ -155,13 +163,12 @@ public class OrderTracker {
     }
 
 
-    //TODO: allow user to select which folder to search for recipes
+    //TODO: allow user to select which folder to search for recipes?
     /**
-     * UI
      * Helper for createOrders()
      *
-     * @param sc
-     * @return recipe
+     * @param sc Scanner
+     * @return Recipe
      */
     private Recipe getRecipe_Order(Scanner sc){
 
@@ -207,7 +214,7 @@ public class OrderTracker {
      */
 
     /**
-     * This is the thing you call.
+     * This is the method you call in main or QuantityCalculator to construct orders.
      */
     public void createOrders(){
 
@@ -282,7 +289,6 @@ public class OrderTracker {
 
     @Override
     public String toString(){
-
         boolean first = true;
         if( this.orders != null && !this.orders.isEmpty()){
             StringBuilder str = new StringBuilder();
@@ -304,12 +310,11 @@ public class OrderTracker {
 
 
     /**
-     *
      * Waits for "y" or "n" input
      *
-     * @param sc
-     * @param arg
-     * @return
+     * @param sc Scanner
+     * @param arg String
+     * @return String
      */
     private static String YesNo(Scanner sc, String arg) {
         // System.out.print(arg);
@@ -339,13 +344,24 @@ public class OrderTracker {
     /////// MANUAL TESTING DOWN HERE ///////
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException, JsonException {
 
         OrderTracker ot = new OrderTracker();
         // UNCOMMENT IF YOU WANT TO RUN MANUAL TESTS.
-         ot.createOrders();
+        // ot.createOrders();
+
+
+        // comment out below as needed
+        String f1 = "recipe_folder" + File.separator + "recipe_8000.json";
+        String f2 = "recipe_folder" + File.separator + "recipe_9000.json";
+
+        Recipe r8 = new Recipe(f1);
+        Recipe r9 = new Recipe(f2);
+
+        ot.createOrder(r8, 2,0);
+        ot.createOrder(r9,2,0);
 
         //TO PRINT ORDERS:
-        // System.out.println(ot.toString());
+         System.out.println(ot.toString());
     }
 }
