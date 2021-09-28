@@ -6,6 +6,9 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://github.com/elric97/CalBot/blob/master/LICENSE)
 [![GitHub issues open](https://img.shields.io/github/issues/CSC510-Group-25/CSC510_Group25_Project1)](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/issues)
 
+Quantity Calculator:  
+[![unit_tests](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/actions/workflows/QtyCalcTests.yml/badge.svg)](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/actions/workflows/QtyCalcTests.yml)
+
 
 ## About:
 As customers decide on what to order at a restaurant, there is no worse feeling than hearing your 
@@ -42,4 +45,5 @@ npm i chart.js@2.9.4
 
 ```
 
-
+### Steps for running Quantity Calculator
+https://github.com/CSC510-Group-25/CSC510_Group25_Project1/tree/main/qty_calc
