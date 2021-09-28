@@ -4,7 +4,7 @@
 [![DOI](https://zenodo.org/badge/402155508.svg)](https://zenodo.org/badge/latestdoi/402155508)
 [![Made with](https://img.shields.io/badge/Made%20with-Java-blue)](https://www.java.com/en/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://github.com/elric97/CalBot/blob/master/LICENSE)
-[![GitHub issues open](https://img.shields.io/github/issues/elric97/CalBot)](https://github.com/elric97/CalBot/issues)
+[![GitHub issues open](https://img.shields.io/github/issues/CSC510-Group-25/CSC510_Group25_Project1)](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/issues)
 
 
 ## About:
