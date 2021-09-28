@@ -15,7 +15,7 @@ To run:
 2. Inside your project, create two directories: **recipe_folder** and **mock_dbs**. These should be OUTSIDE your src directory.
 3. Add the jars in the lib folder to your classpath (json-simple)
 4. Create a .txt file for a recipe or mock database using the formats shown [here](#filef)
-5. Run the main method inside any class you want to test.
+5. Run and modify the main method inside any class you want to test.
 
 Each .java file should have a main method if you want to manually test.  
 (Examples are included)  
