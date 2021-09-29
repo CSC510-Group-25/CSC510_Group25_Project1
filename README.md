@@ -81,12 +81,18 @@ mysql -u root -p < create_table.sql
 
 This command will create the database inventory_tracker and inside the database, users table will be formed. 
 
-For plotting the line graphs use below versions:
+## Steps for Running Frontend:
+In a separate terminal window go to react-social folder and run
 ```bash
-npm i react-chartjs-2@2.11.1
-npm i chart.js@2.9.4
-
+npm install
 ```
+this will download all the dependencies in local node_module folder\
+then type the next command
+```bash
+npm start
+```
+this will start the application on localhost:3000
+
 
 ### Steps for running Quantity Calculator
 https://github.com/CSC510-Group-25/CSC510_Group25_Project1/tree/main/qty_calc
