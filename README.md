@@ -54,7 +54,7 @@ CSS\
 MySQL
 
 ## Demo:
-Every Restaurant will create and account with our application through the sign-up page\
+Every Restaurant will create an account with our application through the sign-up page\
 <img width="1200" alt="signup" src="https://user-images.githubusercontent.com/42051115/135179244-895f7cb1-5c5d-458d-93b3-b2c521edfd4d.png">
 
 After signing up, the user can check the inventory that they currently have left\
