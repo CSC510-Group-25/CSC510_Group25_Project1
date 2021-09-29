@@ -2,6 +2,7 @@
 <p align="center"><img width="1000" src="./docs/SE_image.png"></p>
 
 ![Build Status](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/workflows/maven_build/badge.svg)
+![Build Status](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/workflows/npm_build/badge.svg)
 [![DOI](https://zenodo.org/badge/402155508.svg)](https://zenodo.org/badge/latestdoi/402155508)
 [![Made with](https://img.shields.io/badge/Made%20with-Java-blue)](https://www.java.com/en/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://github.com/elric97/CalBot/blob/master/LICENSE)
