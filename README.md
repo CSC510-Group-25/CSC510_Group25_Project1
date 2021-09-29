@@ -16,7 +16,7 @@ Quantity Calculator:
 As customers decide on what to order at a restaurant, there is no worse feeling than hearing your 
 waiter tell them that their item of choice is no longer available. To prevent this issue,
 we have created an inventory tracker that will be able to track all the quantities of ingredients but 
-also have features that are beneficial to a restaurant. Our software will have is 
+also have features that are beneficial to your restaurant. Our software will have
 the ability to send notifications to the manager when quantities for certain items are running low.
 In addition, our product will have an analytics page that will be able to display total sales, orders,
 and amount of waste per month. This product will allow restaurants to become more profitable while also
@@ -28,22 +28,22 @@ https://user-images.githubusercontent.com/42051115/135004434-50d95b77-87a3-4c18-
 ## Technologies we used:
 <p align="left">
   <a href="https://www.java.com/en/" target="_blank"> 
-    <img src="https://img.icons8.com/ios/50/000000/java-coffee-cup-logo--v1.png" alt="java" width="30" height="30"/>
+    <img src="https://github.com/CSC510-Group-25/CSC510_Group25_Project1/blob/main/docs/java_logo.png" alt="java" width="40" height="40"/>
   </a>
   <a href="https://spring.io/projects/spring-boot" target="_blank"> 
-    <img src="https://spring.io/images/favicon-9d25009f65637a49ac8d91eb1cf7b75e.ico" alt="spring" width="30" height="30"/>
+    <img src="https://spring.io/images/favicon-9d25009f65637a49ac8d91eb1cf7b75e.ico" alt="spring" width="40" height="40"/>
   </a>
   <a href="https://www.reactjs.org" target="_blank">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" alt="react" width="30" height="30"/>
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" alt="react" width="40" height="40"/>
   </a>
   <a href="https://www.javascript.com" target="_blank"> 
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg" alt="js" width="30" height="30"/>
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg" alt="js" width="40" height="40"/>
   </a>
   <a href="https://developer.mozilla.org/en-US/docs/Glossary/CSS" target="_blank"> 
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-plain.svg" alt="css" width="30" height="30"/>
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-plain.svg" alt="css" width="40" height="40"/>
   </a>
   <a href="https://www.mysql.com/" target="_blank"> 
-    <img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" alt="mysql" width="30" height="30"/>
+    <img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" alt="mysql" width="40" height="40"/>
   </a>
 </p> 
 
@@ -55,6 +55,19 @@ CSS\
 MySQL
 
 ## Demo:
+Our Home Page
+<img width="1200" alt="home" src="https://user-images.githubusercontent.com/42051115/135185192-74660da7-1dd2-47ab-b6a8-9ec2bc9644ca.png">
+
+Every Restaurant will create an account with our application through the sign-up page and login\
+<img width="1200" alt="signup" src="https://user-images.githubusercontent.com/42051115/135185713-6cd54692-4408-4ad9-a8b5-bbd1d0f68baf.png">
+
+After signing up, the user can check the inventory that they currently have left\
+<img width="1200" alt="signup" src="https://user-images.githubusercontent.com/42051115/135180678-ae5158c6-124e-4d2e-9db8-c0e39c6c1449.png">
+
+When certain ingredients are running low or about to expire, they will be notified\
+<img width="1200" alt="signup" src="https://user-images.githubusercontent.com/42051115/135180676-4941f523-553d-4586-be5b-a2a2b3992a5f.png">
+
+The user may go to the analytics page to see analysis of how their restaurant is doing monthly
 
 
 ## Steps for Running Backend:
@@ -72,12 +85,18 @@ mysql -u root -p < create_table.sql
 
 This command will create the database inventory_tracker and inside the database, users table will be formed. 
 
-For plotting the line graphs use below versions:
+## Steps for Running Frontend:
+In a separate terminal window go to react-social folder and run
 ```bash
-npm i react-chartjs-2@2.11.1
-npm i chart.js@2.9.4
-
+npm install
 ```
+this will download all the dependencies in local node_module folder\
+then type the next command
+```bash
+npm start
+```
+this will start the application on localhost:3000
+
 
 ### Steps for running Quantity Calculator
 https://github.com/CSC510-Group-25/CSC510_Group25_Project1/tree/main/qty_calc
