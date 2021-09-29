@@ -27,7 +27,7 @@ https://user-images.githubusercontent.com/42051115/135004434-50d95b77-87a3-4c18-
 ## Technologies we used:
 <p align="left">
   <a href="https://www.java.com/en/" target="_blank"> 
-    <img src="https://img.icons8.com/ios/50/000000/java-coffee-cup-logo--v1.png" alt="java" width="40" height="40"/>
+    <img src="https://github.com/CSC510-Group-25/CSC510_Group25_Project1/blob/main/docs/java_logo.png" alt="java" width="40" height="40"/>
   </a>
   <a href="https://spring.io/projects/spring-boot" target="_blank"> 
     <img src="https://spring.io/images/favicon-9d25009f65637a49ac8d91eb1cf7b75e.ico" alt="spring" width="40" height="40"/>
@@ -54,11 +54,8 @@ CSS\
 MySQL
 
 ## Demo:
-Our Home Page
-<img width="1200" alt="home" src="https://user-images.githubusercontent.com/42051115/135185192-74660da7-1dd2-47ab-b6a8-9ec2bc9644ca.png">
-
-Every Restaurant will create an account with our application through the sign-up page and login\
-<img width="1200" alt="signup" src="https://user-images.githubusercontent.com/42051115/135185713-6cd54692-4408-4ad9-a8b5-bbd1d0f68baf.png">
+Every Restaurant will create an account with our application through the sign-up page\
+<img width="1200" alt="signup" src="https://user-images.githubusercontent.com/42051115/135179244-895f7cb1-5c5d-458d-93b3-b2c521edfd4d.png">
 
 After signing up, the user can check the inventory that they currently have left\
 <img width="1200" alt="signup" src="https://user-images.githubusercontent.com/42051115/135180678-ae5158c6-124e-4d2e-9db8-c0e39c6c1449.png">
