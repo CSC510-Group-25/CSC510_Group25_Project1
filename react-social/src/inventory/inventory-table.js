@@ -275,7 +275,7 @@ export default function InventoryTable() {
       }).catch(error => {
       Alert.error((error && error.message) || 'Unable to load inventory');
     });
-  });
+  }, []);
 
   return (
     <div className={classes.root}>

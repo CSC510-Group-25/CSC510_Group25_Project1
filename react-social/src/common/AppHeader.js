@@ -8,7 +8,7 @@ class AppHeader extends Component {
             <header className="app-header">
                 <div className="container">
                     <div className="app-branding">
-                        <Link to="/" className="app-title">Demo Page</Link>
+                        <Link to="/" className="app-title">86 No More</Link>
                     </div>
                     <div className="app-options">
                         <nav className="app-nav">
