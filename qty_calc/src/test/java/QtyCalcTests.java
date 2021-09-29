@@ -748,13 +748,7 @@ public class QtyCalcTests {
 
         Recipe r1 = constructRecipe1();
         OrderTracker ot = new OrderTracker();
-
-        boolean b1 = ot.createOrder(null,0,0);
-        boolean b2 = ot.createOrder(null,1,0);
-        boolean b3 = ot.createOrder(r1,0,0);
-        boolean b4 = ot.createOrder(r1,-1,0);
-        boolean b5 = ot.createOrder(r1,10,10);
-
+        
         setupIO();
         assertFalse(ot.createOrder(null,0,0));
         assertFalse(ot.createOrder(null,1,0));
