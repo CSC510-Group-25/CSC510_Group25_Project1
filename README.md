@@ -54,8 +54,11 @@ CSS\
 MySQL
 
 ## Demo:
-Every Restaurant will create an account with our application through the sign-up page\
-<img width="1200" alt="signup" src="https://user-images.githubusercontent.com/42051115/135179244-895f7cb1-5c5d-458d-93b3-b2c521edfd4d.png">
+Our Home Page
+<img width="1200" alt="home" src="https://user-images.githubusercontent.com/42051115/135185192-74660da7-1dd2-47ab-b6a8-9ec2bc9644ca.png">
+
+Every Restaurant will create an account with our application through the sign-up page and login\
+<img width="1200" alt="signup" src="https://user-images.githubusercontent.com/42051115/135185713-6cd54692-4408-4ad9-a8b5-bbd1d0f68baf.png">
 
 After signing up, the user can check the inventory that they currently have left\
 <img width="1200" alt="signup" src="https://user-images.githubusercontent.com/42051115/135180678-ae5158c6-124e-4d2e-9db8-c0e39c6c1449.png">
