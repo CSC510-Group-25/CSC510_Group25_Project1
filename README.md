@@ -55,13 +55,13 @@ MySQL
 
 ## Demo:
 Every Restaurant will create and account with our application through the sign-up page\
-https://user-images.githubusercontent.com/42051115/135179244-895f7cb1-5c5d-458d-93b3-b2c521edfd4d.png
+<img width="1200" alt="signup" src="https://user-images.githubusercontent.com/42051115/135179244-895f7cb1-5c5d-458d-93b3-b2c521edfd4d.png">
 
 After signing up, the user can check the inventory that they currently have left\
-https://user-images.githubusercontent.com/42051115/135180678-ae5158c6-124e-4d2e-9db8-c0e39c6c1449.png
+<img width="1200" alt="signup" src="https://user-images.githubusercontent.com/42051115/135180678-ae5158c6-124e-4d2e-9db8-c0e39c6c1449.png">
 
 When certain ingredients are running low or about to expire, they will be notified\
-https://user-images.githubusercontent.com/42051115/135180676-4941f523-553d-4586-be5b-a2a2b3992a5f.png
+<img width="1200" alt="signup" src="https://user-images.githubusercontent.com/42051115/135180676-4941f523-553d-4586-be5b-a2a2b3992a5f.png">
 
 The user may go to the analytics page to see analysis of how their restaurant is doing monthly
 
