@@ -19,7 +19,7 @@ CREATE TABLE `orders` (
   `dish_name` varchar(45) NOT NULL,
   `date` datetime NOT NULL,
   `order_qty` int NOT NULL,
-  PRIMARY KEY (`restaurantId`,`orderID`)
+  PRIMARY KEY (`restaurant_id`,`order_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `inventory` (

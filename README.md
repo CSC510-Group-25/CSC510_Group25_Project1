@@ -68,6 +68,7 @@ When certain ingredients are running low or about to expire, they will be notifi
 <img width="1200" alt="signup" src="https://user-images.githubusercontent.com/42051115/135180676-4941f523-553d-4586-be5b-a2a2b3992a5f.png">
 
 The user may go to the analytics page to see analysis of how their restaurant is doing monthly
+<img width="1200" alt="signup" src="https://github.com/CSC510-Group-25/CSC510_Group25_Project1/blob/main/docs/graphs_SE.png">
 
 
 ## Steps for Running Backend:

@@ -1,5 +1,3 @@
-//package com.qtycalc;
-
 import com.github.cliftonlabs.json_simple.JsonException;
 
 import java.io.File;
@@ -8,17 +6,30 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-// To run this, call createOrders() on an OrderTracker object or just use the main method.
-//TODO: incomplete class
+/**
+ * OrderTracker class.<br>
+ *
+ * To run this, call createOrders() on an OrderTracker object or just use the main method.
+ *
+ * TODO: incomplete class, but still functional
+ */
 public class OrderTracker {
 
-    //     RecipeID, Order
-    HashMap<String, Order> orders;// = new HashMap<>();
-    ArrayList<String> keys;  // list of recipe IDs
 
     /**
-     *
-     * @param orders HashMap<String,Order>
+     * A map for Order objects.<br>
+     * key: RecipeID<br>
+     * val: Order
+     */
+    HashMap<String, Order> orders;
+    /**
+     * list of recipe IDs to make management easier.
+     */
+    ArrayList<String> keys;
+
+    /**
+     * Constructor, mainly for testing
+     * @param orders HashMap
      */
     public OrderTracker(HashMap<String,Order> orders) {
         this.orders = orders;
@@ -26,12 +37,22 @@ public class OrderTracker {
         this.keys = new ArrayList<>(orders.keySet());
     }
 
+    /**
+     * Constructor
+     */
     public OrderTracker() {
         this.orders = new HashMap<>();
         this.keys = new ArrayList<>();
     }
 
+    /**
+     * @return this.orders -- HashMap
+     */
     public HashMap<String, Order> getOrders() { return orders; }
+
+    /**
+     * @return this.keys -- ArrayList
+     */
     public ArrayList<String> getKeys() { return keys; }
 
 
@@ -50,7 +71,12 @@ public class OrderTracker {
     }
 
 
-    //TODO: NYI
+    /**
+     * Method to remove a specific order by the given recipeID.<br>
+     * NOT YET IMPLEMENTED.
+     * @param recipeID String
+     * @return boolean
+     */
     public boolean removeOrderByID(String recipeID){
         //this.orders.remove(recipeID);
         return false;
@@ -58,9 +84,9 @@ public class OrderTracker {
 
 
     /**
-     * Method to create an add an order to a list of orders.
+     * Method to create and add an order to a list of orders.<br><br>
      *
-     * To return true: recipe is not null, success and fails not less than 0
+     * To return true: recipe is not null, success and fails not less than 0<br><br>
      *
      * Can be used to bypass the createOrders() method, which takes command line input. Also does not rely on
      * the existence of a recipe_folder directory.
@@ -165,7 +191,8 @@ public class OrderTracker {
 
     //TODO: allow user to select which folder to search for recipes?
     /**
-     * Helper for createOrders()
+     * Helper for createOrders()<br>
+     * UI for Recipe
      *
      * @param sc Scanner
      * @return Recipe
@@ -286,7 +313,6 @@ public class OrderTracker {
         sc.close();
     }
 
-
     @Override
     public String toString(){
         boolean first = true;
@@ -340,16 +366,13 @@ public class OrderTracker {
         return yn;
     }
 
-
     /////// MANUAL TESTING DOWN HERE ///////
-
 
     public static void main(String[] args) throws IOException, JsonException {
 
         OrderTracker ot = new OrderTracker();
         // UNCOMMENT IF YOU WANT TO RUN MANUAL TESTS.
         // ot.createOrders();
-
 
         // comment out below as needed
         String f1 = "recipe_folder" + File.separator + "recipe_8000.json";
