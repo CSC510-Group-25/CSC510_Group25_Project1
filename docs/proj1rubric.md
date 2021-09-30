@@ -1,6 +1,6 @@
 | Notes|self-assesment|evidence|
 |-----|-----|---------|
-|workload is spread over the whole team (one team member is often Xtimes more productive than the others... 
+|workload is spread over the whole team (one team member is often Xtimes more productive than the others... |3|evidence in GH|
 but nevertheless, here is a track record that everyone is contributing a lot)|3|evidence  in GH|
 | Number of commits|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1|
 | Number of commits: by different people|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1/pulse|
