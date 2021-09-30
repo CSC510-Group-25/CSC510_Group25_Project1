@@ -7,8 +7,8 @@ but nevertheless, here is a track record that everyone is contributing a lot)|3|
 | Issues reports: there are **many**|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1/projects/1|
 |  issues are being  closed|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1/projects/1|
 | DOI badge: exists |3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1|
-|Docs: doco generated , format not ugly ||in GH|
-|Docs: what: point descriptions of each class/function (in isolation) ||
+|Docs: doco generated , format not ugly |3|in GH|
+|Docs: what: point descriptions of each class/function (in isolation) |3|in GH|
 |Docs: how: for common use cases X,Y,Z mini-tutorials showing worked examples on how to do X,Y,Z|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1/blob/main/docs/DemoScript.docx|
 |Docs: why: docs tell a story, motivate the whole thing, deliver a punchline that makes you want to rush out and use the thing|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1|
 |Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code.|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1#readme|
