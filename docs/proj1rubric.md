@@ -13,8 +13,8 @@ but nevertheless, here is a track record that everyone is contributing a lot)|3|
 |Docs: why: docs tell a story, motivate the whole thing, deliver a punchline that makes you want to rush out and use the thing|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1|
 |Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code.|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1#readme|
 | Use of version control tools|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1|
-|Use of  style checkers ||config files in GH showing your config|
-| Use of code  formatters. ||config files in GH showing your this formatter's  config|
+|Use of  style checkers |3|config files in GH showing your config|
+| Use of code  formatters. |3|config files in GH showing your this formatter's  config|
 | Use of syntax checkers. ||config files iin  GH showing this checker's config  |
 | Use of code coverage ||https://github.com/CSC510-Group-25/CSC510_Group25_Project1/blob/main/spring-social/backend_coverage.html|
 | other automated analysis tools||config files in GH|
