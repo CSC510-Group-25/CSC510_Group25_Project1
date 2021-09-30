@@ -5,6 +5,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "menu")
+/**
+ * The menu model represents formal underlying data constructs that the front-end uses to present the user with the
+ * look and feel of the application.
+ */
 public class Menu{
 
     @Column(nullable = false, name = "restaurant_id")
