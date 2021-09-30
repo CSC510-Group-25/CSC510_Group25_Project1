@@ -28,4 +28,4 @@ but nevertheless, here is a track record that everyone is contributing a lot)|3|
 | evidence that the whole team is using the same tools (e.g. config files in the repo, updated by lots of different people)|3||
 | evidence that the whole team is using the same tools (e.g. tutor can ask anyone to share screen, they demonstrate the system running on their computer)|3||
 | evidence that the members of the team are working across multiple places in the code base|3||
-|short release cycles || (hard to see in short projects) project members are committing often enough so that everyone can get your work|3||
+|short release cycles |3| (hard to see in short projects) project members are committing often enough so that everyone can get your work|
