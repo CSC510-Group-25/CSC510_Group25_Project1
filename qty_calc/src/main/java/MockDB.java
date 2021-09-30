@@ -1,4 +1,3 @@
-//package com.qty_calc;
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonException;
 import com.github.cliftonlabs.json_simple.JsonObject;
@@ -15,37 +14,47 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
-
 /**
- * THIS IS A MOCK DB.
- *
+ * THIS IS A MOCK DB. Simulates a very rudimentary database
+ *<br>
  * It allows the user to:
+ *<br><br>
+ *      Set up a mock database<br>
+ *      Add items to the database<br>
+ *      remove items from the database<br><br>
  *
- *      Set up a mock database
- *      Add items to the database
- *      remove items from the database
+ * TODO:<br>
+ *     add multiple (method)<br>
+ *       ENABLE ITEM CONSTRUCTION VIA I/O<br>
+ *       REFACTOR !!! OPTIMIZE !!! CLEAN UP !!!<br>
+ *       Generate unique dbIDs for every object<br>
+ *       MAKE COMPATIBLE WITH ITEM BATCHES (Maybe? This is JUST for the quantity calculator?)
  */
-
-//TODO:
-/*    add multiple (method)
-      ENABLE ITEM CONSTRUCTION VIA I/O
-      REFACTOR !!! OPTIMIZE !!! CLEAN UP !!!
-      Generate unique dbIDs for every object
-      MAKE COMPATIBLE WITH ITEM BATCHES (Maybe? This is JUST for the quantity calculator?)
- */
-
 public class MockDB {
 
+    /**
+     *
+     */
     HashMap<String, Item> db;// = new HashMap<>();
+    /**
+     *
+     */
     ArrayList<String> keys;
 
+    /**
+     * Constructor
+     * @param db HashMap
+     */
     public MockDB(HashMap<String, Item> db) {
         this.db = db;
         //GET KEYS
         this.keys = new ArrayList<>(db.keySet());
     }
 
-    //new map
+    /**
+     * Constructor
+     *
+     */
     public MockDB(){
         this.db = new HashMap<>();
         this.keys = new ArrayList<>();
@@ -54,28 +63,24 @@ public class MockDB {
     /**
      * Construct DB from a .json or .txt
      *
-     * @param filePath
-     * @throws IOException
-     * @throws JsonException
+     * @param filePath -- String, must end with .txt or .json
+     * @throws IOException -
+     * @throws JsonException -
      */
     public MockDB(String filePath) throws IOException, JsonException {
-
         this.db = new HashMap<>();
         this.keys = new ArrayList<>();
 
         if(filePath.endsWith(".txt")) {
             dbFromFile(filePath);
-
         } else if(filePath.endsWith(".json")){
             dbFromJsonFile(filePath);
-
         } else {
             System.out.println("Unsupported file type. Supported: .txt, .json");
         }
     }
 
     ///////////////////////////////////////////////////////////
-
 
     private static String readInput(Scanner sc, String arg) {
         System.out.print(arg);
@@ -85,21 +90,16 @@ public class MockDB {
     /**
      * Remove item from database
      *
-     * @param item
-     * @return
+     * @param item -- Item
+     * @return boolean
      */
     public boolean removeItem(Item item) {
-
         boolean removed = false;
-
         if (item == null) {
             return false;
         }
-
         String key = item.getDbID();
-
         if (db.containsKey(key)) {
-
             System.out.println("Entry: " + db.get(key).toString());
             Scanner sc = new Scanner(System.in);
             boolean yesno = false;
@@ -119,30 +119,24 @@ public class MockDB {
                     System.out.println("Please enter 'y' or 'n'.");
                 }
             }
-
             sc.close();
-
         } else {
             System.out.println("Entry not in database.");
         }
         return removed;
     }
 
-
     /**
      * Add item to database
      *
-     * @param item
-     * @return
+     * @param item Item
+     * @return boolean
      */
     public boolean addItem(Item item){
-
         if(item==null){
             return false;
         }
-
         boolean added = false;
-
         String key = item.getDbID();
 
         if(db.containsKey(key)){
@@ -175,7 +169,6 @@ public class MockDB {
                 }
             }
             sc.close();
-
         } else {
             // add if not in db
             db.put(key,item);
@@ -187,7 +180,10 @@ public class MockDB {
         return added;
     }
 
-    // to bypass CLI
+    /**
+     * to bypass CLI
+     * @param item Item
+     */
     public void quickAdd(Item item){
         if(item==null){
             System.out.println("quickAdd null");
@@ -200,7 +196,10 @@ public class MockDB {
         }
     }
 
-    // to bypass CLI
+    /**
+     * to bypass CLI
+     * @param item Item
+     */
     public void quickRemove(Item item){
         if(item==null){
             System.out.println("quickRemove null");
@@ -212,7 +211,7 @@ public class MockDB {
     }
 
     // I don't care, I just want to do things.
-    public void addr(Item item){
+/*    public void addr(Item item){
         String key = item.getDbID();
         db.put(key,item);
         if(!keys.contains(key)) {
@@ -223,25 +222,20 @@ public class MockDB {
         String key = item.getDbID();
         db.remove(key);
         keys.remove(key);
-    }
-
+    }*/
 
     //TODO: are you sure? y/n CLI
     public void removeItemByName(String name){ }
-
 
     //TODO
     public void addMany(){ }
 
     //public void readJson() {}
 
-
-
-
     /**
-     *
-     * @param filePath
-     * @throws IOException
+     * Helper for constructor
+     * @param filePath String
+     * @throws IOException -
      */
     private void dbFromFile(String filePath) throws IOException {
 
@@ -259,7 +253,6 @@ public class MockDB {
             }
         }
     }
-
 
     /**
      * Constructs a JsonArray for the database.
@@ -284,8 +277,9 @@ public class MockDB {
     /**
      * Saves the database to the destination folder using the given filename.
      *
-     * @param destinationFolder
-     * @param fileName
+     * @param destinationFolder String
+     * @param fileName String
+     * @throws IOException -
      */
     public void saveAsJson(String destinationFolder, String fileName) throws IOException {
 
@@ -299,12 +293,11 @@ public class MockDB {
         BuildFile.SaveJsonArray(jar,destinationFolder,fileName);
     }
 
-
     /**
-     *
-     * @param filePath
-     * @throws FileNotFoundException
-     * @throws JsonException
+     * Helper
+     * @param filePath String
+     * @throws FileNotFoundException -
+     * @throws JsonException -
      */
     private void dbFromJsonFile(String filePath) throws FileNotFoundException, JsonException {
 
@@ -314,7 +307,6 @@ public class MockDB {
         JsonArray dbj = (JsonArray) Jsoner.deserialize(fileReader);
 
         if (dbj != null) {
-
             for (int i = 0; i < dbj.size(); i++) {
                 JsonObject thing = (JsonObject) dbj.get(i);
 
@@ -325,7 +317,6 @@ public class MockDB {
                         this.keys.add(key);
                     }
                     this.db.put(key,item);
-
                 } else{
                     System.out.println("null json object");
                 }
@@ -335,19 +326,16 @@ public class MockDB {
         }
     }
 
-
-
     /**
      * Reads contents of a .txt file to construct a database.
+     * @param filePath String
      * @return String[] contents of a file
+     * @throws IOException -
      */
     private String[] readFile(String filePath) throws IOException {
-
         List<String> db = new ArrayList<String>();
         String[] dbArr;
-
-        // TODO: ensure no ingredient repeats
-
+        // TODO: ensure no item repeats
         Path path = Paths.get(filePath).toAbsolutePath();
         Scanner sc = new Scanner(new File(String.valueOf(path)));
         while (sc.hasNextLine()) {
@@ -358,15 +346,12 @@ public class MockDB {
         return dbArr;
     }
 
-
     @Override
     public String toString(){
-
         StringBuilder str = new StringBuilder();
         boolean first = true;
         for(int i=0; i<this.keys.size(); i++){
             String key = this.keys.get(i);
-
             if(first){
                 str.append(this.db.get(key).toString());
                 first=false;
@@ -379,14 +364,21 @@ public class MockDB {
         return str.toString();
     }
 
-
+    /**
+     * @return HashMap
+     */
     public HashMap<String, Item> getDb() { return db; }
+
+    /**
+     * @return ArrayList
+     */
     public ArrayList<String> getKeys() { return keys; }
 
     /**
-     * If the DB contains the key, returns the database unit
-     * @param key
-     * @return
+     * If the DB contains the key/Item, returns the database unit.<br>
+     * If it doesn't have the key, returns empty string.
+     * @param key String
+     * @return String
      */
     public String getDBU(String key){
         if(this.db.get(key)==null){
@@ -395,11 +387,23 @@ public class MockDB {
         return this.db.get(key).getDbUnit();
     }
 
-
+    /**
+     * @param key String -- Item name
+     * @return Item
+     */
     public Item getItem(String key){ return this.db.get(key); }
+
+    /**
+     * @param key String -- Item name
+     * @return boolean -- true/false, whether the database has the indicated Item
+     */
     public boolean hasItem(String key){ return this.db.containsKey(key); }
 
-
+    /**
+     * Lazy 'override' of .equals()
+     * @param o Object
+     * @return boolean
+     */
     public boolean isEqual(Object o){
         if(o==null){ return false; }
         if (!(o instanceof MockDB)) { return false; }
@@ -408,10 +412,8 @@ public class MockDB {
         return (this.toString().equals(nu.toString()));
     }
 
-
     /////////////////////////////////////////
     // MANUAL TESTING DOWN HERE //
-
 
     public static void main(String[] args) throws Exception {
 

@@ -7,8 +7,10 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 500,
-    maxWidth: 1000
+    maxWidth: 800,
+    marginLeft: 20,
+    marginTop: 50,
+    justifyContent: 'center',
   },
   bullet: {
     display: 'inline-block',
@@ -30,14 +32,30 @@ export default function NotificationsPage() {
     <Box flexDirection="row-reverse">
       <Card className={classes.root}>
         <CardContent>
-          <Typography className={classes.title} color="textSecondary" gutterBottom>
-            Example Alert
+          <Typography className={classes.title} color="secondary" gutterBottom>
+            Expiration Alert!
           </Typography>
+          <br/>
           <Typography variant="h5" component="h2">
-            Inventory Items are about to expire!
+            It looks like some of your inventory is about to expire
           </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            Consider using up Milk, Cheese and Lettuce.
+          <Typography variant="h6" component="h2" color="textSecondary">
+            Consider using or donating your French Bread and Milk
+          </Typography>
+        </CardContent>
+      </Card>
+
+      <Card className={classes.root}>
+        <CardContent>
+          <Typography className={classes.title} color="secondary" gutterBottom>
+            Low Inventory Alert!
+          </Typography>
+          <br/>
+          <Typography variant="h5" component="h2">
+            It looks like some of your inventory is getting low
+          </Typography>
+          <Typography variant="h6" component="h2" color="textSecondary">
+            Swiss Cheese quantity is low. Try checking quantity or restricting use.
           </Typography>
         </CardContent>
       </Card>

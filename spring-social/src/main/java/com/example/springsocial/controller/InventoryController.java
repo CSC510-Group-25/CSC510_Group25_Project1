@@ -4,6 +4,7 @@ import com.example.springsocial.model.Inventory;
 import com.example.springsocial.model.Order;
 import com.example.springsocial.payload.InventoryRequest;
 import com.example.springsocial.repository.InventoryRepository;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -57,7 +58,11 @@ public class InventoryController {
     /**
     * This method is used to call all the items in the inventory.
     */
-    public List<Inventory> getAllInventory(){
-        return inventoryRepository.findAll();
+    public String getAllInventory(){
+
+        List<Inventory> inventory =  inventoryRepository.findAll();
+        String inventoryJson = new Gson().toJson(inventory);
+        return inventoryJson;
+
     }
 }
