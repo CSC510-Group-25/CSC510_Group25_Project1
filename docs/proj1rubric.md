@@ -32,12 +32,12 @@ but nevertheless, here is a track record that everyone is contributing a lot)|3|
 | Question 1.1: Does your website and documentation provide a clear, high-level overview of your software? |  |  |
 | Question 1.2: Does your website and documentation clearly describe the type of user who should use your software? |  |  |
 | Question 1.3: Do you publish case studies to show how your software has been used by yourself and others? |  |  |
-| Question 2.1: Is the name of your project/software unique? * |  |  |
+| Question 2.1: Is the name of your project/software unique? * | 3 |  |
 | Question 2.2: Is your project/software name free from trademark violations? * |  |  |
 | Question 3.1: Is your software available as a package that can be deployed without building it?  |  |  |
-| Question 3.2: Is your software available for free? |  |  |
-| Question 3.3: Is your source code publicly available to download, either as a downloadable bundle or via access to a source code repository? |  |  |
-| Question 3.4: Is your software hosted in an established, third-party repository likeGitHub (https://github.com), BitBucket (https://bitbucket.org),LaunchPad (https://launchpad.net) orSourceForge (https://sourceforge.net)? |  |  |
+| Question 3.2: Is your software available for free? | 3 |  |
+| Question 3.3: Is your source code publicly available to download, either as a downloadable bundle or via access to a source code repository? | 3 |  |
+| Question 3.4: Is your software hosted in an established, third-party repository likeGitHub (https://github.com), BitBucket (https://bitbucket.org),LaunchPad (https://launchpad.net) orSourceForge (https://sourceforge.net)? | 3 | GitHub |
 | Question 4.1: Is your documentation clearly available on your website or within your software? |  |  |
 | Question 4.2: Does your documentation include a "quick start" guide, that provides a short overview of how to use your software with some basic examples of use? |  |  |
 | Question 4.3: If you provide more extensive documentation, does this provide clear, step-by-step instructions on how to deploy and use your software? |  |  |
@@ -72,9 +72,9 @@ but nevertheless, here is a track record that everyone is contributing a lot)|3|
 | Question 11.6: Does your software list the web address, and licences for all third-party dependencies and say whether the dependencies are mandatory or optional? * |  |  |
 | Question 11.7: Can you download dependencies using a dependency management tool or package manager? * |  |  |
 | Question 11.8: Do you have tests that can be run after your software has been built or deployed to show whether the build or deployment has been successful? * |  |  |
-| Question 12.1: Do you have an automated test suite for your software? * |  |  |
+| Question 12.1: Do you have an automated test suite for your software? * | 3 |  |
 | Question 12.2: Do you have a framework to periodically (e.g. nightly) run your tests on the latest version of the source code? * |  |  |
-| Question 12.3: Do you use continuous integration, automatically running tests whenever changes are made to your source code? * |  |  |
+| Question 12.3: Do you use continuous integration, automatically running tests whenever changes are made to your source code? * | 3 |  |
 | Question 12.4: Are your test results publicly visible? * |  |  |
 | Question 12.5: Are all manually-run tests documented? * |  |  |
 | Question 13.1: Does your project have resources (e.g. blog, Twitter, RSS feed, Facebook page, wiki, mailing list) that are regularly updated with information about your software? * |  |  |
@@ -91,8 +91,8 @@ but nevertheless, here is a track record that everyone is contributing a lot)|3|
 | Question 14.4: Do contributors keep the copyright/IP of their contributions? * |  |  |
 | Question 15.1: Does your website and documentation clearly state the copyright owners of your software and documentation? * |  |  |
 | Question 15.2: Does each of your source code files include a copyright statement? * |  |  |
-| Question 15.3: Does your website and documentation clearly state the licence of your software? * |  |  |
-| Question 15.4: Is your software released under an open source licence? * |  |  |
+| Question 15.3: Does your website and documentation clearly state the licence of your software? * | 3 |  |
+| Question 15.4: Is your software released under an open source licence? * | 3 |  |
 | Question 15.5: Is your software released under an OSI-approved open-source licence? * |  |  |
 | Question 15.6: Does each of your source code files include a licence header? * |  |  |
 | Question 15.7: Do you have a recommended citation for your software? * |  |  |
