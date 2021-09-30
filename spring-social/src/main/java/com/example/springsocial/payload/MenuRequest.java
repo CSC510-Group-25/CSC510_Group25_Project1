@@ -1,6 +1,9 @@
 package com.example.springsocial.payload;
 import javax.validation.constraints.NotBlank;
 
+/**
+ *The payload contains the data that could be stored or modified
+ */
 public class MenuRequest {
     @NotBlank
     private String restaurantID;
