@@ -85,6 +85,12 @@ mysql -u root -p < create_table.sql
 
 This command will create the database inventory_tracker and inside the database, users table will be formed. 
 
+
+Alternatively, if you're having trouble running this command, you can create the necessary tables through MySQL Workbench:  
+```
+In MySQL Workbench: Go to File > run SQL script > create_table.sql (inside spring-social folder)
+```
+
 ## Steps for Running Frontend:
 In a separate terminal window go to react-social folder and run
 ```bash
