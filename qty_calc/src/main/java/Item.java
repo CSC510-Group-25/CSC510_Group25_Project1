@@ -5,16 +5,28 @@ import com.github.cliftonlabs.json_simple.JsonObject;
  */
 public class Item {
 
+    /**
+     * Item name
+     */
     String itemName;
-    String dbID;    // this is the ID of the Item recorded in the database
+    /**
+     * this is the ID of the Item recorded in the database
+     */
+    String dbID;
 
     /*
     String batchID; // to help with expiration dates. One dbID can be mapped to many batches.
     String expDate;
     */
 
-    Double qty;    // Quantity of item stored in database.
-    String db_unit; // lbs, kgs, etc
+    /**
+     * Quantity of item stored in database.
+     */
+    Double qty;
+    /**
+     * lbs, kgs, etc
+     */
+    String db_unit;
 
     public Item(){
         // empty constructor
@@ -36,7 +48,7 @@ public class Item {
     }
 
     /**
-     * construct an ingredient from a string
+     * construct an Item from a string<br>
      * input example: [butter, 2001, 20, oz]
      * @param ingstr the Item string
      */
@@ -49,7 +61,8 @@ public class Item {
     }
 
     /**
-     * Construct item from JsonObject
+     * Construct item from JsonObject<br>
+     * TODO: ensure that JsonObject jo is an Item Json
      * @param jo JsonObject
      */
     public Item(JsonObject jo){
@@ -76,7 +89,7 @@ public class Item {
     /**
      * Returns a json representation of an Item
      *
-     * @return String
+     * @return String -- a really nasty String
      */
     public String asJsonString(){
         JsonObject jo = this.itemAsJson();
@@ -84,7 +97,6 @@ public class Item {
     }
 
     //TODO: override .equals
-
     @Override
     public String toString(){
         String returnMe = "[" + itemName + ", " + dbID + ", " + qty + ", " + db_unit + "]";
@@ -93,7 +105,7 @@ public class Item {
 
 
     /**
-     * A lazy 'override' of .equals()
+     * A lazy 'override' of .equals(), but doesn't actually override anything.
      *
      * @param o Object
      * @return boolean
@@ -112,25 +124,55 @@ public class Item {
         else {
             return false;
         }
-
         // return (this.toString().equals(nu.toString()));
     }
 
-    // MAKE SURE SETTERS MODIFY JSON TOO.
+    /**
+     * @return itemName String
+     */
     public String getItemName() { return itemName; }
+
+    /**
+     * @return dbID String
+     */
     public String getDbID() { return dbID; }
+
+    /**
+     * @return qty Double
+     */
     public Double getQty() { return qty; }
+
+    /**
+     * @return db_unit String
+     */
     public String getDbUnit() { return db_unit; }
 
+    // MAKE SURE SETTERS MODIFY JSON TOO.
+
+    /**Setter
+     * @param itemName String
+     */
     public void setItemName(String itemName) { this.itemName = itemName; }
+
+    /**Setter
+     * @param dbID String
+     */
     public void setDbID(String dbID) { this.dbID = dbID; }
+
+    /**Setter
+     * @param qty Double
+     */
     public void setQty(Double qty) { this.qty = qty; }
+
+    /**Setter
+     * @param db_unit String
+     */
     public void setDbUnit(String db_unit) { this.db_unit = db_unit; }
 
     /**
      * helper to trim strings and convert to array
-     *
-     * "[butter, 2001, 20, oz]" --> {butter, 2001, 20, oz}
+     *<br>
+     * "[butter, 2001, 20, oz]" to {butter, 2001, 20, oz}
      * @param ingstr String
      * @return String[]
      */

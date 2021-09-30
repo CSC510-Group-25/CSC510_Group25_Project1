@@ -1,5 +1,3 @@
-//package com.qtycalc;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,7 +17,14 @@ public class QuantityCalculator {
 
     MockDB db;
 
+    /**
+     * Map of Aggregators
+     */
     HashMap<String, Aggregator> aggregates;
+    /**
+     * Map of excluded Aggregators<br>
+     * NYI
+     */
     HashMap<String, Aggregator> excluded;
     /* if any order has just one failed conversion, then any successful
      conversions of its other ingredients will be added to the excluded map.
@@ -47,18 +52,36 @@ public class QuantityCalculator {
     Failed orders: how many times a customer ordered the dish but failed to receive it due to some ingredient shortage.
      */
 
-    ArrayList<String> dbList; // list of db contents
-    ArrayList<String> ingredientKeys; // acts as a list of keys for the aggregate map
-    ArrayList<String> report;//
+    /**
+     * list of db contents
+     */
+    ArrayList<String> dbList;
+    /**
+     * acts as a list of keys for the aggregate map
+     */
+    ArrayList<String> ingredientKeys;
 
-    HashMap<String, Aggregator> aggregatesFailed; // aggregator maps for failed orders
+    /**
+     * List of strings to generate report
+     */
+    ArrayList<String> report;
+
+    /**
+     * aggregator map for failed orders<br>
+     * NYI
+     */
+    HashMap<String, Aggregator> aggregatesFailed;
+    /**
+     * Map of excluded aggregators<br>
+     * NYI
+     */
     HashMap<String, Aggregator> excludedFailed;
-    ArrayList<String> reportFailed; //
+    ArrayList<String> reportFailed;
 
 
     /**
      *
-     * @param db
+     * @param db MockDB
      */
     public QuantityCalculator(MockDB db) {
         this.db = db;
@@ -72,7 +95,10 @@ public class QuantityCalculator {
         this.reportFailed = new ArrayList<>();
     }
 
-    // setting a new DB is the same as constructing a new calculator.
+    /**
+     * setting a new DB is the same as constructing a new calculator.
+     * @param db MockDB
+     */
     public void setDb(MockDB db) {
         this.db = db;
         this.dbList = db.getKeys();
@@ -207,9 +233,9 @@ public class QuantityCalculator {
     /**
      * Helper for generateOrderReport.
      *
-     * @param ingredient
-     * @param dbU
-     * @return
+     * @param ingredient Ingredient
+     * @param dbU String -- database unit
+     * @return String
      */
     public String conversionMsgHandler(Ingredient ingredient, String dbU) {
 
@@ -255,12 +281,12 @@ public class QuantityCalculator {
 
 
     /**
-     * A quick way to check if a recipe has failed conversions without generating any reports.
+     * A quick way to check if a recipe has failed conversions without generating any reports.<br>
      *
-     * Use during testing.
+     * Use during testing.<br>
      *
-     * @param recipe
-     * @return
+     * @param recipe Recipe
+     * @return boolean
      */
     public boolean hasFailedConversions(Recipe recipe){
 
@@ -300,7 +326,7 @@ public class QuantityCalculator {
 
 
     /**
-     * Helper method for AggregateHandler
+     * Helper method for AggregateHandler<br>
      * TODO: IMPLEMENT FAILED ORDERS
      *
      * @param o Order
@@ -390,8 +416,6 @@ public class QuantityCalculator {
     }
 
 
-
-
     /* If ANY conversions fail, alert the user and
     1. discard the order
     OR
@@ -411,9 +435,9 @@ public class QuantityCalculator {
     */
     /**
      * A whole lot happens here. Call this on an OrderTracker.
-     *
+     *<br>
      * This method handles aggregations of orders.
-     *
+     *<br>
      * TODO: IMPLEMENT FAILED ORDERS
      *
      * @param ot OrderTracker
@@ -501,47 +525,47 @@ public class QuantityCalculator {
 
 
     /**
-     * No return for now.
+     * No return for now.<br>
      *
-     * Sample call:
+     * Sample call:<br>
+     *<br>
+     *         OrderTracker ot = new OrderTracker();<br>
+     *<br>
+     *         String f1 = "recipe_folder" + File.separator + "recipe_8000.json";<br>
+     *         String f2 = "recipe_folder" + File.separator + "recipe_9000.json";<br>
      *
-     *         OrderTracker ot = new OrderTracker();
-     *
-     *         String f1 = "recipe_folder" + File.separator + "recipe_8000.json";
-     *         String f2 = "recipe_folder" + File.separator + "recipe_9000.json";
-     *
-     *         Recipe r8 = new Recipe(f1);
+     *         Recipe r8 = new Recipe(f1);<br>
      *         Recipe r9 = new Recipe(f2);
-     *
-     *         ot.createOrder(r8, 2,0);
+     *<br>
+     *         ot.createOrder(r8, 2,0);<br>
      *         ot.createOrder(r9,2,0);
-     *
-     *         String f3 = "mock_dbs" + File.separator + "db1.txt";
+     *<br>
+     *         String f3 = "mock_dbs" + File.separator + "db1.txt";<br>
      *         MockDB mdb = new MockDB(f3);
-     *
+     *<br>
      *         QuantityCalculator qc = new QuantityCalculator(mdb);
-     *
+     *<br>
      *         qc.Calculator(ot);
-     *
+     *<br>
      *         System.out.println(qc.getReportString());
+     *<br>
      *
-     *
-     * TODO: handle failed orders
+     * TODO: handle failed orders<br>
      * For each order, allow user to update database (IFF there are no failed conversions or missing ingredients)
-     *
-     * For failed orders:
-     * if number of failed orders != 0:
-     * For each ingredient in a dish,
-     *  multiply the quantity of each by the number of failed orders,
-     *  Perform conversions,
-     *  and add to a total sum.
-     *
+     *<br>
+     * For failed orders:<br>
+     * if number of failed orders != 0:<br>
+     * For each ingredient in a dish,<br>
+     *  multiply the quantity of each by the number of failed orders,<br>
+     *  Perform conversions,<br>
+     *  and add to a total sum.<br>
+     *<br>
      * In short, follow the same logic in OrderConverter, but use Order.num_failures instead.
-     *
-     * example:
+     *<br>
+     * example:<br>
      * Missing cheese = (Dish1_cheese x dish1_fails) + (Dish2_cheese x dish2_fails) + …
-     * Missing ABC = (dish1_ABC x dish1_fails + (dish7_ABC x dish7_fails) + …
-     *
+     * <br>Missing ABC = (dish1_ABC x dish1_fails + (dish7_ABC x dish7_fails) + …
+     *<br>
      * The program then calculates the minimum required amount of each ingredient to prevent
      * shortages for the next dinner service.
      *
@@ -576,37 +600,39 @@ public class QuantityCalculator {
     /**
      * Method that takes an order, and for each ingredient in the order,
      * prompts the user to input a db unit.
-     *
+     *<br>
      * Does not look into the database at all. In fact, it doesn't even need a database!
-     *
-     * Ex)
-     *
-     * disgusting dinner: ID 7777
-     * Number of successful orders: 10
-     * Number of failed orders: 0
-     *
-     * Ingredients:
-     * cheese, 16 oz
-     * rice, 1000 grams
+     *<br>
+     * Ex)<br>
+     *<br>
+     * disgusting dinner: ID 7777<br>
+     * Number of successful orders: 10<br>
+     * Number of failed orders: 0<br>
+     *<br><br>
+     * Ingredients:<br>
+     * cheese, 16 oz<br>
+     * rice, 1000 grams<br>
      * milk, 1000 mL
-     *
+     *<br><br>
      * Convert 160 oz of cheese to: lbs
-     * -->     10 lbs of cheese
-     *
+     * <br>
+     * --     10 lbs of cheese
+     *<br><br>
      * Convert 10000 grams of rice to: kgs
-     * -->     10 kgs of rice
-     *
+     * <br>
+     * --     10 kgs of rice
+     *<br><br>
      * Convert 1000 mL of milk to: mL
-     * -->     no conversion necessary
+     * <br>
+     * --     no conversion necessary
      *
      *
-     * @param o
-     * @return
+     * @param o Order
+     * @return String
      */
     public String EasyCalc(Order o){
         return "NYI";
     }
-
 
     /**
      * Returns the report as a string.
@@ -630,17 +656,23 @@ public class QuantityCalculator {
      * Helper class.
      *
      * (key, val)
-     *
-     * (ingredientName, Pair)
      * (ingredientName, (db_unit, aggregate))
      *
      **/
     public class Aggregator {
 
+        /**
+         * Ingredient name
+         */
         private String name;
+        /**
+         * database unit
+         */
         private String db_unit;
-        private Double agg; //aggregate
-
+        /**
+         * aggregate
+         */
+        private Double agg;
 
         public Aggregator(String name, String db_unit, Double agg) {
             this.name = name;
@@ -658,7 +690,6 @@ public class QuantityCalculator {
         public void setdb_unit(String db_unit) {
             this.db_unit = db_unit;
         }
-
     }
 
 
@@ -685,10 +716,8 @@ public class QuantityCalculator {
         public String getLog() { return log; }
     }
 
-
     /////////////////////////////////////////////////
     //// MANUALLY TEST AND DEBUG THINGS DOWN HERE ////
-
 
     public static void main(String[] args) throws Exception {
 

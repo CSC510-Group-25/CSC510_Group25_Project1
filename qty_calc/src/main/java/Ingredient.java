@@ -1,4 +1,3 @@
-//package com.qtycalc;
 import com.github.cliftonlabs.json_simple.JsonObject;
 
 /**INGREDIENT class for Recipes.
@@ -7,12 +6,34 @@ import com.github.cliftonlabs.json_simple.JsonObject;
 //TODO: NULL CHECKS.
 public class Ingredient {
 
+    /**
+     * The name of the ingredient
+     */
     String ingredientName;
-    String dbID;           // retrieved from DB if it's there. CONSIDER: possible bugs with batch numbers.
-    double local_qty;     //TODO: CANNOT BE NEGATIVE. Ensure input check occurs when the user is adding items
-                          // to the database AND when adding ingredients to recipes.
+    /**
+     * The ingredient's ID in the database.
+     *<br>
+     * retrieve from DB if it's there -- future release<br>
+     * CONSIDER: possible bugs with batch numbers.
+     */
+    String dbID;           //
+    /**
+     * How much of an ingredient is needed by a Recipe.<br>
+     * TODO: CANNOT BE NEGATIVE. Ensure input check occurs when the user is adding items
+     *                            to the database AND when adding ingredients to recipes.
+     */
+    double local_qty;
 
+    /**
+     * local_unit for the Ingredient; needed for Recipe<br>
+     * i.e, oatmeal needs 8 grams of sugar<br>
+     * local_unit: grams<br>
+     * db_unit for sugar: lbs<br>
+     */
     String local_unit;
+    /**
+     *The ingredient as a JsonObject
+     */
     JsonObject ingredientJson;
 
     /**
@@ -60,7 +81,7 @@ public class Ingredient {
     }
 
     /**
-     * construct an ingredient from a string
+     * construct an ingredient from a string<br>
      * input example: [butter, 2001, 20, oz]
      * @param ingstr the ingredient string
      */
@@ -74,8 +95,8 @@ public class Ingredient {
 
     /**
      * helper to trim strings and convert to array
-     *
-     * "[butter, 2001, 20, oz]" --> {butter, 2001, 20, oz}
+     *<br>
+     * "[butter, 2001, 20, oz]" to {butter, 2001, 20, oz}
      * @param ingstr String
      * @return String[]
      */
@@ -111,7 +132,7 @@ public class Ingredient {
 
     /**
      *
-     * @return double
+     * @return String
      */
     public String getDbID() { return dbID; }
 
@@ -135,8 +156,8 @@ public class Ingredient {
 
     /**
      * Method to check if an Ingredient is equal
-     *
-     * Basically, a lazy 'override' of .equals()
+     *<br>
+     * Basically, a lazy 'override' of .equals(), but doesn't actually override anything.
      *
      * @param o Object
      * @return boolean
