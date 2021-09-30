@@ -29,7 +29,7 @@ but nevertheless, here is a track record that everyone is contributing a lot)|3|
 | evidence that the whole team is using the same tools (e.g. tutor can ask anyone to share screen, they demonstrate the system running on their computer)|3||
 | evidence that the members of the team are working across multiple places in the code base|3||
 |short release cycles |3| (hard to see in short projects) project members are committing often enough so that everyone can get your work|
-| Question 1.1: Does your website and documentation provide a clear, high-level overview of your software? |  |  |
+| Question 1.1: Does your website and documentation provide a clear, high-level overview of your software? | 3 | https://github.com/CSC510-Group-25/CSC510_Group25_Project1/tree/main#readme |
 | Question 1.2: Does your website and documentation clearly describe the type of user who should use your software? |  |  |
 | Question 1.3: Do you publish case studies to show how your software has been used by yourself and others? |  |  |
 | Question 2.1: Is the name of your project/software unique? * | 3 |  |
@@ -38,8 +38,8 @@ but nevertheless, here is a track record that everyone is contributing a lot)|3|
 | Question 3.2: Is your software available for free? | 3 |  |
 | Question 3.3: Is your source code publicly available to download, either as a downloadable bundle or via access to a source code repository? | 3 |  |
 | Question 3.4: Is your software hosted in an established, third-party repository likeGitHub (https://github.com), BitBucket (https://bitbucket.org),LaunchPad (https://launchpad.net) orSourceForge (https://sourceforge.net)? | 3 | GitHub |
-| Question 4.1: Is your documentation clearly available on your website or within your software? |  |  |
-| Question 4.2: Does your documentation include a "quick start" guide, that provides a short overview of how to use your software with some basic examples of use? |  |  |
+| Question 4.1: Is your documentation clearly available on your website or within your software? | 3 |  |
+| Question 4.2: Does your documentation include a "quick start" guide, that provides a short overview of how to use your software with some basic examples of use? | 3 | https://github.com/CSC510-Group-25/CSC510_Group25_Project1/blob/main/README.md |
 | Question 4.3: If you provide more extensive documentation, does this provide clear, step-by-step instructions on how to deploy and use your software? |  |  |
 | Question 4.4: Do you provide a comprehensive guide to all your software’s commands, functions and options? * |  |  |
 | Question 4.5: Do you provide troubleshooting information that describes the symptoms and step-by-step solutions for problems and error messages? * |  |  |
@@ -61,7 +61,7 @@ but nevertheless, here is a track record that everyone is contributing a lot)|3|
 | Question 9.2: Does your documentation adhere to appropriate accessibility conventions or standards? * |  |  |
 | Question 10.1: Is your source code stored in a repository under revision control? * |  |  |
 | Question 10.2: Is each source code release a snapshot of the repository? * |  |  |
-| Question 10.3: Are releases tagged in the repository? * |  |  |
+| Question 10.3: Are releases tagged in the repository? * | 3 | https://github.com/CSC510-Group-25/CSC510_Group25_Project1/releases |
 | Question 10.4: Is there a branch of the repository that is always stable? (i.e. tests always pass, code always builds successfully) * |  |  |
 | Question 10.5: Do you back-up your repository? * |  |  |
 | Question 11.1: Do you provide publicly-available instructions for building your software from the source code? * |  |  |
@@ -86,14 +86,14 @@ but nevertheless, here is a track record that everyone is contributing a lot)|3|
 | Question 13.7: Can users subscribe to notifications to changes to your source code repository? * |  |  |
 | Question 13.8: If your software is developed as an open source project (and, not just a project developing open source software), do you have a governance model? * |  |  |
 | Question 14.1: Do you accept contributions (e.g. bug fixes, enhancements, documentation updates, tutorials) from people who are not part of your project? * |  |  |
-| Question 14.2: Do you have a contributions policy? * |  |  |
-| Question 14.3: Is your contributions' policy publicly available? * |  |  |
+| Question 14.2: Do you have a contributions policy? * | 3 | https://github.com/CSC510-Group-25/CSC510_Group25_Project1/blob/main/CONTRIBUTING.md |
+| Question 14.3: Is your contributions' policy publicly available? * | 3 | https://github.com/CSC510-Group-25/CSC510_Group25_Project1/blob/main/CONTRIBUTING.md |
 | Question 14.4: Do contributors keep the copyright/IP of their contributions? * |  |  |
 | Question 15.1: Does your website and documentation clearly state the copyright owners of your software and documentation? * |  |  |
 | Question 15.2: Does each of your source code files include a copyright statement? * |  |  |
-| Question 15.3: Does your website and documentation clearly state the licence of your software? * | 3 |  |
-| Question 15.4: Is your software released under an open source licence? * | 3 |  |
-| Question 15.5: Is your software released under an OSI-approved open-source licence? * |  |  |
+| Question 15.3: Does your website and documentation clearly state the licence of your software? * | 3 | https://github.com/CSC510-Group-25/CSC510_Group25_Project1/blob/main/LICENSE |
+| Question 15.4: Is your software released under an open source licence? * | 3 | https://github.com/CSC510-Group-25/CSC510_Group25_Project1/blob/main/LICENSE |
+| Question 15.5: Is your software released under an OSI-approved open-source licence? * | 3 | https://github.com/CSC510-Group-25/CSC510_Group25_Project1/blob/main/LICENSE |
 | Question 15.6: Does each of your source code files include a licence header? * |  |  |
 | Question 15.7: Do you have a recommended citation for your software? * |  |  |
 | Question 16.1: Does your website or documentation include a project roadmap (a list of project and development milestones for the next 3, 6 and 12 months)? * |  |  |
