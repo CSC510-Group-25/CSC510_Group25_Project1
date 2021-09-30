@@ -2,6 +2,8 @@
 
 [![unit_tests](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/actions/workflows/QtyCalcTests.yml/badge.svg)](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/actions/workflows/QtyCalcTests.yml)
 
+Number of unit tests: 96
+
 This directory contains the code and test cases for a major component of this project, the Quantity Calculator.  
 
 (9/27/2021):  
@@ -11,7 +13,7 @@ It's intended to be run **inside an IDE** in order to allow developers to explor
 - - - -
 
 To run:
-1. create a new project in your IDE and copy/paste the .java files from the src/ directory. Structure does not matter so long as all files are in the same package.
+1. create a new project in your IDE and copy/paste the .java files from the src/ directory.
 2. Inside your project, create two directories: **recipe_folder** and **mock_dbs**. These should be OUTSIDE your src directory.
 3. Add the jars in the lib folder to your classpath (json-simple)
 4. Create a .txt file for a recipe or mock database using the formats shown [here](#filef)
@@ -23,6 +25,8 @@ Manual testing should be done through an IDE for sanity's sake and for easy debu
 
 **DO NOT USE THE POM.XML FILE INSIDE THIS DIRECTORY. It's only there to make github actions work.**
 
+... unless you want to build with maven.
+
 Also, if you're using an IDE, you can easily follow the TODO trail in each class.  
 
 **In order to run QtyCalcTests.java without failures:**
@@ -31,7 +35,8 @@ Also, if you're using an IDE, you can easily follow the TODO trail in each class
     2. recipe_8000.txt
     3. recipe_9000.txt
 2. Copy/paste **db1.txt** from the mock_dbs directory in this repository into your mock_dbs folder.
-3. Run!
+3. Add jUnit 5 to your classpath
+4. Run!
 
 json-simple docs: https://cliftonlabs.github.io/json-simple/target/apidocs/index.html  
 
