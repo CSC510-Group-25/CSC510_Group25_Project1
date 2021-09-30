@@ -24,6 +24,11 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("/auth")
+
+/**
+ * What: The Auth Controller is responsible for Signing up new users and logging existing users.
+ */
+
 public class AuthController {
 
     @Autowired
@@ -39,6 +44,12 @@ public class AuthController {
     private TokenProvider tokenProvider;
 
     @PostMapping("/login")
+    /**
+     * Provides Login Functionality
+     * API Input
+     * User Name
+     * User Password
+     */
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
@@ -55,6 +66,15 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
+    /**
+     * Provides SignUP Functionality
+     * API Input
+     * UserName
+     * Email
+     * Password
+     * Restaurant Name
+     * Role
+     */
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
         if(userRepository.existsByEmail(signUpRequest.getEmail())) {
             throw new BadRequestException("Email address already in use.");
