@@ -14,7 +14,8 @@ public class Menu{
     @Column(nullable = false, name = "restaurant_id")
     private String restaurantId;
 
-    @Id
+    @Id @GeneratedValue(generator="system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
     @Column(nullable = false, name = "dish_id")
     private String dishId;
 
