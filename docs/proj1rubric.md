@@ -22,8 +22,8 @@ but nevertheless, here is a track record that everyone is contributing a lot)|3|
 | test cases are routinely executed|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1/actions|
  | the files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1/blob/main/CONTRIBUTING.md|
 | issues are discussed before they are closed|3|https://github.com/CSC510-Group-25/CSC510_Group25_Project1/issues/55|
-| Chat channel: exists||
-| test cases:.a large proportion of the issues related to handling failing cases.||if a test case fails, open an issue and fix it|
+| Chat channel: exists|3|https://discord.gg/4TMHCQN9|
+| test cases:.a large proportion of the issues related to handling failing cases.|3|if a test case fails, open an issue and fix it|
 | evidence that the whole team is using the same tools: everyone can get to all tools and files||
 | evidence that the whole team is using the same tools (e.g. config files in the repo, updated by lots of different people)||
 | evidence that the whole team is using the same tools (e.g. tutor can ask anyone to share screen, they demonstrate the system running on their computer)||
