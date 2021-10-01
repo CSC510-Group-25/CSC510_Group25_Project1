@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 /**
- * What: The Inventory Controller is responsible for processing incoming REST API's requests.
+ * What: The Inventory Controller is responsible for processing incoming REST API's requests for Inventory based operations.
  *
  * How: The common use cases of this class is to allow the user to add/edit/remove inventory from the database by
  * processing the user request from the frontend.

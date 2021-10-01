@@ -13,12 +13,30 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * What: The Order Controller is responsible for processing incoming REST API's requests for Order based operations.
+ *
+ * How: The common use cases of this class is to allow the user to add/edit/remove orders from the database by
+ * processing the user request from the frontend.
+ */
+
 @RestController
 public class OrderController {
     @Autowired
     private OrderRepository orderRepository;
 
     @PostMapping("/addOrder")
+    /**
+     * This method is called when the user requests to add a new order into the inventory database.
+     * The Api takes input Order details
+     * Api Parameter
+     * Order ID
+     * Dish ID
+     * Order Quantity
+     * Restaurant ID
+     * Dish Name
+     * Date
+     */
     public String addOrder(@Valid @RequestBody OrderRequest orderRequest){
         Order order = new Order();
 
@@ -36,6 +54,9 @@ public class OrderController {
     }
 
     @GetMapping("/getAllOrders")
+    /**
+     * This method is used to call all the orders in the inventory.
+     */
     public String getAllOrders(){
 
         List<Order> order =  orderRepository.findAll();

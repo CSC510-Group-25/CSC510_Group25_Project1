@@ -6,13 +6,7 @@ import java.security.SecureRandom;
 import java.time.Instant;
 import java.util.Enumeration;
 
-/**
- * Distributed Sequence Generator.
- * Inspired by Twitter snowflake: https://github.com/twitter/snowflake/tree/snowflake-2010
- *
- * This class should be used as a Singleton.
- * Make sure that you create and reuse a Single instance of SequenceGenerator per machine in your distributed system cluster.
- */
+
 //public class SequenceGenerator {
 //    private static final int TOTAL_BITS = 64;
 //    private static final int EPOCH_BITS = 42;
