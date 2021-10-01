@@ -37,6 +37,20 @@ import com.github.cliftonlabs.json_simple.JsonObject;
  * SOFTWARE.
  */
 
+/**************************
+ * Originally authored by: Leila Moran
+ * GitHub ID: snapcat
+ *
+ * CSC510 Fall 2021
+ * North Carolina State University
+ *
+ * File name: QtyCalcTests.java
+ **************************/
+
+
+
+
+
 /**
  * Class for unit tests.
  *
