@@ -36,6 +36,7 @@ import com.github.cliftonlabs.json_simple.JsonObject;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
 /**************************
  * Originally authored by: Leila Moran
  * GitHub ID: snapcat
@@ -45,8 +46,6 @@ import com.github.cliftonlabs.json_simple.JsonObject;
  *
  * File name: QtyCalcTests.java
  **************************/
-
-
 
 /**
  * Class for unit tests.
