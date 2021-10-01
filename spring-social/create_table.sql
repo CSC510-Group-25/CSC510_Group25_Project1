@@ -35,4 +35,23 @@ CREATE TABLE `inventory` (
      PRIMARY KEY (`item_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+INSERT INTO `orders`
+(`restaurant_id`, `order_id`, `dish_id`,`dish_name`,`date`,`order_qty`)
+VALUES('r100', 'o199', 'd10', 'Pasta', '2021-10-20', 1);
+
+INSERT INTO `orders`
+(`restaurant_id`, `order_id`, `dish_id`,`dish_name`,`date`,`order_qty`)
+VALUES('r101', 'o200', 'd20', 'Noodles', '2021-10-20', 2);
+
+INSERT INTO `orders`
+(`restaurant_id`, `order_id`, `dish_id`,`dish_name`,`date`,`order_qty`)
+VALUES('r102', 'o201', 'd21', 'Borrito', '2021-10-21', 4);
+
+INSERT INTO `orders`
+(`restaurant_id`, `order_id`, `dish_id`,`dish_name`,`date`,`order_qty`)
+VALUES('r101', 'o202', 'd20', 'Noodles', '2021-10-20', 2);
+
+INSERT INTO `orders`
+(`restaurant_id`, `order_id`, `dish_id`,`dish_name`,`date`,`order_qty`)
+VALUES('r101', 'o203', 'd40', 'Chocolate Ice Cream', '2021-10-21', 10);
 
