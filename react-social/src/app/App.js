@@ -43,17 +43,17 @@ class App extends Component {
     });
 
     getCurrentUser()
-    .then(response => {
+        .then(response => {
+          this.setState({
+            currentUser: response,
+            authenticated: true,
+            loading: false
+          });
+        }).catch(error => {
       this.setState({
-        currentUser: response,
-        authenticated: true,
         loading: false
       });
-    }).catch(error => {
-      this.setState({
-        loading: false
-      });  
-    });    
+    });
   }
 
   handleLogout() {
@@ -75,39 +75,39 @@ class App extends Component {
     }
 
     return (
-      <div className="app">
-        <div className="app-top-box">
-          <AppHeader authenticated={this.state.authenticated} onLogout={this.handleLogout} />
+        <div className="app">
+          <div className="app-top-box">
+            <AppHeader authenticated={this.state.authenticated} onLogout={this.handleLogout} />
+          </div>
+          <div className="app-body">
+            <Switch>
+              <Route exact path="/" component={Home}></Route>
+              <PrivateRoute path="/profile" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
+                            component={Profile}></PrivateRoute>
+              <PrivateRoute path="/notifications" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
+                            component={NotificationsPage}>
+              </PrivateRoute>
+              <PrivateRoute path="/inventory" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
+                            component={InventoryPage}>
+              </PrivateRoute>
+              <PrivateRoute path="/menu" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
+                            component={MenuPage}>
+              </PrivateRoute>
+              <PrivateRoute path="/analytics" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
+                            component={AnalyticsPage}>
+              </PrivateRoute>
+              <Route path="/login"
+                     render={(props) => <Login authenticated={this.state.authenticated} {...props} />}></Route>
+              <Route path="/signup"
+                     render={(props) => <Signup authenticated={this.state.authenticated} {...props} />}></Route>
+              <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}></Route>
+              <Route component={NotFound}></Route>
+            </Switch>
+          </div>
+          <Alert stack={{limit: 3}}
+                 timeout = {3000}
+                 position='top-right' effect='slide' offset={65} />
         </div>
-        <div className="app-body">
-          <Switch>
-            <Route exact path="/" component={Home}></Route>           
-            <PrivateRoute path="/profile" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
-              component={Profile}></PrivateRoute>
-            <PrivateRoute path="/notifications" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
-              component={NotificationsPage}>
-            </PrivateRoute>
-            <PrivateRoute path="/inventory" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
-              component={InventoryPage}>
-            </PrivateRoute>
-            <PrivateRoute path="/menu" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
-              component={MenuPage}>
-            </PrivateRoute>
-            <PrivateRoute path="/analytics" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
-                component={AnalyticsPage}>
-            </PrivateRoute>
-            <Route path="/login"
-              render={(props) => <Login authenticated={this.state.authenticated} {...props} />}></Route>
-            <Route path="/signup"
-              render={(props) => <Signup authenticated={this.state.authenticated} {...props} />}></Route>
-            <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}></Route>  
-            <Route component={NotFound}></Route>
-          </Switch>
-        </div>
-        <Alert stack={{limit: 3}} 
-          timeout = {3000}
-          position='top-right' effect='slide' offset={65} />
-      </div>
     );
   }
 }
