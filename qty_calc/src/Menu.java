@@ -29,6 +29,15 @@ import java.io.FileNotFoundException;
  * SOFTWARE.
  */
 
+/**************************
+ * Originally authored by: Leila Moran
+ * GitHub ID: snapcat
+ *
+ * CSC510 Fall 2021
+ * North Carolina State University
+ *
+ * File name: Menu.java
+ **************************/
 
 public class Menu {
 

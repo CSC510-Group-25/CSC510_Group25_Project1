@@ -47,10 +47,6 @@ import com.github.cliftonlabs.json_simple.JsonObject;
  * File name: QtyCalcTests.java
  **************************/
 
-
-
-
-
 /**
  * Class for unit tests.
  *
