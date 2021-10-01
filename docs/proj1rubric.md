@@ -50,42 +50,42 @@ but nevertheless, here is a track record that everyone is contributing a lot)|3|
 | Question 5.2: Does your website and documentation describe what support, if any, you provide to users and developers? * |  |  |
 | Question 5.3: Does your project have an e-mail address or forum that is solely for supporting users? * |  |  |
 | Question 5.4: Are e-mails to your support e-mail address received by more than one person? * |  |  |
-| Question 5.5: Does your project have a ticketing system to manage bug reports and feature requests? * |  |  |
-| Question 5.6: Is your project's ticketing system publicly visible to your users, so they can view bug reports and feature requests? * |  |  |
-| Question 6.1: Is your software’s architecture and design modular? * |  |  |
-| Question 6.2: Does your software use an accepted coding standard or convention? * |  |  |
+| Question 5.5: Does your project have a ticketing system to manage bug reports and feature requests? * | 3 |  Github Issue |
+| Question 5.6: Is your project's ticketing system publicly visible to your users, so they can view bug reports and feature requests? * | 3 | Github Issues |
+| Question 6.1: Is your software’s architecture and design modular? * | 3 | Our code follows Java class structure and follows Spring MVC Structure |
+| Question 6.2: Does your software use an accepted coding standard or convention? * | 3 |  |
 | Question 7.1: Does your software allow data to be imported and exported using open data formats? * |  |  |
-| Question 7.2: Does your software allow communications using open communications protocols? * |  |  |
-| Question 8.1: Is your software cross-platform compatible? * |  |  |
+| Question 7.2: Does your software allow communications using open communications protocols? * | 3 | The Frontend application communicate with the Backend using REST APIs |
+| Question 8.1: Is your software cross-platform compatible? * | 3 | Java and node are cross-platform compatible |
 | Question 9.1: Does your software adhere to appropriate accessibility conventions or standards? * |  |  |
-| Question 9.2: Does your documentation adhere to appropriate accessibility conventions or standards? * |  |  |
+| Question 9.2: Does your documentation adhere to appropriate accessibility conventions or standards? * | 3 |  |
 | Question 10.1: Is your source code stored in a repository under revision control? * |  |  |
 | Question 10.2: Is each source code release a snapshot of the repository? * |  |  |
 | Question 10.3: Are releases tagged in the repository? * | 3 | https://github.com/CSC510-Group-25/CSC510_Group25_Project1/releases |
-| Question 10.4: Is there a branch of the repository that is always stable? (i.e. tests always pass, code always builds successfully) * |  |  |
+| Question 10.4: Is there a branch of the repository that is always stable? (i.e. tests always pass, code always builds successfully) * | 3 | Main Branch |
 | Question 10.5: Do you back-up your repository? * |  |  |
 | Question 11.1: Do you provide publicly-available instructions for building your software from the source code? * |  |  |
-| Question 11.2: Can you build, or package, your software using an automated tool? * |  |  |
-| Question 11.3: Do you provide publicly-available instructions for deploying your software? * |  |  |
+| Question 11.2: Can you build, or package, your software using an automated tool? * | 3 | Usiing Npm and maven |
+| Question 11.3: Do you provide publicly-available instructions for deploying your software? * | 3 | Steps for running the Frontned and Backend are written in the ReadME file|
 | Question 11.4: Does your documentation list all third-party dependencies? * |  |  |
 | Question 11.5: Does your documentation list the version number for all third-party dependencies? * |  |  |
 | Question 11.6: Does your software list the web address, and licences for all third-party dependencies and say whether the dependencies are mandatory or optional? * |  |  |
-| Question 11.7: Can you download dependencies using a dependency management tool or package manager? * |  |  |
+| Question 11.7: Can you download dependencies using a dependency management tool or package manager? * | 3 | We use npm and Maven for managing packages on the Frontend and Backend side |
 | Question 11.8: Do you have tests that can be run after your software has been built or deployed to show whether the build or deployment has been successful? * |  |  |
-| Question 12.1: Do you have an automated test suite for your software? * | 3 |  |
-| Question 12.2: Do you have a framework to periodically (e.g. nightly) run your tests on the latest version of the source code? * |  |  |
-| Question 12.3: Do you use continuous integration, automatically running tests whenever changes are made to your source code? * | 3 |  |
+| Question 12.1: Do you have an automated test suite for your software? * | 3 | Tests are run when new changes are pushed to main branch |
+| Question 12.2: Do you have a framework to periodically (e.g. nightly) run your tests on the latest version of the source code? * | 2  | Tests are run when new changes are pushed to main branch |
+| Question 12.3: Do you use continuous integration, automatically running tests whenever changes are made to your source code? * | 3 | Using Github Workflows  |
 | Question 12.4: Are your test results publicly visible? * |  |  |
-| Question 12.5: Are all manually-run tests documented? * |  |  |
+| Question 12.5: Are all manually-run tests documented? * | 3 |  |
 | Question 13.1: Does your project have resources (e.g. blog, Twitter, RSS feed, Facebook page, wiki, mailing list) that are regularly updated with information about your software? * |  |  |
-| Question 13.2: Does your website state how many projects and users are associated with your project? * |  |  |
+| Question 13.2: Does your website state how many projects and users are associated with your project? * | | |
 | Question 13.3: Do you provide success stories on your website? * |  |  |
 | Question 13.4: Do you list your important partners and collaborators on your website? * |  |  |
 | Question 13.5: Do you list your project's publications on your website or link to a resource where these are available? * |  |  |
 | Question 13.6: Do you list third-party publications that refer to your software on your website or link to a resource where these are available? * |  |  |
-| Question 13.7: Can users subscribe to notifications to changes to your source code repository? * |  |  |
+| Question 13.7: Can users subscribe to notifications to changes to your source code repository? * | 3 | They can subscribe the Repo |
 | Question 13.8: If your software is developed as an open source project (and, not just a project developing open source software), do you have a governance model? * |  |  |
-| Question 14.1: Do you accept contributions (e.g. bug fixes, enhancements, documentation updates, tutorials) from people who are not part of your project? * |  |  |
+| Question 14.1: Do you accept contributions (e.g. bug fixes, enhancements, documentation updates, tutorials) from people who are not part of your project? * | 3 |  |
 | Question 14.2: Do you have a contributions policy? * | 3 | https://github.com/CSC510-Group-25/CSC510_Group25_Project1/blob/main/CONTRIBUTING.md |
 | Question 14.3: Is your contributions' policy publicly available? * | 3 | https://github.com/CSC510-Group-25/CSC510_Group25_Project1/blob/main/CONTRIBUTING.md |
 | Question 14.4: Do contributors keep the copyright/IP of their contributions? * |  |  |
@@ -95,8 +95,8 @@ but nevertheless, here is a track record that everyone is contributing a lot)|3|
 | Question 15.4: Is your software released under an open source licence? * | 3 | https://github.com/CSC510-Group-25/CSC510_Group25_Project1/blob/main/LICENSE |
 | Question 15.5: Is your software released under an OSI-approved open-source licence? * | 3 | https://github.com/CSC510-Group-25/CSC510_Group25_Project1/blob/main/LICENSE |
 | Question 15.6: Does each of your source code files include a licence header? * |  |  |
-| Question 15.7: Do you have a recommended citation for your software? * |  |  |
+| Question 15.7: Do you have a recommended citation for your software? * | 3 | https://zenodo.org/badge/latestdoi/402155508 |
 | Question 16.1: Does your website or documentation include a project roadmap (a list of project and development milestones for the next 3, 6 and 12 months)? * |  |  |
-| Question 16.2: Does your website or documentation describe how your project is funded, and the period over which funding is guaranteed? * |  |  |
+| Question 16.2: Does your website or documentation describe how your project is funded, and the period over which funding is guaranteed? * | 3 | Funding information mention in the ReadME |
 | Question 16.3: Do you make timely announcements of the deprecation of components, APIs, etc.? * |  |  |
 
