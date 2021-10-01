@@ -2,13 +2,14 @@
 
 [![unit_tests](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/actions/workflows/QtyCalcTests.yml/badge.svg)](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/actions/workflows/QtyCalcTests.yml)
 
-Number of unit tests: 96
-
 This directory contains the code and test cases for a major component of this project, the Quantity Calculator.  
 
 (9/27/2021):  
+Number of unit tests: 96  
+
 This component is a completely standalone ***feature demo*** and has not yet been incorporated into the main project.  
 It's intended to be run **inside an IDE** in order to allow developers to explore and add functionality as needed. **Not terminal friendly!**
+
 
 - - - -
 
@@ -39,7 +40,6 @@ Also, if you're using an IDE, you can easily follow the TODO trail in each class
 4. Run!
 
 json-simple docs: https://cliftonlabs.github.io/json-simple/target/apidocs/index.html  
-
 
 - - - -
 
