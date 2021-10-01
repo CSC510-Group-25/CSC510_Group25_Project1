@@ -107,3 +107,6 @@ this will start the application on localhost:3000
 
 ### Steps for running Quantity Calculator
 https://github.com/CSC510-Group-25/CSC510_Group25_Project1/tree/main/qty_calc
+
+## Funding:
+The project is not currently funded
