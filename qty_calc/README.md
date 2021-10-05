@@ -4,6 +4,8 @@
 
 This directory contains the code and test cases for a major component of this project, the Quantity Calculator.  
 
+- - - -
+
 (9/27/2021):  
 Number of unit tests: 96  
 
@@ -13,12 +15,18 @@ It's intended to be run **inside an IDE** in order to allow developers to explor
 
 - - - -
 
+### About this component ###
+
+See https://github.com/CSC510-Group-25/CSC510_Group25_Project1/issues/47#issue-996371593
+
+- - - -
+
 To run:
 1. create a new project in your IDE and copy/paste the .java files from the src/ directory.
 2. Inside your project, create two directories: **recipe_folder** and **mock_dbs**. These should be OUTSIDE your src directory.
 3. Add the jars in the lib folder to your classpath (json-simple)
 4. Create a .txt file for a recipe or mock database using the formats shown [here](#filef)
-5. Run and modify the main method inside any class you want to test.
+5. Run/modify the main method inside any class you want to test.
 
 Each .java file should have a main method if you want to manually test.  
 (Examples are included)  
@@ -52,14 +60,19 @@ These folders are mostly for testing purposes and to make object construction ea
 NOTE: THESE FOLDERS MUST BE INSIDE YOUR WORKING DIRECTORY. Again, USE AN IDE.
 
 ex)  
+
+Constructing a recipe or database from .txt file:
+
 Recipe r1 = new Recipe("recipe_folder/recipe_0001.txt");  
 MockDB mdb = new MockDB("mock_dbs/db1.txt");  
 
+Constructing a recipe or database from .json file:
+
 Recipe r1 = new Recipe("recipe_folder/recipe_0001.json");  
 MockDB mdb = new MockDB("mock_dbs/db1.json");  
-Construct their objects based on the contents of the files, if they exist.  
 
 To generate a .json file:  
+
 MockDB mdb = new MockDB("mock_dbs/db1.txt");  
 mdb.saveAsJson("mock_dbs","db1.json");  
 
