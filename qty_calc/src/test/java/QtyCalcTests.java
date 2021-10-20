@@ -75,12 +75,6 @@ public class QtyCalcTests {
     }    
 
 
-    ///// ORDER TESTS
-
-  
-
-    //////////////////
-
     // test adding to MockDB
     @Test
     public void MockDB_test_add(){
