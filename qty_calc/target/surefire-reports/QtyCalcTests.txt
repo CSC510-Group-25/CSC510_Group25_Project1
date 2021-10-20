@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: QtyCalcTests
 -------------------------------------------------------------------------------
-Tests run: 92, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.358 s - in QtyCalcTests
+Tests run: 25, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.241 s - in QtyCalcTests
