@@ -67,6 +67,7 @@
                     <includes>
                         <include>QtyCalcTests.java</include>
                         <include>UnitConverterTests.java</include>
+                        <include>VolumeConverterTests.java</include>
                     </includes>
                 </configuration>
             </plugin>
