@@ -115,7 +115,7 @@ The project is not currently funded
 
 See issues here: https://github.com/CSC510-Group-25/CSC510_Group25_Project1/issues
 
-<h1> 📬 Team Members </h1>
+## Team Members ##
 
 Het Thakkar
 
