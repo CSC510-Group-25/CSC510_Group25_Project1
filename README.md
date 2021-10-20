@@ -115,10 +115,15 @@ The project is not currently funded
 
 See issues here: https://github.com/CSC510-Group-25/CSC510_Group25_Project1/issues
 
-## Authors
-* Emily Tracey
-* Jonathan Nguyen 
-* Peeyush Taneja
-* Leila Moran
-* Shraddha Mishra
+<h1> 📬 Team Members </h1>
+
+Het Thakkar
+
+Asha Khatri 
+
+Lorenz Scheller
+
+Neelkanth Tripathi 
+
+Divyank Gupta 
 
