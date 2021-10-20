@@ -153,9 +153,9 @@ public class QtyCalcTests {
 
     @Test
     public void Recipe_isEqual_toString_tests() {
-        Recipe r1 = constructRecipe1();
-        Recipe r2 = constructRecipe1();
-        Recipe r3 = constructRecipe2();
+        Recipe r1 = util.constructRecipe1();
+        Recipe r2 = util.constructRecipe1();
+        Recipe r3 = util.constructRecipe2();
 
         assertEquals(r1.toString(),r2.toString());
         assertNotEquals(r1.toString(),r3.toString());
@@ -166,7 +166,7 @@ public class QtyCalcTests {
 
     @Test
     public void addToRecipeTest_duplicate(){
-        ArrayList<Ingredient> thing1 = generateList1();
+        ArrayList<Ingredient> thing1 = util.generateList1();
         Recipe r1 = new Recipe("horrific mush", "0001", thing1);
         Ingredient duplicate = new Ingredient("cheese", "5534", 8, "lbs");
         boolean badAdd = r1.addIngredient(duplicate);
@@ -175,7 +175,7 @@ public class QtyCalcTests {
 
     @Test
     public void addToRecipeTest_badID(){
-        ArrayList<Ingredient> thing1 = generateList1();
+        ArrayList<Ingredient> thing1 = util.generateList1();
         Recipe r1 = new Recipe("horrific mush", "0001", thing1);
         Ingredient badID = new Ingredient("dogfood", "5534", 8, "lbs");
         boolean badAdd = r1.addIngredient(badID);
@@ -184,7 +184,7 @@ public class QtyCalcTests {
 
     @Test
     public void addToRecipeTest_good(){
-        ArrayList<Ingredient> thing1 = generateList1();
+        ArrayList<Ingredient> thing1 = util.generateList1();
         Recipe r1 = new Recipe("horrific mush", "0001", thing1);
 
         String old = r1.toString();
@@ -199,7 +199,7 @@ public class QtyCalcTests {
 
     @Test
     public void Recipe_remove_IngredientTests() {
-        Recipe r1 = constructRecipe1();
+        Recipe r1 = util.constructRecipe1();
 
         String old = r1.toString();
 
@@ -217,7 +217,7 @@ public class QtyCalcTests {
     @Test
     public void saveRecipeTest() throws Exception {
 
-        ArrayList<Ingredient> thing1 = generateList1();
+        ArrayList<Ingredient> thing1 = util.generateList1();
         Recipe r1 = new Recipe("test recipe", "1234", thing1);
 
         if(BuildFile.RecipeExists("1234")){
@@ -241,7 +241,7 @@ public class QtyCalcTests {
     @Test
     public void testSaveJsonObject() throws IOException, JsonException {
 
-        ArrayList<Ingredient> thing1 = generateList1();
+        ArrayList<Ingredient> thing1 = util.generateList1();
         Recipe r1 = new Recipe("savejsontest", "0567", thing1);
 
         JsonObject rjo = r1.getRecipeJson();
@@ -271,7 +271,7 @@ public class QtyCalcTests {
 
     @Test
     public void Order_getters() {
-        Order o1 = new Order(constructRecipe1(),10,10);
+        Order o1 = new Order(util.constructRecipe1(),10,10);
 
         assertEquals("recipe1",o1.getRecipe().getRecipeName());
         assertEquals(10,o1.getNum_orders());
@@ -281,16 +281,16 @@ public class QtyCalcTests {
     @Test
     public void Order_toString() {
         String thing = "recipe1: ID 1111\nNumber of successful orders: 10\nNumber of failed orders: 10";
-        Order o = new Order(constructRecipe1(),10,10);
+        Order o = new Order(util.constructRecipe1(),10,10);
 
         assertEquals(thing,o.toString());
     }
 
     @Test
     public void Order_isEqual(){
-        Order o1 = new Order(constructRecipe1(),10,10);
-        Order o2 = new Order(constructRecipe1(),10,10);
-        Order o3 = new Order(constructRecipe2(),5,5);
+        Order o1 = new Order(util.constructRecipe1(),10,10);
+        Order o2 = new Order(util.constructRecipe1(),10,10);
+        Order o3 = new Order(util.constructRecipe2(),5,5);
 
         assertTrue(o1.isEqual(o2));
         assertFalse(o1.isEqual(o3));
@@ -304,7 +304,7 @@ public class QtyCalcTests {
     @Test
     public void createOrder() {
 
-        Recipe r1 = constructRecipe1();
+        Recipe r1 = util.constructRecipe1();
         OrderTracker ot = new OrderTracker();
         
         setupIO();
@@ -319,8 +319,8 @@ public class QtyCalcTests {
     @Test
     public void getOrders() {
         OrderTracker ot = new OrderTracker();
-        ot.createOrder(constructRecipe1(),10,10);
-        ot.createOrder(constructRecipe2(), 5, 0);
+        ot.createOrder(util.constructRecipe1(),10,10);
+        ot.createOrder(util.constructRecipe2(), 5, 0);
 
         HashMap<String, Order> orders = ot.getOrders();
 
@@ -331,8 +331,8 @@ public class QtyCalcTests {
     @Test
     public void getKeys() {
         OrderTracker ot = new OrderTracker();
-        ot.createOrder(constructRecipe1(),10,10);
-        ot.createOrder(constructRecipe2(), 5, 0);
+        ot.createOrder(util.constructRecipe1(),10,10);
+        ot.createOrder(util.constructRecipe2(), 5, 0);
 
         ArrayList<String> keys = ot.getKeys();
 
@@ -343,13 +343,13 @@ public class QtyCalcTests {
     @Test
     public void getOrdersArray() {
         OrderTracker ot = new OrderTracker();
-        ot.createOrder(constructRecipe1(),10,10);
-        ot.createOrder(constructRecipe2(), 5, 0);
+        ot.createOrder(util.constructRecipe1(),10,10);
+        ot.createOrder(util.constructRecipe2(), 5, 0);
 
         ArrayList<Order> os = ot.getOrdersArray();
 
-        Order o1 = new Order(constructRecipe1(),10,10);
-        Order o2 = new Order(constructRecipe2(),5,0);
+        Order o1 = new Order(util.constructRecipe1(),10,10);
+        Order o2 = new Order(util.constructRecipe2(),5,0);
 
         for(Order o : os){
             boolean thing = (o.isEqual(o1) || o.isEqual(o2));
@@ -362,8 +362,8 @@ public class QtyCalcTests {
     @Test
     public void OrderTracker_toString() {
         OrderTracker ot = new OrderTracker();
-        ot.createOrder(constructRecipe1(),10,10);
-        ot.createOrder(constructRecipe2(), 5, 0);
+        ot.createOrder(util.constructRecipe1(),10,10);
+        ot.createOrder(util.constructRecipe2(), 5, 0);
         String thing = "recipe1: ID 1111\nNumber of successful orders: 10\nNumber of failed orders: 10\n" +
                 "recipe2: ID 2222\nNumber of successful orders: 5\nNumber of failed orders: 0";
 
@@ -386,7 +386,7 @@ public class QtyCalcTests {
     @Test
     public void MockDB_test_remove(){
         Item i1 = new Item("cheese","5534",100.0,"lbs");
-        MockDB testDB = constructMDB();
+        MockDB testDB = util.constructMDB();
 
         String str1 = testDB.toString();
 
@@ -406,7 +406,7 @@ public class QtyCalcTests {
         // String nuPath = "mock_dbs" + File.separator + "db1.json";
         String nuPath = "mock_dbs" + File.separator + "db1.txt";
         MockDB mdb = new MockDB(nuPath);
-        MockDB tdb = constructMDB();
+        MockDB tdb = util.constructMDB();
         assertEquals(mdb.toString(),tdb.toString());
     }
 
@@ -427,94 +427,4 @@ public class QtyCalcTests {
         assertEquals(mdb.toString(),jdb.toString());
     }
 
-    ///// HELPERS
-
-    private ArrayList<Ingredient> generateList1(){
-        // construct ingredients
-        ArrayList<Ingredient> thing1 = new ArrayList<>();
-
-        Ingredient cheese = new Ingredient("cheese", "5534", 8, "lbs");
-        Ingredient rice = new Ingredient("rice", "7881", 5, "kgs");
-        Ingredient milk = new Ingredient("milk", "2003", 9000, "mL");
-        Ingredient butter = new Ingredient("butter", "2001", 20, "oz");
-        Ingredient sardines = new Ingredient("blended sardines", "0019", 60, "fl.oz");
-
-        thing1.add(cheese);
-        thing1.add(rice);
-        thing1.add(milk);
-        thing1.add(butter);
-        thing1.add(sardines);
-
-        return thing1;
-    }
-
-    private Recipe constructRecipe1(){
-
-        ArrayList<Ingredient> thing1 = new ArrayList<>();
-
-        Ingredient cheese = new Ingredient("cheese", "5534", 8, "lbs");
-        Ingredient rice = new Ingredient("rice", "7881", 5, "kgs");
-        Ingredient milk = new Ingredient("milk", "2003", 9000, "mL");
-        Ingredient butter = new Ingredient("butter", "2001", 20, "oz");
-        Ingredient sardines = new Ingredient("blended sardines", "0019", 60, "fl.oz");
-
-        thing1.add(cheese);
-        thing1.add(rice);
-        thing1.add(milk);
-        thing1.add(butter);
-        thing1.add(sardines);
-
-        return new Recipe("recipe1","1111",thing1);
-    }
-
-    private Recipe constructRecipe2() {
-
-        ArrayList<Ingredient> thing1 = new ArrayList<>();
-
-        Ingredient t1 = new Ingredient("thing1", "1234", 1, "lbs");
-        Ingredient t2 = new Ingredient("thing2", "5678", 2, "kgs");
-        Ingredient t3 = new Ingredient("thing3", "1098", 3, "mL");
-
-        thing1.add(t1);
-        thing1.add(t2);
-        thing1.add(t3);
-
-        return new Recipe("recipe2", "2222", thing1);
-    }
-
-    private Order constructOrder1(){
-        return new Order(constructRecipe1(),10,10);
-    }
-
-    private Order constructOrder2(){
-
-        return new Order(constructRecipe2(),5,0);
-    }
-
-    private MockDB constructMDB(){
-
-        Item i1 = new Item("cheese","5534",100.0,"lbs");
-        Item i2 = new Item("rice","7881",100.0,"kgs");
-        Item i3 = new Item("milk","2003",100.0,"liters");
-        Item i4 = new Item("butter","2001",100.0,"lbs");
-        Item i5 = new Item("blended sardines","0019",100.0,"gallons");
-        Item i6 = new Item("thing1","9891",1000.0,"fl.oz");
-        Item i7 = new Item("thing2","7777",100.0,"kgs");
-        Item i8 = new Item("thing3","1234",100.0,"liters");
-        Item i9 = new Item("thing4","9999",100.0,"gallons");
-
-        MockDB testDB = new MockDB();
-
-        testDB.addItem(i1);
-        testDB.addItem(i2);
-        testDB.addItem(i3);
-        testDB.addItem(i4);
-        testDB.addItem(i5);
-        testDB.addItem(i6);
-        testDB.addItem(i7);
-        testDB.addItem(i8);
-        testDB.addItem(i9);
-
-        return testDB;
-    }
 }

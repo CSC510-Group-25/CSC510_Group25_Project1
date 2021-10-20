@@ -56,7 +56,7 @@ import com.github.cliftonlabs.json_simple.JsonObject;
  public class Util {
  ///// HELPERS
 
-    private ArrayList<Ingredient> generateList1(){
+    public ArrayList<Ingredient> generateList1(){
         // construct ingredients
         ArrayList<Ingredient> thing1 = new ArrayList<>();
 
@@ -75,7 +75,7 @@ import com.github.cliftonlabs.json_simple.JsonObject;
         return thing1;
     }
 
-    private Recipe constructRecipe1(){
+    public Recipe constructRecipe1(){
 
         ArrayList<Ingredient> thing1 = new ArrayList<>();
 
@@ -94,7 +94,7 @@ import com.github.cliftonlabs.json_simple.JsonObject;
         return new Recipe("recipe1","1111",thing1);
     }
 
-    private Recipe constructRecipe2() {
+    public Recipe constructRecipe2() {
 
         ArrayList<Ingredient> thing1 = new ArrayList<>();
 
@@ -109,16 +109,16 @@ import com.github.cliftonlabs.json_simple.JsonObject;
         return new Recipe("recipe2", "2222", thing1);
     }
 
-    private Order constructOrder1(){
+    public Order constructOrder1(){
         return new Order(constructRecipe1(),10,10);
     }
 
-    private Order constructOrder2(){
+    public Order constructOrder2(){
 
         return new Order(constructRecipe2(),5,0);
     }
 
-    private MockDB constructMDB(){
+    public MockDB constructMDB(){
 
         Item i1 = new Item("cheese","5534",100.0,"lbs");
         Item i2 = new Item("rice","7881",100.0,"kgs");
