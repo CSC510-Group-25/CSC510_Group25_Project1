@@ -70,6 +70,7 @@
                         <include>VolumeConverterTests.java</include>
                         <include>OrderTrackerTests.java</include>
                         <include>IngredientTests.java</include>
+                        <include>ItemTests.java</include>
                     </includes>
                 </configuration>
             </plugin>
