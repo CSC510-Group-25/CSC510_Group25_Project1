@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="QtyCalcTests" time="0.223" tests="17" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="OrderTrackerTests" time="0.013" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="gopherProxySet" value="false"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -61,21 +61,9 @@
     <property name="java.class.version" value="55.0"/>
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase name="saveRecipeTest" classname="QtyCalcTests" time="0.072"/>
-  <testcase name="Order_isEqual" classname="QtyCalcTests" time="0.001"/>
-  <testcase name="MockDB_test_add" classname="QtyCalcTests" time="0.003"/>
-  <testcase name="Item_getters" classname="QtyCalcTests" time="0.001"/>
-  <testcase name="MockDB_test_saveJson" classname="QtyCalcTests" time="0.014"/>
-  <testcase name="MockDB_test_fromTxt" classname="QtyCalcTests" time="0.02"/>
-  <testcase name="addToRecipeTest_duplicate" classname="QtyCalcTests" time="0.008"/>
-  <testcase name="Recipe_isEqual_toString_tests" classname="QtyCalcTests" time="0.012"/>
-  <testcase name="Item_toString" classname="QtyCalcTests" time="0.001"/>
-  <testcase name="addToRecipeTest_badID" classname="QtyCalcTests" time="0.001"/>
-  <testcase name="Order_toString" classname="QtyCalcTests" time="0.002"/>
-  <testcase name="Order_getters" classname="QtyCalcTests" time="0.001"/>
-  <testcase name="addToRecipeTest_good" classname="QtyCalcTests" time="0"/>
-  <testcase name="MockDB_test_remove" classname="QtyCalcTests" time="0.004"/>
-  <testcase name="Recipe_remove_IngredientTests" classname="QtyCalcTests" time="0.002"/>
-  <testcase name="itemAsJsonTest" classname="QtyCalcTests" time="0.001"/>
-  <testcase name="testSaveJsonObject" classname="QtyCalcTests" time="0.003"/>
+  <testcase name="createOrder" classname="OrderTrackerTests" time="0.004"/>
+  <testcase name="getKeys" classname="OrderTrackerTests" time="0"/>
+  <testcase name="OrderTracker_toString" classname="OrderTrackerTests" time="0.001"/>
+  <testcase name="getOrders" classname="OrderTrackerTests" time="0"/>
+  <testcase name="getOrdersArray" classname="OrderTrackerTests" time="0"/>
 </testsuite>

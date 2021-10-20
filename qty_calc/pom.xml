@@ -69,6 +69,7 @@
                         <include>UnitConverterTests.java</include>
                         <include>VolumeConverterTests.java</include>
                         <include>OrderTrackerTests.java</include>
+                        <include>IngredientTests.java</include>
                     </includes>
                 </configuration>
             </plugin>

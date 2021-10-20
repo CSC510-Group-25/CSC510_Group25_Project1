@@ -38,13 +38,13 @@ import com.github.cliftonlabs.json_simple.JsonObject;
  */
 
 /**************************
- * Originally authored by: Leila Moran
- * GitHub ID: snapcat
+ * Originally authored by: Asha Khatri
+ * GitHub ID: ashakhatri007
  *
  * CSC510 Fall 2021
  * North Carolina State University
  *
- * File name: QtyCalcTests.java
+ * File name: UnitConverterTests.java
  **************************/
 
 /**
