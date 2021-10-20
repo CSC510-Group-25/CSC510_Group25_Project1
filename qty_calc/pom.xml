@@ -72,6 +72,7 @@
                         <include>IngredientTests.java</include>
                         <include>ItemTests.java</include>
                         <include>RecipeTests.java</include>
+                        <include>OrderTests.java</include>
                     </includes>
                 </configuration>
             </plugin>
