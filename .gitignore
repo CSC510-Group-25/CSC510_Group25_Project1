@@ -27,3 +27,11 @@ hs_err_pid*
 
 package-lock.json
 yarn.lock
+qty_calc/.classpath
+qty_calc/.project
+qty_calc/.settings/org.eclipse.core.resources.prefs
+qty_calc/.settings/org.eclipse.jdt.apt.core.prefs
+qty_calc/.settings/org.eclipse.jdt.core.prefs
+.vscode/settings.json
+spring-social/src/main/resources/application.yml
+.vscode/launch.json
