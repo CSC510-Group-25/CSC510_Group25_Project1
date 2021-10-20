@@ -72,46 +72,7 @@ public class QtyCalcTests {
         // restores standard input/output
         System.setIn(stdIn);
         System.setOut(stdOut);
-    }
-
-
-    ///// INGREDIENT TESTS
-
-    @Test
-    public void ingredientAsJsontest() {
-
-        Ingredient ing = new Ingredient("cheese", "5534", 8, "lbs");
-        JsonObject jo = ing.ingredientAsJson();
-        String name = (String) jo.get("ingredientName");
-        String id = (String) jo.get("ing_DBID");
-        String qty = (String) jo.get("local_qty").toString();
-        String unit = (String) jo.get("local_unit");
-
-        assertEquals("cheese",name);
-        assertEquals("5534",id);
-        assertEquals("8.0",qty);
-        assertEquals("lbs",unit);
-    }
-
-    @Test
-    public void Ingredient_getters() {
-        Ingredient ing = new Ingredient("cheese", "5534", 8, "lbs");
-        assertEquals("cheese",ing.getIngredientName());
-        assertEquals("5534",ing.getDbID());
-        assertEquals("8.0",String.valueOf(ing.getLocal_qty()));
-        assertEquals("lbs",ing.getLocal_unit());
-        assertNotEquals(null,ing.getIngredientJson());
-    }
-
-    @Test
-    public void Ingredient_isEqual() {
-        Ingredient ing1 = new Ingredient("cheese", "5534", 8, "lbs");
-        Ingredient ing2 = new Ingredient("cheese", "5534", 8, "lbs");
-        Ingredient ing3 = new Ingredient("rice", "7881", 5, "kgs");
-        assertTrue(ing1.isEqual(ing2));
-        assertFalse(ing1.isEqual(ing3));
-    }
-
+    }    
     ////// ITEM TESTS
 
     @Test
@@ -298,78 +259,6 @@ public class QtyCalcTests {
         assertFalse(o1.isEqual(null));
     }
 
-
-    /////////////ORDERTRACKER TESTS
-
-    @Test
-    public void createOrder() {
-
-        Recipe r1 = util.constructRecipe1();
-        OrderTracker ot = new OrderTracker();
-        
-        setupIO();
-        assertFalse(ot.createOrder(null,0,0));
-        assertFalse(ot.createOrder(null,1,0));
-        assertFalse(ot.createOrder(r1,0,0));
-        assertFalse(ot.createOrder(r1,-1,0));
-        assertTrue(ot.createOrder(r1,10,10));
-        restoreIO();
-    }
-
-    @Test
-    public void getOrders() {
-        OrderTracker ot = new OrderTracker();
-        ot.createOrder(util.constructRecipe1(),10,10);
-        ot.createOrder(util.constructRecipe2(), 5, 0);
-
-        HashMap<String, Order> orders = ot.getOrders();
-
-        assertEquals("1111",orders.get("1111").getRecipe().getRecipeID());
-        assertEquals("2222",orders.get("2222").getRecipe().getRecipeID());
-    }
-
-    @Test
-    public void getKeys() {
-        OrderTracker ot = new OrderTracker();
-        ot.createOrder(util.constructRecipe1(),10,10);
-        ot.createOrder(util.constructRecipe2(), 5, 0);
-
-        ArrayList<String> keys = ot.getKeys();
-
-        assertTrue(keys.contains("1111"));
-        assertTrue(keys.contains("2222"));
-    }
-
-    @Test
-    public void getOrdersArray() {
-        OrderTracker ot = new OrderTracker();
-        ot.createOrder(util.constructRecipe1(),10,10);
-        ot.createOrder(util.constructRecipe2(), 5, 0);
-
-        ArrayList<Order> os = ot.getOrdersArray();
-
-        Order o1 = new Order(util.constructRecipe1(),10,10);
-        Order o2 = new Order(util.constructRecipe2(),5,0);
-
-        for(Order o : os){
-            boolean thing = (o.isEqual(o1) || o.isEqual(o2));
-            assertTrue(thing);
-        }
-    }
-
-    // @Test void removeOrderByID() { }
-
-    @Test
-    public void OrderTracker_toString() {
-        OrderTracker ot = new OrderTracker();
-        ot.createOrder(util.constructRecipe1(),10,10);
-        ot.createOrder(util.constructRecipe2(), 5, 0);
-        String thing = "recipe1: ID 1111\nNumber of successful orders: 10\nNumber of failed orders: 10\n" +
-                "recipe2: ID 2222\nNumber of successful orders: 5\nNumber of failed orders: 0";
-
-        assertEquals(thing,ot.toString());
-    }
-    
 
     //////////////////
 
