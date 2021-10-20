@@ -58,6 +58,7 @@ public class QtyCalcTests {
     private ByteArrayOutputStream output;
     private final InputStream stdIn = System.in;
     private final PrintStream stdOut = System.out;
+    Util util = new Util();
 
     //@Before
     public void setupIO() {
