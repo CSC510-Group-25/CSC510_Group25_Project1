@@ -1,15 +1,15 @@
 # 86 No More, A Kitchen Intelligence Solution
 <p align="center"><img width="1000" src="./docs/SE_image.png"></p>
 
-![Build Status](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/workflows/maven_build/badge.svg)
-![Build Status](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/workflows/npm-build/badge.svg)
+![Build Status](https://github.com/ashakhatri007/CSC510_Group25_Project1/workflows/maven_build/badge.svg)
+![Build Status](https://github.com/ashakhatri007/CSC510_Group25_Project1/workflows/npm-build/badge.svg)
 [![DOI](https://zenodo.org/badge/402155508.svg)](https://zenodo.org/badge/latestdoi/402155508)
 [![Made with](https://img.shields.io/badge/Made%20with-Java-blue)](https://www.java.com/en/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://github.com/elric97/CalBot/blob/master/LICENSE)
-[![GitHub issues open](https://img.shields.io/github/issues/CSC510-Group-25/CSC510_Group25_Project1)](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/issues)
+[![GitHub issues open](https://img.shields.io/github/issues/ashakhatri007/CSC510_Group25_Project1)](https://github.com/ashakhatri007/CSC510_Group25_Project1/issues)
 
 Quantity Calculator:  
-[![unit_tests](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/actions/workflows/QtyCalcTests.yml/badge.svg)](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/actions/workflows/QtyCalcTests.yml)
+[![unit_tests](https://github.com/ashakhatri007/CSC510_Group25_Project1/actions/workflows/QtyCalcTests.yml/badge.svg)](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/actions/workflows/QtyCalcTests.yml)
 
 
 ## About:
