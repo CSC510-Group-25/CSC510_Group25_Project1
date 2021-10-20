@@ -77,35 +77,7 @@ public class QtyCalcTests {
 
     ///// ORDER TESTS
 
-    @Test
-    public void Order_getters() {
-        Order o1 = new Order(util.constructRecipe1(),10,10);
-
-        assertEquals("recipe1",o1.getRecipe().getRecipeName());
-        assertEquals(10,o1.getNum_orders());
-        assertEquals(10,o1.getNum_failures());
-    }
-
-    @Test
-    public void Order_toString() {
-        String thing = "recipe1: ID 1111\nNumber of successful orders: 10\nNumber of failed orders: 10";
-        Order o = new Order(util.constructRecipe1(),10,10);
-
-        assertEquals(thing,o.toString());
-    }
-
-    @Test
-    public void Order_isEqual(){
-        Order o1 = new Order(util.constructRecipe1(),10,10);
-        Order o2 = new Order(util.constructRecipe1(),10,10);
-        Order o3 = new Order(util.constructRecipe2(),5,5);
-
-        assertTrue(o1.isEqual(o2));
-        assertFalse(o1.isEqual(o3));
-        assertFalse(o1.isEqual(10));
-        assertFalse(o1.isEqual(null));
-    }
-
+  
 
     //////////////////
 
