@@ -65,12 +65,14 @@
                 <version>3.0.0-M4</version>
                 <configuration>
                     <includes>
-                        <include>QtyCalcTests.java</include>
                         <include>UnitConverterTests.java</include>
                         <include>VolumeConverterTests.java</include>
                         <include>OrderTrackerTests.java</include>
                         <include>IngredientTests.java</include>
                         <include>ItemTests.java</include>
+                        <include>RecipeTests.java</include>
+                        <include>OrderTests.java</include>
+                        <include>MockDBTests.java</include>
                     </includes>
                 </configuration>
             </plugin>
