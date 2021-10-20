@@ -1,15 +1,13 @@
-arch: amd64
+language: node_js
 
-language: java
+sudo: false
 
-jdk: 
-  - oraclejdk15
+node_js:
+  - 'node'
+  - '14'
+  - '12'
+  - '10'
 
-cache:
-  directories:
-  - $HOME/.m2
-
-script:
-  - java --version
-  - ./mvnw clean install
-  - ./mvnw test
+after_success:
+  - ./bin/codecov -e TRAVIS_NODE_VERSION -f coverage/*.json
+  - ./bin/codecov -e TRAVIS_NODE_VERSION
