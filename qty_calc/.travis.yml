@@ -7,7 +7,10 @@ jdk:
 
 sudo: false # faster builds
 
-script: "mvn cobertura:cobertura"
+script: 
+  - cd qty_calc
+  - mvn cobertura:cobertura
 
+# Below is the token
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t f1a6733e-d699-4f62-8403-c4932557f2bf
