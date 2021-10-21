@@ -2,8 +2,8 @@
 |-|-----|-------|---|
 |.5| short release cycles|https://github.com/ashakhatri007/CSC510_Group25_Project1/releases|3|
 |.5| workload is spread over the whole team (so one team member is often Xtimes more productive than the others...|https://github.com/CSC510-Group-25/CSC510_Group25_Project1/graphs/contributors|3|
-|.5|Docs: why: docs tell a story, motivate the whole thing, deliver a punchline that makes you want to rush out and use the thing |https://github.com/ashakhatri007/CSC510_Group25_Project1/blob/main/README.md |2|
-|.5|the files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up  |https://github.com/ashakhatri007/CSC510_Group25_Project1/blob/main/CONTRIBUTING.md |2|
+|.5|Docs: why: docs tell a story, motivate the whole thing, deliver a punchline that makes you want to rush out and use the thing |https://github.com/ashakhatri007/CSC510_Group25_Project1/blob/main/README.md |3|
+|.5|the files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up  |https://github.com/ashakhatri007/CSC510_Group25_Project1/blob/main/CONTRIBUTING.md |3|
 |.5|Docs: doco generated , format not ugly  | https://github.com/ashakhatri007/CSC510_Group25_Project1/blob/main/README.md |3|
 |.5|evidence that the whole team is using the same tools (e.g. config files in the repo, updated by lots of different people) |We all need to make commit in this file -https://github.com/ashakhatri007/CSC510_Group25_Project1/blob/main/spring-social/pom.xml |0|
 |.5|evidence that the members of the team are working across multiple places in the code base |https://github.com/ashakhatri007/CSC510_Group25_Project1/pulse |3|
