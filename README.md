@@ -9,6 +9,7 @@
 [![GitHub issues open](https://img.shields.io/github/issues/ashakhatri007/CSC510_Group25_Project1)](https://github.com/ashakhatri007/CSC510_Group25_Project1/issues)
 [![codecov](https://codecov.io/gh/ashakhatri007/CSC510_Group25_Project1/branch/main/graph/badge.svg?token=JAUQCX59SH)](https://codecov.io/gh/ashakhatri007/CSC510_Group25_Project1)
 
+
 Quantity Calculator:  
 [![unit_tests](https://github.com/ashakhatri007/CSC510_Group25_Project1/actions/workflows/QtyCalcTests.yml/badge.svg)](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/actions/workflows/QtyCalcTests.yml)
 
