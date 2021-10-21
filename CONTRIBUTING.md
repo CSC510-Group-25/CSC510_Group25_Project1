@@ -12,6 +12,19 @@ Explain the problem and include additional details to help maintainers reproduce
 * Describe the exact steps which reproduce the problem in as many details as possible. For example, start by explaining how you started, e.g. which command exactly you used in the terminal. When listing steps, don't just say what you did, but explain how you did it. For example, if you moved the cursor to the end of a line, explain if you used the mouse, or a keyboard shortcut, and if so which one?
 * Provide specific examples to demonstrate the steps. Include links to files or GitHub projects, or copy/pasteable snippets, which you use in those examples. 
 
+## Labels Info
+
+We have created labels for each issue for proper ordering and this will help you select an issue you would like to work on.
+
+- The [`documentation` label](https://github.com/ashakhatri007/CSC510_Group25_Project1/projects/1?card_filter_query=label%3Adocumentation) is for problems regarding the entire documentation of this repo.
+
+- The [`enchancement` label](https://github.com/ashakhatri007/CSC510_Group25_Project1/projects/1?card_filter_query=label%3Aenhancement) is for problems regarding any new / existing feature additions to be made in the project.
+
+- The [`bug` label](https://github.com/ashakhatri007/CSC510_Group25_Project1/projects/1?card_filter_query=label%3Abug) is for problems related to any bugs or fixes than need to be taken care of.
+
+- The [`Stretch goal` label](https://github.com/ashakhatri007/CSC510_Group25_Project1/projects/1?card_filter_query=label%3A%22good+first+issue%22) is for the features that are easy to start with. 
+
+
 ## Suggesting Enhancements
 
 This section guides you through submitting an enhancement suggestion, including completely new features and minor improvements to existing functionality. Following these guidelines helps maintainers and the community understand your suggestion and find related suggestions.
