@@ -1,5 +1,5 @@
-|Score|Notes| Evidence|Self Assessment|
-|-|-----|---------|-------|
+|Score|Notes|Evidence|Self_Assessment|
+|-|-----|-------|---|
 |.5| short release cycles|https://github.com/ashakhatri007/CSC510_Group25_Project1/releases|3|
 |.5| workload is spread over the whole team (so one team member is often Xtimes more productive than the others...|https://github.com/CSC510-Group-25/CSC510_Group25_Project1/graphs/contributors|3|
 |.5|Docs: why: docs tell a story, motivate the whole thing, deliver a punchline that makes you want to rush out and use the thing |https://github.com/ashakhatri007/CSC510_Group25_Project1/blob/main/README.md |3|
