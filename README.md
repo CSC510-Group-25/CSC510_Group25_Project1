@@ -74,7 +74,7 @@ The user may go to the analytics page to see analysis of how their restaurant is
 
 
 ## Steps for Running Backend:
-You can directly use Eclipse or Intellj to open up the project and run SpringSocialApplication.java file. You can also the start code from terminal. You need to update sql username and password in resources/application.yml file.
+You can directly use Eclipse or Intellj to open up the project and run SpringSocialApplication.java file. You can also the start code from terminal. You need to update sql username and password in spring-social/src/main/resources/application.yml file.
 
 Go to spring-social folder and run 
 ```bash
