@@ -22,8 +22,12 @@ class MenuForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handlePreSubmit = this.handlePreSubmit.bind(this);
     this.handleBoughtDateChange = this.handleBoughtDateChange.bind(this);
+    this.generateRandomDishID = this.generateRandomDishID.bind(this);
+    this.generateRandomOrderID = this.generateRandomOrderID.bind(this);
+    this.generateRandomRestaurantID = this.generateRandomRestaurantID.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleClose() {
@@ -79,11 +83,21 @@ class MenuForm extends React.Component {
     this.setState({dishID : result.toString()});
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handlePreSubmit(event){
     this.generateRandomOrderID();
     this.generateRandomRestaurantID();
     this.generateRandomDishID();
+    if(this.state.orderID == "" && this.state.restaurantID == "" && this.state.dishID == ""){
+      var millisecondsToWait = 500;
+      setTimeout(() =>{
+    // Whatever you want to do after the wait
+        this.handleSubmit(event);
+      }, millisecondsToWait);
+    }
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
 
     fetch(API_BASE_URL + '/addOrder', {
       method: 'POST',
@@ -152,7 +166,7 @@ class MenuForm extends React.Component {
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleSubmit} color="primary">
+            <Button onClick={this.handlePreSubmit} color="primary">
               Save
             </Button>
           </DialogActions>
