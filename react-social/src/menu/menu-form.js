@@ -17,7 +17,7 @@ class MenuForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { open: false, dishName: "", orderQuantity: 0, date: new Date() }
+    this.state = { open: false, dishName: "", orderQuantity: 0, date: new Date(), orderID: "", restaurantID: "", dishID: ""}
 
     this.handleChange = this.handleChange.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
@@ -48,8 +48,42 @@ class MenuForm extends React.Component {
     this.setState({dateBought : date});
   }
 
+  generateRandomOrderID(){
+    var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    var result = ""
+    var chaactersLength = characters.length;
+
+    for ( var i = 0; i < 3 ; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * chaactersLength));
+    }
+    this.setState({orderID : result.toString()});
+  }
+  generateRandomRestaurantID(){
+    var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    var result = ""
+    var chaactersLength = characters.length;
+
+    for ( var i = 0; i < 3 ; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * chaactersLength));
+    }
+    this.setState({restaurantID : result.toString()});
+  }
+  generateRandomDishID(){
+    var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    var result = ""
+    var chaactersLength = characters.length;
+
+    for ( var i = 0; i < 3 ; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * chaactersLength));
+    }
+    this.setState({dishID : result.toString()});
+  }
+
   handleSubmit(event) {
     event.preventDefault();
+    this.generateRandomOrderID();
+    this.generateRandomRestaurantID();
+    this.generateRandomDishID();
 
     fetch(API_BASE_URL + '/addOrder', {
       method: 'POST',
@@ -57,9 +91,9 @@ class MenuForm extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        orderID : "o1",
-        dishID : "d1",
-        restaurantID : "r1",
+        orderId : this.state.orderID,
+        dishId : this.state.dishID,
+        restaurantId : this.state.restaurantID,
         orderQuantity : this.state.orderQuantity,
         dishName : this.state.dishName,
         date : this.state.date
