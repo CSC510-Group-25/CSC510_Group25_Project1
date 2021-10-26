@@ -2,8 +2,8 @@ import React from "react";
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import InventoryForm from "/inventory-form";
-import InventoryTable from "/inventory-table";
+import MenuForm from "./menu-form";
+import MenuTable from "./menu-table";
 import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles({
@@ -28,10 +28,10 @@ export default function MenuPage() {
       style={{ minHeight: '100vh' }}
     >
       <Grid item xs={3}>
-        <InventoryForm/>
+        <MenuForm/>
       </Grid>
       <Grid item md={12}>
-        <InventoryTable/>
+        <MenuTable/>
       </Grid>
     </Grid>
 </div>
