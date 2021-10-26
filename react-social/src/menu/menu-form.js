@@ -48,9 +48,6 @@ class MenuForm extends React.Component {
   handleBoughtDateChange(date) {
     this.setState({dateBought : date});
   }
-  handleExpDateChange(date) {
-    this.setState({dateExpired : date});
-  }
 
   handleSubmit(event) {
     event.preventDefault();
@@ -102,40 +99,21 @@ class MenuForm extends React.Component {
               id="batchQty"
               value={this.state.orderQuantity}
               onChange={this.handleChange}
-              name="batchQty"
+              name="orderQuantity"
               label="Quantity"
               type="number"
               fullWidth
             />
-            <TextField
-              margin="dense"
-              id="costPerItem"
-              value={this.state.costPerItem}
-              onChange={this.handleChange}
-              name="costPerItem"
-              label="Cost per Item"
-              type="number"
-              fullWidth
-            />
             <br/>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <KeyboardDatePicker
-                label="Date Bought"
-                value={this.state.dateBought}
+                label="Date Orderered"
+                value={this.state.date}
                 onChange={this.handleBoughtDateChange}
-                name={"dateBought"}
+                name={"dateordered"}
               />
             </MuiPickersUtilsProvider>
             <br/>
-            <br/>
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <KeyboardDatePicker
-                label="Date Item(s) will expire"
-                value={this.state.dateExpired}
-                onChange={this.handleExpDateChange}
-                name={"dateExpired"}
-              />
-            </MuiPickersUtilsProvider>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
