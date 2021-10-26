@@ -17,7 +17,7 @@ class MenuForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { open: false, itemName: "", batchQty: 0, costPerItem: 0, dateBought: new Date(), dateExpired: new Date() }
+    this.state = { open: false, dishName: "", orderQuantity: 0, date: new Date() }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
@@ -90,17 +90,17 @@ class MenuForm extends React.Component {
             <TextField
               autoFocus
               margin="dense"
-              id="itemName"
-              value={this.state.itemName}
+              id="dishName"
+              value={this.state.dishName}
               onChange={this.handleChange}
-              name="itemName"
-              label="Item Name"
+              name="dishName"
+              label="Dish Name"
               fullWidth
             />
             <TextField
               margin="dense"
               id="batchQty"
-              value={this.state.batchQty}
+              value={this.state.orderQuantity}
               onChange={this.handleChange}
               name="batchQty"
               label="Quantity"
