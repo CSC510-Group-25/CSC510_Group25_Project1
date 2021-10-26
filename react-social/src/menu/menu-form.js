@@ -57,9 +57,9 @@ class MenuForm extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        orderID : "o1",
-        dishID : "d1",
-        restaurantID : "r1",
+        orderId : "o1",
+        dishId : "d1",
+        restaurantId : "r1",
         orderQuantity : this.state.orderQuantity,
         dishName : this.state.dishName,
         date : this.state.date
