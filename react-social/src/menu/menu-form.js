@@ -55,21 +55,18 @@ class MenuForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    fetch(API_BASE_URL + '/addInventory', {
+    fetch(API_BASE_URL + '/addOrder', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        restaurantName : "demo",
+        orderID : "o1",
+        dishID : "d1",
         restaurantID : "r1",
-        itemID : "i1",
-        itemName : this.state.itemName,
-        batchID : "b1",
-        batchQty : this.state.batchQty,
-        costPerItem : this.state.costPerItem,
-        dateBought : this.state.dateBought,
-        dateExpired : this.state.dateExpired
+        orderQuantity : this.state.OrderQuantity,
+        dishName : this.state.dishName,
+        date : this.state.date
       })
     })
       .then(response => {
@@ -84,11 +81,11 @@ class MenuForm extends React.Component {
     return (
       <div>
         <Button variant="outlined" onClick={this.handleOpen}>
-          Add New Inventory Item
+          Add New Menu Item
         </Button>
         <Dialog open={this.state.open} onClose={this.handleClose}
                 aria-labelledby="form-dialog-title">
-          <DialogTitle id="form-dialog-title">Add New Inventory</DialogTitle>
+          <DialogTitle id="form-dialog-title">Add New Menu</DialogTitle>
           <DialogContent>
             <TextField
               autoFocus
