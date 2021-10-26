@@ -23,8 +23,8 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import {API_BASE_URL} from "../constants";
 import Alert from "react-s-alert";
 
-function createData(itemName, batchQty, costPerItem, dateBought, dateExpired) {
-  return { itemName, batchQty, costPerItem, dateBought, dateExpired };
+function createData(dishName, orderQuantity, date) {
+  return { dishName, orderQuantity, date};
 }
 
 function descendingComparator(a, b, orderBy) {
@@ -215,7 +215,7 @@ export default function MenuTable() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.itemName);
+      const newSelecteds = rows.map((n) => n.dishName);
       setSelected(newSelecteds);
       return;
     }
@@ -299,13 +299,13 @@ export default function MenuTable() {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.itemName);
+                  const isItemSelected = isSelected(row.dishName);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.itemName)}
+                      onClick={(event) => handleClick(event, row.dishName)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
