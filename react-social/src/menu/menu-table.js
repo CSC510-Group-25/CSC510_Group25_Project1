@@ -54,11 +54,9 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  { id: 'itemName', numeric: false, disablePadding: true, label: 'Name' },
-  { id: 'batchQty', numeric: true, disablePadding: false, label: 'Quantity' },
-  { id: 'costPerItem', numeric: true, disablePadding: false, label: 'Cost' },
-  { id: 'dateBought', numeric: false, disablePadding: false, label: 'Date Bought' },
-  { id: 'dateExpired', numeric: false, disablePadding: false, label: 'Expiration Date' },
+  { id: 'dishName', numeric: false, disablePadding: true, label: 'Dish Name' },
+  { id: 'orderQty', numeric: true, disablePadding: false, label: 'Order Quantity' },
+  { id: 'orderdate', numeric: true, disablePadding: false, label: 'Order Date' },
 ];
 
 function EnhancedTableHead(props) {
@@ -150,7 +148,7 @@ const EnhancedTableToolbar = (props) => {
         </Typography>
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-          Inventory
+          Menu
         </Typography>
       )}
 
@@ -263,7 +261,7 @@ export default function MenuTable() {
 
   useEffect(() => {
     //get inventory from database
-    fetch(API_BASE_URL + '/getAllInventory', {
+    fetch(API_BASE_URL + '/getAllOrders', {
       method: 'Get',
       headers: {
         'Content-Type': 'application/json',
@@ -273,7 +271,7 @@ export default function MenuTable() {
       .then((data) => {
         setRows(data);
       }).catch(error => {
-      Alert.error((error && error.message) || 'Unable to load inventory');
+      Alert.error((error && error.message) || 'Unable to load menu');
     });
   }, []);
 
@@ -311,7 +309,7 @@ export default function MenuTable() {
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.itemName}
+                      key={row.dishName}
                       selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">
@@ -321,12 +319,10 @@ export default function MenuTable() {
                         />
                       </TableCell>
                       <TableCell component="th" id={labelId} scope="row" padding="none">
-                        {row.itemName}
+                        {row.dishName}
                       </TableCell>
-                      <TableCell align="right">{row.batchQty}</TableCell>
-                      <TableCell align="right">{row.costPerItem}</TableCell>
-                      <TableCell align="right">{row.dateBought}</TableCell>
-                      <TableCell align="right">{row.dateExpired}</TableCell>
+                      <TableCell align="right">{row.orderQuantity}</TableCell>
+                      <TableCell align="right">{row.date}</TableCell>
                     </TableRow>
                   );
                 })}
