@@ -17,11 +17,15 @@ class InventoryForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { open: false, itemName: "", batchQty: 0, costPerItem: 0, dateBought: new Date(), dateExpired: new Date() }
+    this.state = { open: false, itemName: "", batchQty: 0, costPerItem: 0, dateBought: new Date(), dateExpired: new Date(), restaurantID: "", itemID: "", batchID: ""}
 
     this.handleChange = this.handleChange.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handlePreSubmit = this.handlePreSubmit.bind(this);
+    this.generateRandomBatchID = this.generateRandomBatchID.bind(this);
+    this.generateRandomItemID = this.generateRandomItemID.bind(this);
+    this.generateRandomRestaurantID = this.generateRandomRestaurantID.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleBoughtDateChange = this.handleBoughtDateChange.bind(this);
     this.handleExpDateChange = this.handleExpDateChange.bind(this);
@@ -51,6 +55,49 @@ class InventoryForm extends React.Component {
   handleExpDateChange(date) {
     this.setState({dateExpired : date});
   }
+  generateRandomItemID(){
+    var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    var result = ""
+    var chaactersLength = characters.length;
+
+    for ( var i = 0; i < 3 ; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * chaactersLength));
+    }
+    this.setState({itemID : result.toString()});
+  }
+  generateRandomRestaurantID(){
+    var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    var result = ""
+    var chaactersLength = characters.length;
+
+    for ( var i = 0; i < 3 ; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * chaactersLength));
+    }
+    this.setState({restaurantID : result.toString()});
+  }
+  generateRandomBatchID(){
+    var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    var result = ""
+    var chaactersLength = characters.length;
+
+    for ( var i = 0; i < 3 ; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * chaactersLength));
+    }
+    this.setState({batchID : result.toString()});
+  }
+
+  handlePreSubmit(event){
+    this.generateRandomBatchID();
+    this.generateRandomItemID();
+    this.generateRandomRestaurantID();
+    if(this.state.batchID == "" && this.state.restaurantID == "" && this.state.itemID == ""){
+      var millisecondsToWait = 500;
+      setTimeout(() =>{
+    // Whatever you want to do after the wait
+        this.handleSubmit(event);
+      }, millisecondsToWait);
+    }
+  }
 
   handleSubmit(event) {
     event.preventDefault();
@@ -62,10 +109,10 @@ class InventoryForm extends React.Component {
       },
       body: JSON.stringify({
         restaurantName : "demo",
-        restaurantID : "r1",
-        itemID : "i1",
+        restaurantID : this.state.restaurantID,
+        itemID : this.state.itemID,
         itemName : this.state.itemName,
-        batchID : "b1",
+        batchID : this.state.batchID,
         batchQty : this.state.batchQty,
         costPerItem : this.state.costPerItem,
         dateBought : this.state.dateBought,
@@ -144,7 +191,7 @@ class InventoryForm extends React.Component {
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleSubmit} color="primary">
+            <Button onClick={this.handlePreSubmit} color="primary">
               Save
             </Button>
           </DialogActions>
