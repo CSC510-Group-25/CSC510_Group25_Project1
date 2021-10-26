@@ -24,7 +24,6 @@ class MenuForm extends React.Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleBoughtDateChange = this.handleBoughtDateChange.bind(this);
-    this.handleExpDateChange = this.handleExpDateChange.bind(this);
   }
 
   handleClose() {
@@ -61,7 +60,7 @@ class MenuForm extends React.Component {
         orderID : "o1",
         dishID : "d1",
         restaurantID : "r1",
-        orderQuantity : this.state.OrderQuantity,
+        orderQuantity : this.state.orderQuantity,
         dishName : this.state.dishName,
         date : this.state.date
       })
