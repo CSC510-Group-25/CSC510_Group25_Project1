@@ -2,6 +2,9 @@ import React from "react";
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import MenuForm from "./menu-form";
+import MenuTable from "./menu-table";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles({
   root: {
@@ -16,8 +19,20 @@ export default function MenuPage() {
   const classes = useStyles();
 
   return <div>
-    <Box className={classes.root}>
-      <Typography>Menu</Typography>
-    </Box>
-  </div>
+    <Grid
+      container
+      spacing={3}
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      style={{ minHeight: '100vh' }}
+    >
+      <Grid item xs={3}>
+        <MenuForm/>
+      </Grid>
+      <Grid item md={12}>
+        <MenuTable/>
+      </Grid>
+    </Grid>
+</div>
 }

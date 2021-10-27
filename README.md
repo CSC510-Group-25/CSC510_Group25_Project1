@@ -1,15 +1,17 @@
 # 86 No More, A Kitchen Intelligence Solution
 <p align="center"><img width="1000" src="./docs/SE_image.png"></p>
 
-![Build Status](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/workflows/maven_build/badge.svg)
-![Build Status](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/workflows/npm-build/badge.svg)
-[![DOI](https://zenodo.org/badge/402155508.svg)](https://zenodo.org/badge/latestdoi/402155508)
+![Build Status](https://github.com/ashakhatri007/CSC510_Group25_Project1/workflows/maven_build/badge.svg)
+![Build Status](https://github.com/ashakhatri007/CSC510_Group25_Project1/workflows/npm-build/badge.svg)
+[![DOI](https://zenodo.org/badge/416876176.svg)](https://zenodo.org/badge/latestdoi/416876176)
 [![Made with](https://img.shields.io/badge/Made%20with-Java-blue)](https://www.java.com/en/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://github.com/elric97/CalBot/blob/master/LICENSE)
-[![GitHub issues open](https://img.shields.io/github/issues/CSC510-Group-25/CSC510_Group25_Project1)](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/issues)
+[![GitHub issues open](https://img.shields.io/github/issues/ashakhatri007/CSC510_Group25_Project1)](https://github.com/ashakhatri007/CSC510_Group25_Project1/issues)
+[![codecov](https://codecov.io/gh/ashakhatri007/CSC510_Group25_Project1/branch/main/graph/badge.svg?token=JAUQCX59SH)](https://codecov.io/gh/ashakhatri007/CSC510_Group25_Project1)
+
 
 Quantity Calculator:  
-[![unit_tests](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/actions/workflows/QtyCalcTests.yml/badge.svg)](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/actions/workflows/QtyCalcTests.yml)
+[![unit_tests](https://github.com/ashakhatri007/CSC510_Group25_Project1/actions/workflows/QtyCalcTests.yml/badge.svg)](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/actions/workflows/QtyCalcTests.yml)
 
 
 ## About:
@@ -72,7 +74,7 @@ The user may go to the analytics page to see analysis of how their restaurant is
 
 
 ## Steps for Running Backend:
-You can directly use Eclipse or Intellj to open up the project and run SpringSocialApplication.java file. You can also the start code from terminal. You need to update sql username and password in resources/application.yml file.
+You can directly use Eclipse or Intellj to open up the project and run SpringSocialApplication.java file. You can also the start code from terminal. You need to update sql username and password in spring-social/src/main/resources/application.yml file.
 
 Go to spring-social folder and run 
 ```bash
@@ -106,19 +108,24 @@ this will start the application on localhost:3000
 
 
 ### Steps for running Quantity Calculator
-https://github.com/CSC510-Group-25/CSC510_Group25_Project1/tree/main/qty_calc
+https://github.com/ashakhatri007/CSC510_Group25_Project1/tree/main/qty_calc
 
 ## Funding:
 The project is not currently funded
 
 ## Future
 
-See issues here: https://github.com/CSC510-Group-25/CSC510_Group25_Project1/issues
+See issues here: https://github.com/ashakhatri007/CSC510_Group25_Project1/issues
 
-## Authors
-* Emily Tracey
-* Jonathan Nguyen 
-* Peeyush Taneja
-* Leila Moran
-* Shraddha Mishra
+## Team Members ##
+
+Het Thakkar
+
+Asha Khatri 
+
+Lorenz Scheller
+
+Neelkanth Tripathi 
+
+Divyank Gupta 
 

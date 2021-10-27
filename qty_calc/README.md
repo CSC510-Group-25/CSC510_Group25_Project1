@@ -49,6 +49,21 @@ Also, if you're using an IDE, you can easily follow the TODO trail in each class
 
 json-simple docs: https://cliftonlabs.github.io/json-simple/target/apidocs/index.html  
 
+### Some common errors which you might see while running qty_calc and how to fix them! ###
+
+ 1. Run "mvn test" on \qty_calc folder to run all tests. If you see eror saying "Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin" just see the dependency version it is asking for. Below addition in build configuration of pom.yml resolved my issue:
+    ```xml
+        <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <source>1.8</source>
+                            <target>1.8</target>
+                        </configuration>
+        </plugin>
+    ```
+
+
 - - - -
 
 recipe_folder contains recipes in either .txt or .json format.  
