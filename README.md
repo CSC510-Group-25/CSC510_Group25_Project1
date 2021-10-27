@@ -63,8 +63,17 @@ Our Home Page
 Every Restaurant will create an account with our application through the sign-up page and login\
 <img width="1200" alt="signup" src="https://user-images.githubusercontent.com/42051115/135185713-6cd54692-4408-4ad9-a8b5-bbd1d0f68baf.png">
 
-After signing up, the user can check the inventory that they currently have left\
+After signing up, the user can view the menu and see the currently available dishes\
+<img width="1200" alt="signup" src="https://github.com/ashakhatri007/CSC510_Group25_Project1/blob/main/images/View%20menu.png">
+
+If new dishes are available to the users, the employees can add them on the menu by clicking on the "Add new Menu Item" button\
+<img width="1200" alt="signup" src="https://github.com/ashakhatri007/CSC510_Group25_Project1/blob/main/images/Add%20Menu%20item.png">
+
+After signing up, the user can also check the inventory that they currently have left\
 <img width="1200" alt="signup" src="https://user-images.githubusercontent.com/42051115/135180678-ae5158c6-124e-4d2e-9db8-c0e39c6c1449.png">
+
+The user can add new Inventory items by clicking on the "Add new Inventory Item" button\
+<img width="1200" alt="signup" src="https://github.com/ashakhatri007/CSC510_Group25_Project1/blob/main/images/Add%20Inventory%20item.png">
 
 When certain ingredients are running low or about to expire, they will be notified\
 <img width="1200" alt="signup" src="https://user-images.githubusercontent.com/42051115/135180676-4941f523-553d-4586-be5b-a2a2b3992a5f.png">
