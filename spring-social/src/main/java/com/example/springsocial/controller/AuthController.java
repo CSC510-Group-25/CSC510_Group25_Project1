@@ -83,7 +83,14 @@ public class AuthController {
         // Creating user's account
         User user = new User();
         user.setName(signUpRequest.getName());
-        user.setEmail(signUpRequest.getEmail());
+
+        String email = signUpRequest.getEmail();
+        user.setEmail(email);
+
+        String provider = email.substring(s.indexOf("@") + 1);
+        provider = provider.substring(0, s.indexOf("."));
+        user.setProvider(provider);
+
         user.setPassword(signUpRequest.getPassword());
         user.setRestaurantName(signUpRequest.getRestaurantName());
         user.setRole(signUpRequest.getRole());
