@@ -88,14 +88,13 @@ public class AuthController {
         user.setEmail(email);
 
         String provider = email.substring(email.indexOf("@") + 1);
-        provider = provider.substring(0, email.indexOf("."));
+        provider = provider.substring(0, provider.indexOf("."));
         user.setProvider(provider);
 
         user.setPassword(signUpRequest.getPassword());
         user.setRestaurantName(signUpRequest.getRestaurantName());
         user.setRole(signUpRequest.getRole());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-
         User result = userRepository.save(user);
 
         URI location = ServletUriComponentsBuilder
