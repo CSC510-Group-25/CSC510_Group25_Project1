@@ -14,7 +14,7 @@ Quantity Calculator:
 [![unit_tests](https://github.com/ashakhatri007/CSC510_Group25_Project1/actions/workflows/QtyCalcTests.yml/badge.svg)](https://github.com/CSC510-Group-25/CSC510_Group25_Project1/actions/workflows/QtyCalcTests.yml)
 
 
-## About:
+## 💎 About:
 As customers decide on what to order at a restaurant, there is no worse feeling than hearing your 
 waiter tell them that their item of choice is no longer available. To prevent this issue,
 we have created an inventory tracker that will be able to track all the quantities of ingredients but 
@@ -24,7 +24,7 @@ In addition, our product will have an analytics page that will be able to displa
 and amount of waste per month. This product will allow restaurants to become more profitable while also
 being beneficial to the planet as there will be less waste generated in the restaurant industry.
 
-### Watch this video to know more about our product:
+## 📹 Watch this video to know more about our product:
 https://user-images.githubusercontent.com/42051115/135004434-50d95b77-87a3-4c18-8d35-b680c63239b0.mp4
 
 ## Technologies we used:
@@ -56,24 +56,36 @@ Javascript\
 CSS\
 MySQL
 
-## Demo:
-Our Home Page
+## 🚅 Demo:
+### Our Home Page
+
 <img width="1200" alt="home" src="https://user-images.githubusercontent.com/42051115/135185192-74660da7-1dd2-47ab-b6a8-9ec2bc9644ca.png">
 
-Every Restaurant will create an account with our application through the sign-up page and login\
+### Every Restaurant will create an account with our application through the sign-up page and login
+
 <img width="1200" alt="signup" src="https://user-images.githubusercontent.com/42051115/135185713-6cd54692-4408-4ad9-a8b5-bbd1d0f68baf.png">
 
-After signing up, the user can check the inventory that they currently have left\
+### After signing up, the user can view the menu and see the currently available dishes
+
+<img width="1200" alt="signup" src="https://github.com/ashakhatri007/CSC510_Group25_Project1/blob/main/images/View%20menu.png">
+
+### If new dishes are available to the users, the employees can add them on the menu by clicking on the "Add new Menu Item" button
+<img width="1200" alt="signup" src="https://github.com/ashakhatri007/CSC510_Group25_Project1/blob/main/images/Add%20Menu%20item.png">
+
+### After signing up, the user can also check the inventory that they currently have left
 <img width="1200" alt="signup" src="https://user-images.githubusercontent.com/42051115/135180678-ae5158c6-124e-4d2e-9db8-c0e39c6c1449.png">
 
-When certain ingredients are running low or about to expire, they will be notified\
+### The user can add new Inventory items by clicking on the "Add new Inventory Item" button
+<img width="1200" alt="signup" src="https://github.com/ashakhatri007/CSC510_Group25_Project1/blob/main/images/Add%20Inventory%20item.png">
+
+### When certain ingredients are running low or about to expire, they will be notified
 <img width="1200" alt="signup" src="https://user-images.githubusercontent.com/42051115/135180676-4941f523-553d-4586-be5b-a2a2b3992a5f.png">
 
-The user may go to the analytics page to see analysis of how their restaurant is doing monthly
+### The user may go to the analytics page to see analysis of how their restaurant is doing monthly
 <img width="1200" alt="signup" src="https://github.com/CSC510-Group-25/CSC510_Group25_Project1/blob/main/docs/graphs_SE.png">
 
 
-## Steps for Running Backend:
+## 🚀 Steps for Running Backend:
 You can directly use Eclipse or Intellj to open up the project and run SpringSocialApplication.java file. You can also the start code from terminal. You need to update sql username and password in spring-social/src/main/resources/application.yml file.
 
 Go to spring-social folder and run 
@@ -94,7 +106,7 @@ Alternatively, if you're having trouble running this command, you can create the
 In MySQL Workbench: Go to File > run SQL script > create_table.sql (inside spring-social folder)
 ```
 
-## Steps for Running Frontend:
+## 🚀 Steps for Running Frontend:
 In a separate terminal window go to react-social folder and run
 ```bash
 npm install
@@ -107,15 +119,15 @@ npm start
 this will start the application on localhost:3000
 
 
-### Steps for running Quantity Calculator
-https://github.com/CSC510-Group-25/CSC510_Group25_Project1/tree/main/qty_calc
+### 🚀 Steps for running Quantity Calculator
+https://github.com/ashakhatri007/CSC510_Group25_Project1/tree/main/qty_calc
 
 ## Funding:
 The project is not currently funded
 
-## Future
+## 🌠 Future
 
-See issues here: https://github.com/CSC510-Group-25/CSC510_Group25_Project1/issues
+See issues here: https://github.com/ashakhatri007/CSC510_Group25_Project1/issues
 
 ## Team Members ##
 
