@@ -87,8 +87,8 @@ public class AuthController {
         String email = signUpRequest.getEmail();
         user.setEmail(email);
 
-        String provider = email.substring(s.indexOf("@") + 1);
-        provider = provider.substring(0, s.indexOf("."));
+        String provider = email.substring(email.indexOf("@") + 1);
+        provider = provider.substring(0, email.indexOf("."));
         user.setProvider(provider);
 
         user.setPassword(signUpRequest.getPassword());
