@@ -22,7 +22,11 @@ We have created labels for each issue for proper ordering and this will help you
 
 - The [`bug` label](https://github.com/ashakhatri007/CSC510_Group25_Project1/projects/1?card_filter_query=label%3Abug) is for problems related to any bugs or fixes than need to be taken care of.
 
-- The [`Stretch goal` label](https://github.com/ashakhatri007/CSC510_Group25_Project1/projects/1?card_filter_query=label%3A%22good+first+issue%22) is for the features that are easy to start with. 
+- The [`Good first issue` label](https://github.com/ashakhatri007/CSC510_Group25_Project1/projects/1?card_filter_query=label%3A%22good+first+issue%22) Indicates a good issue for first-time contributors.
+
+- The [`tests` label](https://github.com/ashakhatri007/CSC510_Group25_Project1/issues?q=is%3Aissue+is%3Aopen+label%3Atests) Indicates a goo
+
+- The [`Release` label](https://github.com/ashakhatri007/CSC510_Group25_Project1/issues?q=is%3Aissue+is%3Aopen+label%3ARelease) Indicates a goo
 
 
 ## Suggesting Enhancements
