@@ -4,12 +4,15 @@ import com.example.springsocial.model.Order;
 import com.example.springsocial.payload.OrderRequest;
 import com.example.springsocial.repository.OrderRepository;
 import com.google.gson.Gson;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -22,8 +25,16 @@ import java.util.List;
 
 @RestController
 public class OrderController {
+
+    private Logger logger = Logger.getLogger(AuthController.class);
+
     @Autowired
     private OrderRepository orderRepository;
+
+    @PostConstruct
+    public void init() {
+        BasicConfigurator.configure();
+    }
 
     @PostMapping("/addOrder")
     /**
@@ -47,9 +58,10 @@ public class OrderController {
         order.setDishName(orderRequest.getDishName());
         order.setDate(orderRequest.getDate());
 
-        Order result = orderRepository.save(order);
+        orderRepository.save(order);
         String outputString = "{Order Added Successfully}";
         outputString =  new Gson().toJson(outputString);
+        logger.info("Order "+orderRequest.getOrderId()+" successfully Added");
         return outputString;
     }
 
@@ -61,6 +73,7 @@ public class OrderController {
 
         List<Order> order =  orderRepository.findAll();
         String orderJson = new Gson().toJson(order);
+        logger.info("successfully fetched all the order");
         return orderJson;
 
     }
