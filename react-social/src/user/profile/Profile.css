@@ -7,6 +7,8 @@
 }
 
 .profile-info .profile-avatar img {
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     max-width: 300px;
 }
@@ -19,7 +21,6 @@
     box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
     border-radius: 2px;
     width: 500px;
-
     display: inline-block;
     margin: 30px 30px ;
     vertical-align: middle;
@@ -32,9 +33,9 @@
     font-weight: 400;
 }
 
-.text-avatar {
-    width: 200px;
-    height: 200px;
+.profile-avatar {
+    width: 150px;
+    height: 150px;
     margin: 0 auto;
     vertical-align: middle;
     text-align: center;
@@ -52,4 +53,8 @@
     line-height: 200px;
     color: #fff;
     font-size: 3em;
+}
+
+.form-item{
+    position:inline;
 }
