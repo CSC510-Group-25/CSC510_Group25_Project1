@@ -12,17 +12,18 @@
 }
 
 .profile-info .profile-name {
+    font-family: 'Zen Antique', serif;
     font-weight: 500;
     font-size: 18px;
     background: #fff;
-        box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
-        border-radius: 2px;
-        width: 500px;
-        display: inline-block;
-        margin-top: 30px;
-        vertical-align: middle;
-        position: relative;
-        padding: 35px;
+    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
+    border-radius: 2px;
+    width: 500px;
+    display: inline-block;
+    margin-top: 30px;
+    vertical-align: middle;
+    position: relative;
+    padding: 35px;
 }
 
 .profile-info .profile-email {
