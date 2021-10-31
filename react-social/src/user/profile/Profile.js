@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Profile.css';
+import Alert from 'react-s-alert';
 
 class Profile extends Component {
     constructor(props) {
