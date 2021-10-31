@@ -7,6 +7,7 @@ import com.example.springsocial.payload.UpdateRequest;
 import com.example.springsocial.repository.UserRepository;
 import com.example.springsocial.security.CurrentUser;
 import com.example.springsocial.security.UserPrincipal;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,6 +22,8 @@ import java.net.URI;
 
 @RestController
 public class UserController {
+
+    private Logger logger = Logger.getLogger(UserController.class);
 
     @Autowired
     private UserRepository userRepository;
