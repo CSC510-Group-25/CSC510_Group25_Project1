@@ -7,22 +7,35 @@
 }
 
 .profile-info .profile-avatar img {
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
-    max-width: 250px;
+    max-width: 300px;
 }
 
 .profile-info .profile-name {
+    font-family: 'Roboto', sans-serif;
     font-weight: 500;
     font-size: 18px;
+    background: #fff;
+    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
+    border-radius: 2px;
+    width: 500px;
+    display: inline-block;
+    margin: 30px 30px ;
+    vertical-align: middle;
+    position: relative;
+    padding: 35px 35px;
+
 }
 
 .profile-info .profile-email {
     font-weight: 400;
 }
 
-.text-avatar {
-    width: 200px;
-    height: 200px;
+.profile-avatar {
+    width: 150px;
+    height: 150px;
     margin: 0 auto;
     vertical-align: middle;
     text-align: center;
@@ -41,58 +54,18 @@
     color: #fff;
     font-size: 3em;
 }
-.signup-container {
-    text-align: center;
+
+.form-item{
+  display:flex;
+  padding : 10px;
+  align-items: center;
+
+
 }
 
+.form-element {
+    width: 12rem;
+    margin-right: 1rem;
+    font-family: 'Roboto', sans-serif;
 
-.signup-content {
-    background: #fff;
-    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
-    border-radius: 2px;
-    width: 500px;
-    display: inline-block;
-    margin-top: 30px;
-    vertical-align: middle;
-    position: relative;
-    padding: 35px;
-}
-
-.social-btn {
-    margin-bottom: 15px;
-    font-weight: 400;
-    font-size: 16px;
-}
-
-.social-btn img {
-    height: 32px;
-    float: left;
-    margin-top: 10px;
-}
-
-.social-btn.google {
-    margin-top: 7px;
-}
-
-.social-btn.facebook img {
-    height: 24px;
-    margin-left: 3px;
-}
-
-.social-btn.github img {
-    height: 24px;
-    margin-left: 3px;
-}
-
-.login-link {
-    color: rgba(0, 0, 0, 0.65);
-    font-size: 14px;
-}
-
-.signup-title {
-    font-size: 1.5em;
-    font-weight: 500;
-    margin-top: 0;
-    margin-bottom: 30px;
-    color: rgba(0, 0, 0, 0.65);
 }
