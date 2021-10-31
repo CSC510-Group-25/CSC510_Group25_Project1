@@ -27,7 +27,7 @@ class Profile extends Component {
             });
         }
 
-        handleSubmit(event) {
+     handleSubmit(event) {
             event.preventDefault();
 
             const Profilechange = Object.assign({}, this.state);
@@ -39,7 +39,7 @@ class Profile extends Component {
             }).catch(error => {
                 Alert.error((error && error.message) || 'Oops! Something went wrong. Please try again!');
             });
-        }
+       }
     render() {
         return (
             <div className="profile-container">
