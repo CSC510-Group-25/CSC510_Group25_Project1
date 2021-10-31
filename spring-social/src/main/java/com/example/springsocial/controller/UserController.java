@@ -50,6 +50,6 @@ public class UserController {
                 .buildAndExpand(result.getId()).toUri();
         logger.info("User updated successfully");
         return ResponseEntity.created(location)
-                .body(new ApiResponse(true, "User registered successfully@"));
+                .body(new ApiResponse(true, "User updated successfully"));
     }
 }
