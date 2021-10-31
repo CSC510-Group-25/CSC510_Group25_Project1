@@ -29,15 +29,15 @@ class Profile extends Component {
         handleSubmit(event) {
             event.preventDefault();
 
-            const signUpRequest = Object.assign({}, this.state);
+            const Profilechange = Object.assign({}, this.state);
 
-//            signup(signUpRequest)
-//            .then(response => {
-//                Alert.success("You're successfully registered. Please login to continue!");
-//                this.props.history.push("/login");
-//            }).catch(error => {
-//                Alert.error((error && error.message) || 'Oops! Something went wrong. Please try again!');
-//            });
+            Profile(Profilechange)
+            .then(response => {
+                Alert.success("You're successfully registered. Please login to continue!");
+                this.props.history.push("/login");
+            }).catch(error => {
+                Alert.error((error && error.message) || 'Oops! Something went wrong. Please try again!');
+            });
         }
     render() {
         return (
