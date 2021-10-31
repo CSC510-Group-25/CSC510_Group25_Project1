@@ -11,6 +11,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +23,7 @@ import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
+@Controller
 public class UserController {
 
     private Logger logger = Logger.getLogger(UserController.class);
@@ -37,10 +40,10 @@ public class UserController {
 
     @PostMapping("/update")
     public ResponseEntity<?> updateCurrentuser(@Valid @RequestBody UpdateRequest request){
-        User user = new User();
+        User user = userRepository.findByEmail(request.getEmail()).orElseThrow(() ->
+                new UsernameNotFoundException("User not found with email : " + request.getEmail())
+        );
         user.setName(request.getName());
-
-        user.setEmail(request.getEmail());
         user.setRestaurantName(request.getRestaurantName());
         user.setRole(request.getRole());
         User result = userRepository.save(user);

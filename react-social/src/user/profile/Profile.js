@@ -30,7 +30,7 @@ class Profile extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-
+        this.state.email = this.props.currentUser.email;
         const updateProfileRequest = Object.assign({}, this.state);
 
         updateProfile(updateProfileRequest)
@@ -69,7 +69,6 @@ class Profile extends Component {
                                            value={this.state.restaurantName} onChange={this.handleInputChange}
                                            required/>
                                 </div>
-
                                 <div className="form-item">
                                     <input type="text" name="name"
                                            className="form-control" placeholder={this.props.currentUser.name}
