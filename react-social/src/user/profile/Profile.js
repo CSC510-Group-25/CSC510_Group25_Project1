@@ -79,6 +79,7 @@ class Profile extends Component {
 
                             <form onSubmit={this.handleSubmit}>
                                 <div className="form-item">
+
                                     <input type="text" name="restaurantName"
                                            className="form-control" placeholder={this.props.currentUser.restaurantName}
                                            value={this.state.restaurantName} onChange={this.handleInputChange}
