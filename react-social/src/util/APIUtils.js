@@ -52,7 +52,7 @@ export function signup(signupRequest) {
 
 export function updateProfile(updateProfileRequest) {
     return request({
-        url: API_BASE_URL + "/auth/update",
+        url: API_BASE_URL + "/update",
         method: 'POST',
         body: JSON.stringify(updateProfileRequest)
     });
