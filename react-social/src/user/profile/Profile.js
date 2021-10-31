@@ -78,19 +78,19 @@ class Profile extends Component {
                             <h2>{this.props.currentUser.name}</h2>
 
                             <form onSubmit={this.handleSubmit}>
-                                <div className="form-item" style={{display: "flex"}}>
+                                <div className="form-item" >
 
                                    <div className="form-element">
-                                        Restaurant name
+                                        Restaurant
                                    </div>
                                     <input type="text" name="restaurantName"
                                            className="form-control" placeholder={this.props.currentUser.restaurantName}
                                            value={this.state.restaurantName} onChange={this.handleInputChange}
                                            required/>
                                 </div>
-                                <div className="form-item" style={{display: "flex"}}>
+                                <div className="form-item">
                                     <div className="form-element">
-                                            Restaurant name
+                                            Name
                                     </div>
 
                                     <input type="text" name="name"
@@ -99,9 +99,9 @@ class Profile extends Component {
                                 </div>
 
 
-                                <div className="form-item" style={{display: "flex"}}>
+                                <div className="form-item">
                                     <div className="form-element">
-                                        Restaurant name
+                                        Role
                                     </div>
                                     <input type="text" name="role"
                                            className="form-control" placeholder={this.props.currentUser.role}

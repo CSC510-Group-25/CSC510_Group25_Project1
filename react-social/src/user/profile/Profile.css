@@ -56,5 +56,14 @@
 }
 
 .form-item{
+  display:flex;
+  padding : 10px;
+  align-items: center;
 
+
+}
+
+.form-element {
+    width: 12rem;
+    margin-right: 1rem;
 }
