@@ -49,3 +49,11 @@ export function signup(signupRequest) {
         body: JSON.stringify(signupRequest)
     });
 }
+
+export function updateProfile(updateProfileRequest) {
+    return request({
+        url: API_BASE_URL + "/auth/update",
+        method: 'POST',
+        body: JSON.stringify(updateProfileRequest)
+    });
+}
