@@ -51,10 +51,14 @@ class Profile extends Component {
                       });
                     });
 
+                   window.location.reload();
+
                 this.props.history.push("/login");
             }).catch(error => {
             Alert.error((error && error.message) || 'Oops! Something went wrong. Please try again!');
         });
+
+
     }
 
     render() {
