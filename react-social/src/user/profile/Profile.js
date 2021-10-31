@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import './Profile.css';
 import Alert from 'react-s-alert';
 import {updateProfile} from "../../util/APIUtils";
+import { getCurrentUser } from '../../util/APIUtils';
+
 
 class Profile extends Component {
     constructor(props) {
@@ -36,6 +38,19 @@ class Profile extends Component {
         updateProfile(updateProfileRequest)
             .then(response => {
                 Alert.success("You've successfully updated your profile.");
+                getCurrentUser()
+                    .then(response => {
+                      this.setState({
+                        currentUser: response,
+                        authenticated: true,
+                        loading: false
+                      });
+                    }).catch(error => {
+                      this.setState({
+                        loading: false
+                      });
+                    });
+
                 this.props.history.push("/login");
             }).catch(error => {
             Alert.error((error && error.message) || 'Oops! Something went wrong. Please try again!');
