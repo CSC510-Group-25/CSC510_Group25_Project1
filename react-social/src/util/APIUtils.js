@@ -57,3 +57,27 @@ export function updateProfile(updateProfileRequest) {
         body: JSON.stringify(updateProfileRequest)
     });
 }
+
+export function fetchExpiredInventoryItems(expiredInventoryItemsRequest) {
+    return request({
+        url: API_BASE_URL + "/findExpiredInventory",
+        method: 'POST',
+        body: JSON.stringify(expiredInventoryItemsRequest)
+    });
+}
+
+export function fetchAboutToExpireInventoryItems(aboutToExpireInventoryItemsRequest) {
+    return request({
+        url: API_BASE_URL + "/findAboutToExpireInventory",
+        method: 'POST',
+        body: JSON.stringify(aboutToExpireInventoryItemsRequest)
+    });
+}
+
+export function fetchLowQuantityInventoryItems(lowQuantityInventoryItemsRequest) {
+    return request({
+        url: API_BASE_URL + "/findLowQuantityInventoryItems",
+        method: 'POST',
+        body: JSON.stringify(lowQuantityInventoryItemsRequest)
+    });
+}
