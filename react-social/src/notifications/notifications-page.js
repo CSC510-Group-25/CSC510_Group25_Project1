@@ -37,6 +37,10 @@ export default function NotificationsPage({ currentUser }) {
   const [lowQuantityItems, setLowQuantityItems] = React.useState([]);
 
   useEffect(() => {
+
+    if(!currentUser) {
+      return;
+    }
     fetchExpiredInventoryItems({
       "restaurant_name": currentUser.restaurantName,
     }).then((response) => {
