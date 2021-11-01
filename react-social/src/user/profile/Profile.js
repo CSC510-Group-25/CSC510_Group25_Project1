@@ -51,10 +51,14 @@ class Profile extends Component {
                       });
                     });
 
+                   window.location.reload();
+
                 this.props.history.push("/login");
             }).catch(error => {
             Alert.error((error && error.message) || 'Oops! Something went wrong. Please try again!');
         });
+
+
     }
 
     render() {
@@ -78,13 +82,21 @@ class Profile extends Component {
                             <h2>{this.props.currentUser.name}</h2>
 
                             <form onSubmit={this.handleSubmit}>
-                                <div className="form-item">
+                                <div className="form-item" >
+
+                                   <div className="form-element">
+                                        Restaurant
+                                   </div>
                                     <input type="text" name="restaurantName"
                                            className="form-control" placeholder={this.props.currentUser.restaurantName}
                                            value={this.state.restaurantName} onChange={this.handleInputChange}
                                            required/>
                                 </div>
                                 <div className="form-item">
+                                    <div className="form-element">
+                                            Name
+                                    </div>
+
                                     <input type="text" name="name"
                                            className="form-control" placeholder={this.props.currentUser.name}
                                            value={this.state.name} onChange={this.handleInputChange} required/>
@@ -92,6 +104,9 @@ class Profile extends Component {
 
 
                                 <div className="form-item">
+                                    <div className="form-element">
+                                        Role
+                                    </div>
                                     <input type="text" name="role"
                                            className="form-control" placeholder={this.props.currentUser.role}
                                            value={this.state.role} onChange={this.handleInputChange} required/>
